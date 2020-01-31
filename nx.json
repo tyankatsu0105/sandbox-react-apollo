@@ -1,0 +1,22 @@
+{
+  "npmScope": "sandbox-react-apollo",
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "client": {
+      "tags": []
+    },
+    "client-e2e": {
+      "tags": [],
+      "implicitDependencies": ["client"]
+    }
+  }
+}

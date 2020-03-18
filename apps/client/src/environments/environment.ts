@@ -1,6 +1,7 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// When building for production, this file is replaced with `environment.prod.ts`.
-
 export const environment = {
-  production: false
+  production: process.env.NODE_ENV === 'production',
+  apiEndpoint: 'https://api.github.com/graphql',
+  sentry: {
+    dsn: process.env.SENTRY_DSN || ''
+  }
 };

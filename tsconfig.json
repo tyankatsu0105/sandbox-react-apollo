@@ -1,6 +1,34 @@
+// {
+//   "compileOnSave": false,
+//   "compilerOptions": {
+//     "rootDir": ".",
+//     "sourceMap": true,
+//     "declaration": false,
+//     "moduleResolution": "node",
+//     "emitDecoratorMetadata": true,
+//     "experimentalDecorators": true,
+//     "importHelpers": true,
+//     "target": "es2015",
+//     "module": "esnext",
+//     "typeRoots": ["node_modules/@types"],
+//     "lib": ["es2017", "dom"],
+//     "skipLibCheck": true,
+//     "skipDefaultLibCheck": true,
+//     "baseUrl": ".",
+//     "paths": {}
+//   },
+//   "exclude": ["node_modules", "tmp"]
+// }
+
+
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "lib": ["es2019", "dom", "dom.iterable"],
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "jsx": "react",
+    "esModuleInterop": true,
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
@@ -8,14 +36,15 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2019",
     "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
+    "typeRoots": ["types", "node_modules/@types"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {}
+    "baseUrl": "."
   },
-  "exclude": ["node_modules", "tmp"]
+  "include": ["./apps"],
+  "exclude": ["node_modules", "tmp"],
+  "esModuleInterop": true,
+  "files": ["./types/graphql.d.ts"]
 }

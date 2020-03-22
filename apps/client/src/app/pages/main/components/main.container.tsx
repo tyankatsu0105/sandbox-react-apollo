@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 
-import VersionQuery from './query/Version.graphql';
+import * as VersionQuery from './query/Version.graphql';
 
 import { MainPresentational } from './main.presentational';
 

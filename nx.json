@@ -23,6 +23,12 @@
     },
     "hooks": {
       "tags": []
+    },
+    "api": {
+      "tags": []
+    },
+    "helpers": {
+      "tags": []
     }
   }
 }

@@ -22,7 +22,8 @@
     "paths": {
       "~client/*": ["apps/client/src/app/*"],
       "@sandbox-react-apollo/components": ["libs/components/src/index.ts"],
-      "@sandbox-react-apollo/hooks": ["libs/hooks/src/index.ts"]
+      "@sandbox-react-apollo/hooks": ["libs/hooks/src/index.ts"],
+      "@sandbox-react-apollo/helpers": ["libs/helpers/src/index.ts"]
     },
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true

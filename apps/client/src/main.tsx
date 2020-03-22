@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import * as Sentry from '@sentry/browser';
 
-import { client } from './api';
+import { client } from './graphql';
 import { ApolloProvider } from '@apollo/react-hooks';
 
 import { customTheme } from './styles/material-ui/customTheme';
@@ -13,12 +13,12 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 import { App } from './app/app';
 
-import { environment } from './environments/environment';
+import { sentry, production } from './environments/environment';
 
 Sentry.init({
-  dsn: environment.sentry.dsn,
-  environment: environment.production ? 'production' : 'development',
-  debug: environment.production ? false : true
+  dsn: sentry.dsn,
+  environment: production ? 'production' : 'development',
+  debug: production ? false : true
 });
 
 ReactDOM.render(

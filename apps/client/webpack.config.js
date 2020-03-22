@@ -5,6 +5,17 @@ const getWebpackConfig = require('@nrwl/react/plugins/webpack');
 const webpack = require('webpack');
 require('dotenv').config();
 
+/**
+  @typedef {import('webpack').Configuration} WebpackConfig
+*/
+/**
+  @typedef {import('webpack-dev-server').Configuration} WebpackDevServeConfig
+*/
+/**
+  @typedef {WebpackConfig & WebpackDevServeConfig} Config
+*/
+
+/** @param {Config} config */
 module.exports = (config) => {
   // @see https://github.com/nrwl/nx/issues/1511#issuecomment-504790122
   // @nrwl/apolloが使用可能になったら不要
@@ -41,6 +52,14 @@ module.exports = (config) => {
       }
     })
   );
+
+  if (process.env.NODE_ENV === 'development') {
+    config.devServer.proxy = {
+      '/login/auth': {
+        target: 'http://localhost:3333'
+      }
+    };
+  }
 
   return getWebpackConfig(config);
 };

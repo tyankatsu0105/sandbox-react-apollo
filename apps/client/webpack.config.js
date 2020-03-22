@@ -11,7 +11,7 @@ module.exports = (config) => {
   config.module.rules.push({
     test: /\.(graphql)$/,
     exclude: /node_modules/,
-    loader: 'graphql-tag/loader',
+    loader: 'graphql-tag/loader'
   });
 
   // @see https://github.com/nrwl/nx/issues/1511#issuecomment-504790122
@@ -31,8 +31,14 @@ module.exports = (config) => {
     new webpack.DefinePlugin({
       'process.env': {
         SENTRY_DSN: JSON.stringify(process.env.SENTRY_DSN),
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-      },
+        GITHUB_OAUTH_CLIENT_ID: JSON.stringify(
+          process.env.GITHUB_OAUTH_CLIENT_ID
+        ),
+        GITHUB_OAUTH_CLIENT_SECRET: JSON.stringify(
+          process.env.GITHUB_OAUTH_CLIENT_SECRET
+        ),
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
     })
   );
 

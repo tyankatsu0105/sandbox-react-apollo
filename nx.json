@@ -17,6 +17,12 @@
     "client-e2e": {
       "tags": [],
       "implicitDependencies": ["client"]
+    },
+    "components": {
+      "tags": []
+    },
+    "hooks": {
+      "tags": []
     }
   }
 }

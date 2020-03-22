@@ -38,6 +38,14 @@ testem.log
 .DS_Store
 Thumbs.db
 
-.env
-# Local Netlify folder
+
+# Custom rules
+# ===== Local Netlify folder =====
 .netlify
+
+# ===== env =====
+.env
+
+# ===== hygen =====
+_hygen/_generated/*
+!_hygen/_generated/.gitkeep

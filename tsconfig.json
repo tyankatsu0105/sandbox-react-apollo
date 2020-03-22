@@ -1,26 +1,3 @@
-// {
-//   "compileOnSave": false,
-//   "compilerOptions": {
-//     "rootDir": ".",
-//     "sourceMap": true,
-//     "declaration": false,
-//     "moduleResolution": "node",
-//     "emitDecoratorMetadata": true,
-//     "experimentalDecorators": true,
-//     "importHelpers": true,
-//     "target": "es2015",
-//     "module": "esnext",
-//     "typeRoots": ["node_modules/@types"],
-//     "lib": ["es2017", "dom"],
-//     "skipLibCheck": true,
-//     "skipDefaultLibCheck": true,
-//     "baseUrl": ".",
-//     "paths": {}
-//   },
-//   "exclude": ["node_modules", "tmp"]
-// }
-
-
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -41,7 +18,14 @@
     "typeRoots": ["types", "node_modules/@types"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "~client/*": ["apps/client/src/app/*"],
+      "@sandbox-react-apollo/components": ["libs/components/src/index.ts"],
+      "@sandbox-react-apollo/hooks": ["libs/hooks/src/index.ts"]
+    },
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true
   },
   "include": ["./apps"],
   "exclude": ["node_modules", "tmp"],

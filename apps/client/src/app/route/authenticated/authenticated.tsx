@@ -5,7 +5,7 @@ import { Box } from '@material-ui/core';
 
 import { MainPage } from '../../pages/main';
 import { HomePage } from '../../pages/home';
-import { Sidebar, Header } from '~client/shared/components';
+import { Sidebar, Header, Layout } from '~client/shared/components';
 
 const Authenticated = () => (
   <>
@@ -15,10 +15,12 @@ const Authenticated = () => (
         <Header />
         <Box component="main">
           <Suspense fallback={<div>Loading...</div>}>
-            <Switch>
-              <Route exact path="/main" component={MainPage} />
-              <Route exact path="/" component={HomePage} />
-            </Switch>
+            <Layout>
+              <Switch>
+                <Route exact path="/main" component={MainPage} />
+                <Route exact path="/" component={HomePage} />
+              </Switch>
+            </Layout>
           </Suspense>
         </Box>
       </Box>

@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 
@@ -8,7 +9,7 @@ import BuildIcon from '@material-ui/icons/Build';
 const useStyles = makeStyles((theme) =>
   createStyles({
     'sidebar-header': {
-      padding: theme.spacing[2],
+      color: 'inherit',
     },
   })
 );
@@ -20,8 +21,12 @@ export const SidebarHeaderPresentational: FunctionComponent<Props> = (
 ) => {
   const classes = useStyles({});
   return (
-    <List className={classes['sidebar-header']}>
-      <ListItem>
+    <List disablePadding>
+      <ListItem
+        component={NavLink}
+        to="/"
+        className={classes['sidebar-header']}
+      >
         <Box marginRight={1}>
           <BuildIcon color="primary" />
         </Box>

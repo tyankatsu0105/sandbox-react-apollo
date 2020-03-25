@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 
 import { MenuList, MenuItem, Drawer, Divider, Box } from '@material-ui/core';
 
-import { SidebarHeader } from './components';
+import { SidebarHeader, SidebarMenuItem } from './components';
 
 type Props = {};
 
@@ -13,11 +13,7 @@ export const SidebarPresentational: FunctionComponent<Props> = (props) => (
         <SidebarHeader />
         <Divider />
         <MenuList>
-          <MenuItem>Menu1</MenuItem>
-          <MenuItem>Menu2</MenuItem>
-          <MenuItem>Menu3</MenuItem>
-          <MenuItem>Menu4</MenuItem>
-          <MenuItem>Menu5</MenuItem>
+          <SidebarMenuItem to="/use-query">useQuery</SidebarMenuItem>
         </MenuList>
       </Box>
     </Drawer>

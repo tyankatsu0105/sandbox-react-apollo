@@ -2,13 +2,13 @@ import React, {
   FunctionComponent,
   ComponentType,
   useEffect,
-  useState
+  useState,
 } from 'react';
 import {
   RouteProps,
   RouteComponentProps,
   Route,
-  useHistory
+  useHistory,
 } from 'react-router-dom';
 
 import { getCookies } from '@sandbox-react-apollo/helpers';

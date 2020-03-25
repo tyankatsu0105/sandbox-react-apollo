@@ -4,9 +4,13 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloLink } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
+import { withClientState } from 'apollo-link-state';
 
 import { getCookies } from '@sandbox-react-apollo/helpers';
 import { apiEndpoint } from '../environments/environment';
+
+import { initialState } from './state';
+import { resolvers } from './resolvers';
 
 type Cookies = 'githubAccessToken';
 const { githubAccessToken } = getCookies<Cookies>();
@@ -24,7 +28,12 @@ const httpLink = new HttpLink({
   uri: apiEndpoint
 });
 
-const link = ApolloLink.from([authLink, httpLink]);
+const stateLink = withClientState({
+  resolvers,
+  defaults: initialState
+});
+
+const link = ApolloLink.from([authLink, stateLink, httpLink]);
 
 const defaultOptions: DefaultOptions = {
   watchQuery: {

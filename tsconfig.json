@@ -20,7 +20,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "~client/*": ["apps/client/src/app/*"],
+      "~client/*": ["apps/client/src/*"],
       "@sandbox-react-apollo/components": ["libs/components/src/index.ts"],
       "@sandbox-react-apollo/hooks": ["libs/hooks/src/index.ts"],
       "@sandbox-react-apollo/helpers": ["libs/helpers/src/index.ts"]

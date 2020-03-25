@@ -1,0 +1,5 @@
+query GetCurrentCounter {
+  counter @client {
+    current
+  }
+}

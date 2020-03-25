@@ -16,7 +16,7 @@ require('dotenv').config();
 */
 
 /** @param {Config} config */
-module.exports = (config) => {
+module.exports = config => {
   // @see https://github.com/nrwl/nx/issues/1511#issuecomment-504790122
   // @nrwl/apolloが使用可能になったら不要
   config.module.rules.push({
@@ -31,7 +31,7 @@ module.exports = (config) => {
 
   // babel-loaderに取り込まれたら削除
   const babelRuleOptions = config.module.rules.find(
-    (r) => r.loader === 'babel-loader'
+    r => r.loader === 'babel-loader'
   ).options;
   babelRuleOptions.plugins.push('@babel/plugin-proposal-optional-chaining');
   babelRuleOptions.plugins.push(

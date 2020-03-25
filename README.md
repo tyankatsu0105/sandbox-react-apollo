@@ -19,3 +19,4 @@ npm run api
 - https://www.youtube.com/watch?v=wcUdBgktd4s&feature=emb_logo
 - https://developer.github.com/v4/explorer/
 - https://auth0.com/docs/connections/social/github
+- https://blog.hiroppy.me/entry/apollo-link-state

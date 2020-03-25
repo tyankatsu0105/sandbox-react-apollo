@@ -3,8 +3,8 @@ import { Route, Switch } from 'react-router';
 import { Helmet } from 'react-helmet';
 
 import { LoginPage } from './pages/login';
-import { MainPage } from './pages/main';
 import { Authentication } from './authentication';
+import { Authenticated } from './route';
 
 import { SITE_NAME } from '../shared';
 
@@ -15,7 +15,7 @@ export const App = () => (
     <Suspense fallback={<div>Loading...</div>}>
       <Switch>
         <Route exact path="/login" component={LoginPage} />
-        <Authentication path="/" component={MainPage} />
+        <Authentication path="/" component={Authenticated} />
       </Switch>
     </Suspense>
   </>

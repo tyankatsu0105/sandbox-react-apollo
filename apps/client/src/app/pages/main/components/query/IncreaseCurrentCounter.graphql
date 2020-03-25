@@ -1,0 +1,3 @@
+mutation IncreaseCurrentCounter ($type: String!) {
+  changeValue(type: $type) @client
+}

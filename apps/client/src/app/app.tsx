@@ -6,7 +6,7 @@ import { LoginPage } from './pages/login';
 import { Authentication } from './authentication';
 import { Authenticated } from './route';
 
-import { SITE_NAME } from '../shared';
+import { SITE_NAME } from '../shared/const';
 
 export const App = () => (
   <>

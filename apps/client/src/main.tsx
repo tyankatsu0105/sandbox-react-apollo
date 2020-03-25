@@ -18,7 +18,7 @@ import { sentry, production } from './environments/environment';
 Sentry.init({
   dsn: sentry.dsn,
   environment: production ? 'production' : 'development',
-  debug: production ? false : true
+  debug: production ? false : true,
 });
 
 ReactDOM.render(

@@ -11,16 +11,16 @@ const Authenticated = () => (
   <>
     <Box display="flex">
       <Sidebar />
-      <Box>
+      <Box flexGrow="1" paddingLeft={3} paddingRight={3}>
         <Header />
-        <main>
+        <Box component="main">
           <Suspense fallback={<div>Loading...</div>}>
             <Switch>
               <Route exact path="/main" component={MainPage} />
               <Route exact path="/" component={HomePage} />
             </Switch>
           </Suspense>
-        </main>
+        </Box>
       </Box>
     </Box>
   </>

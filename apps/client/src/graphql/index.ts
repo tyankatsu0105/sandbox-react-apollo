@@ -12,25 +12,25 @@ import { apiEndpoint } from '../environments/environment';
 import { initialState } from './state';
 import { resolvers } from './resolvers';
 
-type Cookies = 'githubAccessToken';
+import { Cookies } from '~client/shared/types';
 const { githubAccessToken } = getCookies<Cookies>();
 
 const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: `Bearer ${githubAccessToken}`
-    }
+      authorization: `Bearer ${githubAccessToken}`,
+    },
   };
 });
 
 const httpLink = new HttpLink({
-  uri: apiEndpoint
+  uri: apiEndpoint,
 });
 
 const stateLink = withClientState({
   resolvers,
-  defaults: initialState
+  defaults: initialState,
 });
 
 const link = ApolloLink.from([authLink, stateLink, httpLink]);
@@ -38,19 +38,19 @@ const link = ApolloLink.from([authLink, stateLink, httpLink]);
 const defaultOptions: DefaultOptions = {
   watchQuery: {
     fetchPolicy: 'cache-and-network',
-    errorPolicy: 'ignore'
+    errorPolicy: 'ignore',
   },
   query: {
     fetchPolicy: 'network-only',
-    errorPolicy: 'all'
+    errorPolicy: 'all',
   },
   mutate: {
-    errorPolicy: 'all'
-  }
+    errorPolicy: 'all',
+  },
 };
 
 export const client = new ApolloClient({
   cache: new InMemoryCache(),
   link,
-  defaultOptions
+  defaultOptions,
 });

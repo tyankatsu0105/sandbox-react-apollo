@@ -6,7 +6,7 @@ import { getCookies } from '@sandbox-react-apollo/helpers';
 
 import { Login } from './components';
 
-type Cookies = 'githubAccessToken';
+import { Cookies } from '~client/shared/types';
 
 const LoginPage = () => {
   const { replace } = useHistory();

@@ -1,0 +1,3 @@
+mutation UpdatePageHeading ($value: String!) {
+  updatePageHeading(value: $value) @client
+}

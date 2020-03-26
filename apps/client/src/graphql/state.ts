@@ -1,16 +1,5 @@
-export const author = {
-  name: '',
-  avatarUrl: '',
-  bio: '',
-  __typename: 'User'
-};
-
-export const counter = {
-  current: 0,
-  __typename: 'Counter'
-};
+import { pageHeadingState } from './states/page-heading';
 
 export const initialState = {
-  author,
-  counter
+  pageHeadingState,
 };

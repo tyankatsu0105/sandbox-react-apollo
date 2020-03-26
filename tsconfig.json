@@ -21,6 +21,7 @@
     "baseUrl": ".",
     "paths": {
       "~client/*": ["apps/client/src/*"],
+      "~types/*": ["types/*"],
       "@sandbox-react-apollo/components": ["libs/components/src/index.ts"],
       "@sandbox-react-apollo/hooks": ["libs/hooks/src/index.ts"],
       "@sandbox-react-apollo/helpers": ["libs/helpers/src/index.ts"]

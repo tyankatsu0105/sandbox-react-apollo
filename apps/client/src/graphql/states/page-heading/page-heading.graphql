@@ -1,0 +1,5 @@
+query PageHeading {
+  heading @client {
+    current
+  }
+}

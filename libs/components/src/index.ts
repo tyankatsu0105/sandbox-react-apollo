@@ -1,1 +1,1 @@
-export * from './lib/Paper';
+export * from './lib/paper';

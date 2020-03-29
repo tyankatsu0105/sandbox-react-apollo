@@ -1,5 +1,3 @@
 query PageHeading {
-  heading @client {
-    current
-  }
+  pageHeading @client
 }

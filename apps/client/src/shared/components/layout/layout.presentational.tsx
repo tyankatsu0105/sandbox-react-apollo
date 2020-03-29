@@ -3,9 +3,7 @@ import { Box, Typography } from '@material-ui/core';
 
 type Props = {
   data: {
-    heading: {
-      current: string;
-    };
+    pageHeading: string;
   };
 };
 
@@ -14,7 +12,7 @@ export const LayoutPresentational: FunctionComponent<Props> = (props) => {
     <Box marginTop={3}>
       <Box marginBottom={5}>
         <Typography variant="h3" component="h1">
-          {props.data?.heading?.current}
+          {props.data?.pageHeading}
         </Typography>
       </Box>
       {props.children}

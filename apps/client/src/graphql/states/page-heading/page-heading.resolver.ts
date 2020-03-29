@@ -1,13 +1,13 @@
-export const updatePageHeading = (_, { value }, { cache }) => {
-  const current = value;
+export const updatePageHeading = (
+  _,
+  { pageHeading },
+  { cache, getCacheKey }
+) => {
   const data = {
-    heading: {
-      current,
-      __typename: 'PageHeading',
-    },
+    pageHeading,
   };
 
   cache.writeData({ data });
 
-  return current;
+  return pageHeading;
 };

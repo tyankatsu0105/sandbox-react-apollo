@@ -1,5 +1,5 @@
-import { pageHeadingState } from './states/page-heading';
+import { pageHeading } from './states/page-heading';
 
 export const initialState = {
-  pageHeadingState,
+  pageHeading,
 };

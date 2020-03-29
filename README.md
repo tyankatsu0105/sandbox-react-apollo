@@ -20,3 +20,4 @@ npm run api
 - https://developer.github.com/v4/explorer/
 - https://auth0.com/docs/connections/social/github
 - https://blog.hiroppy.me/entry/apollo-link-state
+- https://itnext.io/managing-local-state-with-apollo-client-and-react-hooks-9ad357e6d649

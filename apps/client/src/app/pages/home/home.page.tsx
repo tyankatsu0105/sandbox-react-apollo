@@ -8,7 +8,7 @@ import { Home } from './components';
 
 const HomePage = () => {
   const [updatePageHeading] = useMutation(UpdatePageHeadingMutation, {
-    variables: { value: 'このサイトについて' },
+    variables: { pageHeading: 'このサイトについて' },
   });
 
   useEffect(() => {

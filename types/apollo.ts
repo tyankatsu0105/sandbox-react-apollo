@@ -1,4 +1,4 @@
-export interface State {
+export interface StateInitialize {
   [key: string]: unknown;
   __typename: string;
 }

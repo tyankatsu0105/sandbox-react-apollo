@@ -10,11 +10,9 @@ module.exports = {
     service: {
       name: 'github',
       url: 'https://api.github.com/graphql',
-      // optional headers
       headers: {
         authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`
       },
-      // optional disable SSL validation check
       skipSSLValidation: true
     }
   }

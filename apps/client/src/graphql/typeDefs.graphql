@@ -1,0 +1,14 @@
+# extend type PageHeading {
+#   pageHeading: String!
+# }
+
+extend type Query {
+  # pageHeading: PageHeading!
+  pageHeading: String!
+}
+
+extend type Mutation {
+  updatePageHeading (
+    pageHeading: String!
+  ): String
+}

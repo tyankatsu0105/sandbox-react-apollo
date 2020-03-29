@@ -1,5 +1,5 @@
-export const updatePageHeading = (_, args, { cache }) => {
-  const current = args.value;
+export const updatePageHeading = (_, { value }, { cache }) => {
+  const current = value;
   const data = {
     heading: {
       current,

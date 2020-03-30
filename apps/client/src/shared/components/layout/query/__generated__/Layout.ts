@@ -4,14 +4,14 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: PageHeading
+// GraphQL query operation: Layout
 // ====================================================
 
-export interface PageHeading_page {
+export interface Layout_page {
   __typename: "Page";
-  heading: string | null;
+  heading: string;
 }
 
-export interface PageHeading {
-  page: PageHeading_page | null;
+export interface Layout {
+  page: Layout_page | null;
 }

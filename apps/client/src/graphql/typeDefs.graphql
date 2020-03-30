@@ -1,5 +1,5 @@
 type Page {
-  heading: String
+  heading: String!
 }
 
 extend type Query {
@@ -11,5 +11,5 @@ input PageInput {
 }
 
 extend type Mutation {
-  updatePageHeading (input: PageInput): Page
+  updatePage (input: PageInput!): Page
 }

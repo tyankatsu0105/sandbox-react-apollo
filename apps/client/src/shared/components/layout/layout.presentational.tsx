@@ -1,13 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import { Box, Typography } from '@material-ui/core';
-import { page } from '~client/graphql/states/page-heading';
+
+import { Layout as LayoutTypes } from './query/__generated__/Layout';
 
 type Props = {
-  data: {
-    page: {
-      heading: string;
-    };
-  };
+  data: LayoutTypes;
 };
 
 export const LayoutPresentational: FunctionComponent<Props> = (props) => {

@@ -1,7 +1,7 @@
-import { updatePageHeading } from './states/page-heading';
+import { updatePage } from './states/page';
 
 export const resolvers = {
   Mutation: {
-    updatePageHeading,
+    updatePage,
   },
 };

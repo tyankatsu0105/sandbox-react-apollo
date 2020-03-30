@@ -1,9 +1,12 @@
-export const updatePage = (_, { page }, { cache }) => {
+export const updatePage = (_, { input }, { cache }) => {
   const data = {
-    page,
+    page: {
+      ...input,
+      __typename: 'Page',
+    },
   };
 
   cache.writeData({ data });
 
-  return page;
+  return null;
 };

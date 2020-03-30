@@ -1,4 +1,4 @@
-import { page } from './states/page-heading';
+import { page } from './states/page';
 
 export const initialState = {
   page,

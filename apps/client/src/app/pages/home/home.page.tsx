@@ -2,18 +2,18 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
 import { useMutation } from '@apollo/react-hooks';
-import UpdatePageHeadingMutation from '~client/graphql/states/page-heading/update-page-heading.graphql';
+import CreateHomeInfoMutation from './mutation/create-home-info.graphql';
 
 import { Home } from './components';
 
 const HomePage = () => {
-  const [updatePageHeading] = useMutation(UpdatePageHeadingMutation, {
-    variables: { input: { heading: 'このページ' } },
+  const [createHomeInfo] = useMutation(CreateHomeInfoMutation, {
+    variables: { input: { heading: 'このサイトについて' } },
   });
 
   useEffect(() => {
-    updatePageHeading();
-  }, [updatePageHeading]);
+    createHomeInfo();
+  }, [createHomeInfo]);
 
   return (
     <>

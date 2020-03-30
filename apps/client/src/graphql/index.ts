@@ -38,8 +38,7 @@ const defaultOptions: DefaultOptions = {
     errorPolicy: 'all',
   },
   query: {
-    // fetchPolicy: 'network-only',
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-first',
     errorPolicy: 'all',
   },
   mutate: {

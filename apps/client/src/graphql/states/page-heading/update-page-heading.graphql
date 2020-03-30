@@ -1,5 +1,0 @@
-mutation UpdatePageHeading ($input: PageInput) {
-  updatePageHeading(input: $input) @client {
-    heading
-  }
-}

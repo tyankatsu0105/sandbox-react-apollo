@@ -1,3 +1,5 @@
-mutation UpdatePageHeading ($pageHeading: String!) {
-  updatePageHeading(pageHeading: $pageHeading) @client
+mutation UpdatePageHeading ($input: PageInput) {
+  updatePageHeading(input: $input) @client {
+    heading
+  }
 }

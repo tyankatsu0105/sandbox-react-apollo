@@ -1,14 +1,15 @@
-# extend type PageHeading {
-#   pageHeading: String!
-# }
+type Page {
+  heading: String
+}
 
 extend type Query {
-  # pageHeading: PageHeading!
-  pageHeading: String!
+  page: Page
+}
+
+input PageInput {
+  heading: String
 }
 
 extend type Mutation {
-  updatePageHeading (
-    pageHeading: String!
-  ): String
+  updatePageHeading (input: PageInput): Page
 }

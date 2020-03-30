@@ -35,10 +35,11 @@ const link = ApolloLink.from([authLink, httpLink]);
 const defaultOptions: DefaultOptions = {
   watchQuery: {
     fetchPolicy: 'cache-and-network',
-    errorPolicy: 'ignore',
+    errorPolicy: 'all',
   },
   query: {
-    fetchPolicy: 'network-only',
+    // fetchPolicy: 'network-only',
+    fetchPolicy: 'cache-and-network',
     errorPolicy: 'all',
   },
   mutate: {

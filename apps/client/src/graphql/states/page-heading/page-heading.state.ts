@@ -1,1 +1,4 @@
-export const pageHeading = '';
+export const page = {
+  heading: '',
+  __typename: 'Page',
+};

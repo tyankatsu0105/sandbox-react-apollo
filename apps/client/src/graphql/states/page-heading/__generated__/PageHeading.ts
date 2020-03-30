@@ -7,6 +7,11 @@
 // GraphQL query operation: PageHeading
 // ====================================================
 
+export interface PageHeading_page {
+  __typename: "Page";
+  heading: string | null;
+}
+
 export interface PageHeading {
-  pageHeading: string;
+  page: PageHeading_page | null;
 }

@@ -1,3 +1,0 @@
-type PageHeading {
-  pageHeading: String!
-}

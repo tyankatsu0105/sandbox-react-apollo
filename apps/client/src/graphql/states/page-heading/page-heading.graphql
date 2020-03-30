@@ -1,3 +1,5 @@
 query PageHeading {
-  pageHeading @client
+  page @client {
+    heading
+  }
 }

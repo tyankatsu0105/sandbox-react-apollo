@@ -1,9 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import { Box, Typography } from '@material-ui/core';
+import { page } from '~client/graphql/states/page-heading';
 
 type Props = {
   data: {
-    pageHeading: string;
+    page: {
+      heading: string;
+    };
   };
 };
 
@@ -12,7 +15,7 @@ export const LayoutPresentational: FunctionComponent<Props> = (props) => {
     <Box marginTop={3}>
       <Box marginBottom={5}>
         <Typography variant="h3" component="h1">
-          {props.data?.pageHeading}
+          {props.data?.page?.heading}
         </Typography>
       </Box>
       {props.children}

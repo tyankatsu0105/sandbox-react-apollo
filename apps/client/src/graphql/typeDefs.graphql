@@ -1,15 +1,9 @@
-type Page {
-  heading: String!
-}
-
+# import Page from ./page/page.graphql
 extend type Query {
   page: Page
 }
 
-input PageInput {
-  heading: String
-}
-
+# import PageInput from ./page/page.graphql
 extend type Mutation {
   updatePage (input: PageInput!): Page
 }

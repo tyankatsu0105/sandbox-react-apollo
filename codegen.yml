@@ -1,0 +1,10 @@
+# Local schema用
+
+generates:
+  types/localStateGraphql.tsx:
+    schema: "apps/client/src/graphql/**/*.graphql"
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-resolvers"
+      - "fragment-matcher"

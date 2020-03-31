@@ -1,9 +1,7 @@
-# import Page from ./page/page.graphql
 extend type Query {
   page: Page
 }
 
-# import PageInput from ./page/page.graphql
 extend type Mutation {
   updatePage (input: PageInput!): Page
 }

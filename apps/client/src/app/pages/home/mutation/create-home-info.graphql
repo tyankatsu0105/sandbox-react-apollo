@@ -1,4 +1,4 @@
-mutation CreateHomeInfo ($input: PageInput!) {
+mutation CreateHomeInfoMutation ($input: PageInput!) {
   updatePage(input: $input) @client {
     heading
   }

@@ -1,6 +1,8 @@
+import { Resolvers } from 'apollo-client';
+
 import { updatePage } from './states/page';
 
-export const resolvers = {
+export const resolvers: Resolvers = {
   Mutation: {
     updatePage,
   },

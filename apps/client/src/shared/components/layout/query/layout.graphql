@@ -1,4 +1,4 @@
-query Layout {
+query LayoutQuery {
   page @client {
     heading
   }

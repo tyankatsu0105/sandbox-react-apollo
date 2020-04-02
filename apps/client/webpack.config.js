@@ -16,13 +16,13 @@ require('dotenv').config();
 */
 
 /** @param {Config} config */
-module.exports = config => {
+module.exports = (config) => {
   // @see https://github.com/nrwl/nx/issues/1511#issuecomment-504790122
   // @nrwl/apolloが使用可能になったら不要
   config.module.rules.push({
-    test: /\.(graphql)$/,
+    test: /\.(graphql|gql)$/,
     exclude: /node_modules/,
-    loader: 'graphql-tag/loader'
+    loader: 'graphql-tag/loader',
   });
 
   // @see https://github.com/nrwl/nx/issues/1511#issuecomment-504790122
@@ -31,7 +31,7 @@ module.exports = config => {
 
   // babel-loaderに取り込まれたら削除
   const babelRuleOptions = config.module.rules.find(
-    r => r.loader === 'babel-loader'
+    (r) => r.loader === 'babel-loader'
   ).options;
   babelRuleOptions.plugins.push('@babel/plugin-proposal-optional-chaining');
   babelRuleOptions.plugins.push(
@@ -48,16 +48,16 @@ module.exports = config => {
         GITHUB_OAUTH_CLIENT_SECRET: JSON.stringify(
           process.env.GITHUB_OAUTH_CLIENT_SECRET
         ),
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-      }
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      },
     })
   );
 
   if (process.env.NODE_ENV === 'development') {
     config.devServer.proxy = {
       '/login/auth': {
-        target: 'http://localhost:3333'
-      }
+        target: 'http://localhost:3333',
+      },
     };
   }
 

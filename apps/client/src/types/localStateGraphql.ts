@@ -23,7 +23,7 @@ export type MutationUpdatePageArgs = {
 /** ページに関する情報 */
 export type Page = {
    __typename?: 'Page';
-  heading: Scalars['String'];
+  heading?: Maybe<Scalars['String']>;
 };
 
 export type PageInput = {
@@ -36,7 +36,8 @@ export type Query = {
 };
 
 
-
+export type WithIndex<TObject> = TObject & Record<string, any>;
+export type ResolversObject<TObject> = WithIndex<TObject>;
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
 
@@ -108,43 +109,43 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 ) => TResult | Promise<TResult>;
 
 /** Mapping between all available schema types and the resolvers types */
-export type ResolversTypes = {
+export type ResolversTypes = ResolversObject<{
   Query: ResolverTypeWrapper<{}>,
   Page: ResolverTypeWrapper<Page>,
   String: ResolverTypeWrapper<Scalars['String']>,
   Mutation: ResolverTypeWrapper<{}>,
   PageInput: PageInput,
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
-};
+}>;
 
 /** Mapping between all available schema types and the resolvers parents */
-export type ResolversParentTypes = {
+export type ResolversParentTypes = ResolversObject<{
   Query: {},
   Page: Page,
   String: Scalars['String'],
   Mutation: {},
   PageInput: PageInput,
   Boolean: Scalars['Boolean'],
-};
+}>;
 
-export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
+export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
   updatePage?: Resolver<Maybe<ResolversTypes['Page']>, ParentType, ContextType, RequireFields<MutationUpdatePageArgs, 'input'>>,
-};
+}>;
 
-export type PageResolvers<ContextType = any, ParentType extends ResolversParentTypes['Page'] = ResolversParentTypes['Page']> = {
-  heading?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+export type PageResolvers<ContextType = any, ParentType extends ResolversParentTypes['Page'] = ResolversParentTypes['Page']> = ResolversObject<{
+  heading?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   __isTypeOf?: isTypeOfResolverFn<ParentType>,
-};
+}>;
 
-export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
   page?: Resolver<Maybe<ResolversTypes['Page']>, ParentType, ContextType>,
-};
+}>;
 
-export type Resolvers<ContextType = any> = {
+export type Resolvers<ContextType = any> = ResolversObject<{
   Mutation?: MutationResolvers<ContextType>,
   Page?: PageResolvers<ContextType>,
   Query?: QueryResolvers<ContextType>,
-};
+}>;
 
 
 /**

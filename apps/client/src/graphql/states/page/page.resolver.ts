@@ -1,7 +1,11 @@
-import { PageInput } from '~types/globalTypesGraphql';
+import { MutationResolvers, Page } from '~client/types/localStateGraphql';
 
-export const updatePage = (_, { input }: { input: PageInput }, { cache }) => {
-  const page = {
+export const updatePage: MutationResolvers['updatePage'] = (
+  _,
+  { input },
+  { cache }
+) => {
+  const page: Page = {
     ...input,
     __typename: 'Page',
   };

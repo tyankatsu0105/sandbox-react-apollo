@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
 import { useMutation } from '@apollo/react-hooks';
-import CreateHomeInfoMutation from './mutation/create-home-info.graphql';
+import { CreateHomeInfoMutation } from './mutation/create-home-info.graphql';
 
 import { Home } from './components';
 

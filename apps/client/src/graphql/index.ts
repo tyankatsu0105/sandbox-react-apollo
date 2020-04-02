@@ -10,7 +10,7 @@ import { apiEndpoint } from '../environments/environment';
 
 import { resolvers } from './resolvers';
 import { initialState } from './state';
-import typeDefs from './typeDefs.graphql';
+import { typeDefs } from './typeDefs.graphql';
 
 import { Cookies } from '~client/shared/types';
 

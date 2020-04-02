@@ -1,10 +1,22 @@
 # Local schema用
 
 generates:
-  types/localStateGraphql.tsx:
+  apps/client/src/types/localStateGraphql.ts:
     schema: "apps/client/src/graphql/**/*.graphql"
     plugins:
       - "typescript"
       - "typescript-operations"
-      - "typescript-resolvers"
+      - "typescript-resolvers":
       - "fragment-matcher"
+    config:
+      useIndexSignature: true
+
+  apps/client/src/types/graphql.d.ts:
+    documents: "apps/client/src/**/*.graphql"
+    schema:
+      - "apps/client/src/graphql/**/*.graphql"
+      - https://api.github.com/graphql:
+          headers:
+            Authorization: Bearer ${GITHUB_OAUTH_TOKEN}
+    plugins:
+      - "typescript-graphql-files-modules"

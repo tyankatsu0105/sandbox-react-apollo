@@ -2,7 +2,7 @@
 ページに関する情報
 """
 type Page {
-  heading: String!
+  heading: String
 }
 
 input PageInput {

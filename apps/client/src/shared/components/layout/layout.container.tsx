@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import LayoutQuery from './query/layout.graphql';
+import { LayoutQuery } from './query/layout.graphql';
 
 import { LayoutPresentational } from './layout.presentational';
 

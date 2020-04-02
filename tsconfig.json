@@ -15,13 +15,11 @@
     "importHelpers": true,
     "target": "es2019",
     "module": "esnext",
-    "typeRoots": ["types", "node_modules/@types"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "~client/*": ["apps/client/src/*"],
-      "~types/*": ["types/*"],
       "@sandbox-react-apollo/components": ["libs/components/src/index.ts"],
       "@sandbox-react-apollo/hooks": ["libs/hooks/src/index.ts"],
       "@sandbox-react-apollo/helpers": ["libs/helpers/src/index.ts"]
@@ -29,8 +27,6 @@
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true
   },
-  "include": ["./apps"],
   "exclude": ["node_modules", "tmp"],
-  "esModuleInterop": true,
-  "files": ["./types/graphql.d.ts"]
+  "esModuleInterop": true
 }

@@ -4,12 +4,16 @@ generates:
   apps/client/src/types/localStateGraphql.ts:
     schema: "apps/client/src/graphql/**/*.graphql"
     plugins:
+      - add: "/* tslint:disable */"
+      - add: "/* eslint-disable */"
+      - add: "import { InMemoryCache } from 'apollo-cache-inmemory';"
       - "typescript"
       - "typescript-operations"
       - "typescript-resolvers":
       - "fragment-matcher"
     config:
       useIndexSignature: true
+      contextType: "{ cache: InMemoryCache }"
 
   apps/client/src/types/graphql.d.ts:
     documents: "apps/client/src/**/*.graphql"
@@ -19,4 +23,15 @@ generates:
           headers:
             Authorization: Bearer ${GITHUB_OAUTH_TOKEN}
     plugins:
+      - add: "/* tslint:disable */"
+      - add: "/* eslint-disable */"
+      - add:
+          content:
+            - "declare module '*/typeDefs.graphql' {"
+            - "  import { DocumentNode } from 'graphql';"
+            - "  const defaultDocument: DocumentNode;"
+            - "  export const typeDefs: DocumentNode;"
+            - ""
+            - "  export default defaultDocument;"
+            - "}"
       - "typescript-graphql-files-modules"

@@ -27,3 +27,5 @@ npm run api
 - https://itnext.io/managing-local-state-with-apollo-client-and-react-hooks-9ad357e6d649
 - https://github.com/dotansimha/graphql-code-generator/issues/3219
 - https://github.com/samsarahq/graphql-loader#import-statements-in-graphql-files
+- https://github.com/apollographql/apollo/issues/60
+- https://github.com/apollographql/apollo/issues/513

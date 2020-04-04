@@ -11,19 +11,19 @@ declare module '*/typeDefs.graphql' {
 
 
 
-declare module '*/viewer.graphql' {
+declare module '*/create-home-info.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const ViewerQuery: DocumentNode;
+  export const CreateHomeInfoMutation: DocumentNode;
 
   export default defaultDocument;
 }
     
 
-declare module '*/create-home-info.graphql' {
+declare module '*/header-user.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const CreateHomeInfoMutation: DocumentNode;
+  export const HeaderUserQuery: DocumentNode;
 
   export default defaultDocument;
 }

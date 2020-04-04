@@ -12,8 +12,8 @@ import { githubOauthClientId } from '../../../../environments/environment';
 const useStyles = makeStyles((theme) => ({
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.primary.main
-  }
+    backgroundColor: theme.palette.primary.main,
+  },
 }));
 
 type Props = {};

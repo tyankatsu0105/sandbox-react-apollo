@@ -29,3 +29,4 @@ npm run api
 - https://github.com/samsarahq/graphql-loader#import-statements-in-graphql-files
 - https://github.com/apollographql/apollo/issues/60
 - https://github.com/apollographql/apollo/issues/513
+- https://github.com/apollographql/apollo-tooling/issues/821

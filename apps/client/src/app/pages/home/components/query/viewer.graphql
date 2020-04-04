@@ -1,5 +1,0 @@
-query ViewerQuery {
-  viewer {
-    login
-  }
-}

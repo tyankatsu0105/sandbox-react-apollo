@@ -14,6 +14,19 @@ npm run api
   - 取得したaccess_tokenをcookieにセットして、トップにリダイレクト
   - cookieからtoken取得して、apolloでrequest headerをアップデートする際にBearerにtokenを使用する
 
+# netlify functions
+netlify functionsを使ってOauth認証する予定。
+localでは、netlify-lambdaを利用したnetlify Dev(beta)を利用する。
+```bash
+npm run netlify-dev
+```
+でexpressが起動する。
+
+port9000が暴走したら、
+`lsof -i :9000`
+`kill -9 <PID>`
+でkillする
+
 # 型生成
 - [apollo-tooling](https://github.com/apollographql/apollo-tooling)の`codegen`にまかせている
   - VSCode拡張との相性がいいため
@@ -30,3 +43,6 @@ npm run api
 - https://github.com/apollographql/apollo/issues/60
 - https://github.com/apollographql/apollo/issues/513
 - https://github.com/apollographql/apollo-tooling/issues/821
+- https://community.netlify.com/t/does-netlify-dev-support-typescript/3842
+- https://github.com/netlify/netlify-lambda/issues/196
+- https://github.com/visionmedia/superagent/issues/1428

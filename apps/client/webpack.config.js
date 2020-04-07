@@ -56,7 +56,7 @@ module.exports = (config) => {
   if (process.env.NODE_ENV === 'development') {
     config.devServer.proxy = {
       '/login/auth': {
-        target: 'http://localhost:3333',
+        target: 'http://localhost:3333/.netlify/functions',
       },
     };
   }

@@ -49,3 +49,4 @@ Thumbs.db
 # ===== hygen =====
 _hygen/_generated/*
 !_hygen/_generated/.gitkeep
+functions

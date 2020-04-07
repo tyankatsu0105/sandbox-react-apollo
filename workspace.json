@@ -43,7 +43,8 @@
           "builder": "@nrwl/web:dev-server",
           "options": {
             "buildTarget": "client:build",
-            "proxyConfig": "apps/client/proxy.conf.json"
+            "proxyConfig": "apps/client/proxy.conf.json",
+            "port": 5000
           },
           "configurations": {
             "production": {
@@ -181,7 +182,8 @@
         "serve": {
           "builder": "@nrwl/node:execute",
           "options": {
-            "buildTarget": "api:build"
+            "buildTarget": "api:build",
+            "port": 9000
           }
         },
         "lint": {

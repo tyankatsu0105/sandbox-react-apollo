@@ -3,7 +3,7 @@ import { Express } from 'express';
 
 import {
   githubOauthClientId,
-  githubOauthClientSecret
+  githubOauthClientSecret,
 } from '../../environments';
 
 const agent = request.agent();
@@ -16,7 +16,7 @@ export const github = (app: Express) => {
     if (!code) {
       res.send({
         succcess: false,
-        message: 'Error no code.'
+        message: 'Error no code.',
       });
     }
 
@@ -25,7 +25,7 @@ export const github = (app: Express) => {
       .send({
         client_id: githubOauthClientId,
         client_secret: githubOauthClientSecret,
-        code: code
+        code: code,
       })
       .set('Accept', 'application/json')
       .then((result) => {

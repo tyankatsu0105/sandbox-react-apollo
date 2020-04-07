@@ -3,6 +3,5 @@ export const githubOauthClientId = process.env.OAUTH_CLIENT_ID;
 export const githubOauthClientSecret = process.env.OAUTH_CLIENT_SECRET;
 export const apiEndpoint = 'https://api.github.com/graphql';
 export const sentry = {
-  dsn: process.env.SENTRY_DSN || ''
+  dsn: process.env.SENTRY_DSN || '',
 };
-,

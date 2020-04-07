@@ -16,7 +16,7 @@ const functionName = 'login';
 const path = `/.netlify/functions/${functionName}`;
 
 const redirectPath = production
-  ? 'https://tyankatsu-sandbox-react-apollo.netlify.com/'
+  ? 'https://tyankatsu-sandbox-react-apollo.netlify.com'
   : 'http://localhost:5000';
 
 router.get('/auth', (req, res) => {

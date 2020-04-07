@@ -42,12 +42,8 @@ module.exports = (config) => {
     new webpack.DefinePlugin({
       'process.env': {
         SENTRY_DSN: JSON.stringify(process.env.SENTRY_DSN),
-        GITHUB_OAUTH_CLIENT_ID: JSON.stringify(
-          process.env.GITHUB_OAUTH_CLIENT_ID
-        ),
-        GITHUB_OAUTH_CLIENT_SECRET: JSON.stringify(
-          process.env.GITHUB_OAUTH_CLIENT_SECRET
-        ),
+        OAUTH_CLIENT_ID: JSON.stringify(process.env.OAUTH_CLIENT_ID),
+        OAUTH_CLIENT_SECRET: JSON.stringify(process.env.OAUTH_CLIENT_SECRET),
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
     })

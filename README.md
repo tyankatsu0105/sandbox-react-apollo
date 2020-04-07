@@ -23,8 +23,10 @@ npm run netlify-dev
 でexpressが起動する。
 
 port9000が暴走したら、
-`lsof -i :9000`
-`kill -9 <PID>`
+```bash
+lsof -i :9000
+kill -9 <PID>
+```
 でkillする
 
 # 型生成

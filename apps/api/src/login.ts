@@ -2,7 +2,11 @@ import express from 'express';
 import serverless from 'serverless-http';
 import request from 'superagent';
 
-import { githubOauthClientId, githubOauthClientSecret } from './environments';
+import {
+  githubOauthClientId,
+  githubOauthClientSecret,
+  production,
+} from './environments';
 
 const app = express();
 const router = express.Router();
@@ -10,6 +14,10 @@ const agent = request.agent();
 
 const functionName = 'login';
 const path = `/.netlify/functions/${functionName}`;
+
+const redirectPath = production
+  ? 'https://tyankatsu-sandbox-react-apollo.netlify.com/'
+  : 'http://localhost:5000';
 
 router.get('/auth', (req, res) => {
   const { query } = req;
@@ -34,10 +42,7 @@ router.get('/auth', (req, res) => {
       const data = result.body;
       const token = data['access_token'];
 
-      res
-        .cookie('githubAccessToken', token)
-        .status(200)
-        .redirect('http://localhost:5000');
+      res.cookie('githubAccessToken', token).status(200).redirect(redirectPath);
     });
 });
 

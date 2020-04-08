@@ -28,9 +28,9 @@
     "codegen:gcg": "graphql-codegen -r dotenv/config --config codegen.yml",
     "codegen": "run-p codegen:apollo codegen:gcg",
     "gen:component": "hygen generator component",
-    "start:netlify-lambda": "cross-env NODE_ENV=\"development\" netlify-lambda -c ./apps/api/webpack.config.js serve",
+    "start:netlify-lambda": "cross-env NODE_ENV=\"development\" netlify-lambda -c ./apps/server/webpack.config.js serve",
     "netlify-dev": "netlify dev",
-    "build:netlify-lambda": "cross-env NODE_ENV=\"production\" netlify-lambda -c ./apps/api/webpack.config.js build"
+    "build:netlify-lambda": "cross-env NODE_ENV=\"production\" netlify-lambda -c ./apps/server/webpack.config.js build"
   },
   "private": true,
   "dependencies": {

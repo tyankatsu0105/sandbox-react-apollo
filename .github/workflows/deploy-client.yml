@@ -33,13 +33,21 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      - name: Build
+      - name: Build client
         run: npm run build client -- --prod
         env:
           SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
           OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
           NODE_ENV: production
+
+      - name: Build netlify function
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        uses: netlify/actions/cli@master
+        with:
+          args: build
 
       - name: Deploy
         env:

@@ -2,7 +2,7 @@
 
 ```bash
 npm run start client
-npm run api
+npm run netlify-dev
 ```
 
 # 仕組み

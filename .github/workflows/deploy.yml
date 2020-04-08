@@ -42,7 +42,7 @@ jobs:
           NODE_ENV: production
 
       - name: Build Netlify function
-        run: npm run build:netlify-lambda apps/api/src
+        run: npm run build:netlify-lambda apps/server/src
 
       - name: Deploy
         env:

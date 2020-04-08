@@ -1,7 +1,7 @@
 [build]
   command = "#"
   functions = "apps/api/functions"
-  publish = "apps/api/functions"
+  # publish = "apps/api/functions"
 
 
 [dev]

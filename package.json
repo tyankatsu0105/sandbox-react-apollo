@@ -30,7 +30,7 @@
     "gen:component": "hygen generator component",
     "start:netlify-lambda": "cross-env NODE_ENV=\"development\" netlify-lambda -c ./apps/api/webpack.config.js serve",
     "netlify-dev": "netlify dev",
-    "build:netlify-lambda": "cross-env NODE_ENV=\"production\" netlify-lambda build"
+    "build:netlify-lambda": "cross-env NODE_ENV=\"production\" netlify-lambda -c ./apps/api/webpack.config.js build"
   },
   "private": true,
   "dependencies": {

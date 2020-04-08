@@ -1,12 +1,13 @@
 [build]
   command = "npm run build:netlify-lambda apps/api/src"
-  functions = "apps/api/functions"
-  publish = "apps/api/functions"
+  functions = ".netlify/functions"
+  publish = ".netlify/functions"
 
 
 [dev]
   command = "npm run start:netlify-lambda apps/api/src" # Command to start your dev server
   port = 3333 # Port that the dev server will be listening on
   targetPort = 9000 # Port of target app server
-  publish = "apps/api/functions" # If you use a _redirect file, provide the path to your static content folder
+  # publish = "apps/api/functions"
+  publish = ".netlify/functions"
   autoLaunch = true # a Boolean value that determines if Netlify Dev launches the local server address in your browser

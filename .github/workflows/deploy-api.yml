@@ -33,17 +33,25 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      - name: Build
-        run: npm run build:netlify-lambda apps/api/src
-        env:
-          OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
-          OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
-          NODE_ENV: production
+      # - name: Build client
+      #   run: npm run build:netlify-lambda apps/api/src
+      #   env:
+      #     OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
+      #     OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
+      #     NODE_ENV: production
 
-      - name: Deploy
-        env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        uses: netlify/actions/cli@master
-        with:
-          args: deploy -p
+      # - name: Build api
+      #   env:
+      #     OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
+      #     OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
+      #   uses: netlify/actions/cli@master
+      #   with:
+      #     args: build -c ./apps/api/webpack.config.js
+
+      # - name: Deploy
+      #   env:
+      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      #   uses: netlify/actions/cli@master
+      #   with:
+      #     args: deploy -p

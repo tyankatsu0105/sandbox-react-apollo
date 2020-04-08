@@ -48,6 +48,14 @@ jobs:
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
           NODE_ENV: production
 
+      # - name: Build Netlify function
+      #   env:
+      #     OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
+      #     OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
+      #   uses: netlify/actions/cli@master
+      #   with:
+      #     args: build -c ./apps/api/webpack.config.js
+
       - name: Deploy
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

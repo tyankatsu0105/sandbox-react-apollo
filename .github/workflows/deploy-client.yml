@@ -41,8 +41,8 @@ jobs:
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
           NODE_ENV: production
 
-      - name: Build Netlify function
-        run: npm run build:netlify-lambda apps/api/src
+      # - name: Build Netlify function
+      #   run: npm run build:netlify-lambda apps/api/src
 
       - name: Deploy
         env:

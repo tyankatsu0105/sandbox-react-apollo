@@ -11,6 +11,15 @@ declare module '*/typeDefs.graphql' {
 
 
 
+declare module '*/create-error-handling-info.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const CreateErrorHandlingInfoMutation: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/create-home-info.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

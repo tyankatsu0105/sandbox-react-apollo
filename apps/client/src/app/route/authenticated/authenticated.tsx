@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router';
 import { Box } from '@material-ui/core';
 
 import { HomePage } from '../../pages/home';
+import { ErrorHandlingPage } from '../../pages/error-handling';
 import { Sidebar, Header, Layout } from '~client/shared/components';
 
 const Authenticated = () => (
@@ -16,6 +17,11 @@ const Authenticated = () => (
           <Suspense fallback={<div>Loading...</div>}>
             <Layout>
               <Switch>
+                <Route
+                  exact
+                  path="/error-handling"
+                  component={ErrorHandlingPage}
+                />
                 <Route exact path="/" component={HomePage} />
               </Switch>
             </Layout>

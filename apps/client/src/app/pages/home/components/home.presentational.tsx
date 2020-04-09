@@ -57,6 +57,9 @@ export const HomePresentational: FunctionComponent<Props> = (props) => {
             Netlify & Netlify Functions
           </ExternalLink>
         </li>
+        <li>
+          <ExternalLink href="https://sentry.io/">SENTRY</ExternalLink>
+        </li>
       </ul>
     </Box>
   );

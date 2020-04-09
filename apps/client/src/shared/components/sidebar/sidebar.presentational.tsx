@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import { MenuList, MenuItem, Drawer, Divider, Box } from '@material-ui/core';
+import { MenuList, Drawer, Divider, Box } from '@material-ui/core';
 
 import { SidebarHeader, SidebarMenuItem } from './components';
 
@@ -13,7 +13,7 @@ export const SidebarPresentational: FunctionComponent<Props> = (props) => (
         <SidebarHeader />
         <Divider />
         <MenuList>
-          <SidebarMenuItem to="/use-query">useQuery</SidebarMenuItem>
+          <SidebarMenuItem to="/error-handling">Error handling</SidebarMenuItem>
         </MenuList>
       </Box>
     </Drawer>

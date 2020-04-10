@@ -40,6 +40,7 @@ jobs:
           npm run workspace-schematic environment -- --project=client --env=${ENVIRONMENT} --apiEndpoint=https://api.github.com/graphql --githubOAuthClientId=${OAUTH_CLIENT_ID} --githubOAuthClientSecret=${OAUTH_CLIENT_SECRET} --sentryDsn=${SENTRY_DSN}
           npm run workspace-schematic environment -- --project=server --env=${ENVIRONMENT} --apiEndpoint=https://api.github.com/graphql --githubOAuthClientId=${OAUTH_CLIENT_ID} --githubOAuthClientSecret=${OAUTH_CLIENT_SECRET} --sentryDsn=${SENTRY_DSN}
         env:
+          ENVIRONMENT: ${{ env.ENVIRONMENT }}
           SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
           OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
@@ -55,7 +56,7 @@ jobs:
           SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_RELEASE: ${{ github.sha }}
-          SENTRY_DEPLOY_ENVIRONMENT: ${{ ENVIRONMENT }}
+          SENTRY_DEPLOY_ENVIRONMENT: ${{ env.ENVIRONMENT }}
 
       - name: Build Netlify function
         run: npm run build:netlify-lambda apps/server/src

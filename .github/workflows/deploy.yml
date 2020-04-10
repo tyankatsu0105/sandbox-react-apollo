@@ -33,13 +33,17 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      - name: Build Client
-        run: npm run build client -- --prod
+      - name: Create environment
+        run: |
+          npm run workspace-schematic environment -- --project=client --env=production --apiEndpoint=https://api.github.com/graphql --githubOAuthClientId=${OAUTH_CLIENT_ID} --githubOAuthClientSecret=${OAUTH_CLIENT_SECRET} --sentryDsn=${SENTRY_DSN}
+          npm run workspace-schematic environment -- --project=server --env=production --apiEndpoint=https://api.github.com/graphql --githubOAuthClientId=${OAUTH_CLIENT_ID} --githubOAuthClientSecret=${OAUTH_CLIENT_SECRET} --sentryDsn=${SENTRY_DSN}
         env:
           SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
           OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
-          NODE_ENV: production
+
+      - name: Build Client
+        run: npm run build client -- --prod
 
       - name: Build Netlify function
         run: npm run build:netlify-lambda apps/server/src

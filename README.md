@@ -48,3 +48,15 @@ kill -9 <PID>
 - https://community.netlify.com/t/does-netlify-dev-support-typescript/3842
 - https://github.com/netlify/netlify-lambda/issues/196
 - https://github.com/visionmedia/superagent/issues/1428
+
+# environment
+
+```bash
+npm run nx workspace-schematic environment
+```
+
+- env
+  - localの場合はdevelopment
+- githubOAuthClientId, githubOAuthClientSecret
+  - githubのsettings/Developer settingsから確認
+  

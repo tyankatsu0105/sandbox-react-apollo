@@ -1,5 +1,5 @@
 type Environment = {
-  env: 'development' | 'staging' | 'production';
+  env: 'development' | 'production';
   apiEndpoint: string;
   githubOAuth: {
     clientId: string;

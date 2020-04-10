@@ -2,11 +2,7 @@ import express from 'express';
 import serverless from 'serverless-http';
 import request from 'superagent';
 
-import {
-  githubOauthClientId,
-  githubOauthClientSecret,
-  production,
-} from './environments';
+import { environment } from './environments/environment';
 
 const app = express();
 const router = express.Router();
@@ -15,9 +11,10 @@ const agent = request.agent();
 const functionName = 'login';
 const path = `/.netlify/functions/${functionName}`;
 
-const redirectPath = production
-  ? 'https://tyankatsu-sandbox-react-apollo.netlify.com'
-  : 'http://localhost:5000';
+const redirectPath =
+  environment.env === 'production'
+    ? 'https://tyankatsu-sandbox-react-apollo.netlify.com'
+    : 'http://localhost:5000';
 
 router.get('/auth', (req, res) => {
   const { query } = req;
@@ -33,8 +30,8 @@ router.get('/auth', (req, res) => {
   agent
     .post('https://github.com/login/oauth/access_token')
     .send({
-      client_id: githubOauthClientId,
-      client_secret: githubOauthClientSecret,
+      client_id: environment.githubOAuth.clientId,
+      client_secret: environment.githubOAuth.clientSecret,
       code: code,
     })
     .set('Accept', 'application/json')

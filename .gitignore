@@ -43,8 +43,9 @@ Thumbs.db
 # ===== Local Netlify folder =====
 .netlify
 
-# ===== env =====
-.env
+# ===== environment =====
+**/environments/*
+!environments/.gitkeep
 
 # ===== hygen =====
 _hygen/_generated/*

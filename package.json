@@ -4,10 +4,10 @@
   "license": "MIT",
   "scripts": {
     "nx": "nx",
-    "start": "cross-env NODE_ENV=\"development\" nx serve",
+    "start": "nx serve",
     "test": "cross-env NODE_ENV=\"test\" nx test",
     "e2e": "cross-env NODE_ENV=\"test\" nx e2e",
-    "build": "cross-env NODE_ENV=\"production\" nx build",
+    "build": "nx build",
     "lint": "nx workspace-lint && nx lint",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",

@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { Paper } from '@sandbox-react-apollo/components';
 
-import { githubOauthClientId } from '../../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -47,7 +47,7 @@ export const LoginPresentational: FunctionComponent<Props> = (props) => {
           <Box marginTop={4}>
             <Button
               color="primary"
-              href={`https://github.com/login/oauth/authorize?client_id=${githubOauthClientId}&scope=user%20public_repo`}
+              href={`https://github.com/login/oauth/authorize?client_id=${environment.githubOAuth.clientId}&scope=user%20public_repo`}
               variant="outlined"
             >
               認証ページへ

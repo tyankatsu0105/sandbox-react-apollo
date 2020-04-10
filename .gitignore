@@ -44,6 +44,7 @@ Thumbs.db
 .netlify
 
 # ===== environment =====
+.env
 **/environments/*
 !environments/.gitkeep
 

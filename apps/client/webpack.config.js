@@ -2,9 +2,6 @@
 
 const getWebpackConfig = require('@nrwl/react/plugins/webpack');
 
-const webpack = require('webpack');
-require('dotenv').config();
-
 /**
   @typedef {import('webpack').Configuration} WebpackConfig
 */
@@ -38,24 +35,11 @@ module.exports = (config) => {
     '@babel/plugin-proposal-nullish-coalescing-operator'
   );
 
-  config.plugins.push(
-    new webpack.DefinePlugin({
-      'process.env': {
-        SENTRY_DSN: JSON.stringify(process.env.SENTRY_DSN),
-        OAUTH_CLIENT_ID: JSON.stringify(process.env.OAUTH_CLIENT_ID),
-        OAUTH_CLIENT_SECRET: JSON.stringify(process.env.OAUTH_CLIENT_SECRET),
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-      },
-    })
-  );
-
-  if (process.env.NODE_ENV === 'development') {
-    config.devServer.proxy = {
-      '/login/auth': {
-        target: 'http://localhost:3333/.netlify/functions',
-      },
-    };
-  }
+  config.devServer.proxy = {
+    '/login/auth': {
+      target: 'http://localhost:3333/.netlify/functions',
+    },
+  };
 
   return getWebpackConfig(config);
 };

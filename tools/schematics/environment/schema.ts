@@ -5,6 +5,5 @@ export type Schema = {
   apiEndpoint: string;
   githubOAuthClientId: string;
   githubOAuthClientSecret: string;
-  githubToken?: string;
   sentryDsn: string;
 };

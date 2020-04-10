@@ -22,7 +22,6 @@ export default function (schema: Schema): Rule {
           sentryDsn: `'${schema.sentryDsn}'`,
           githubOAuthClientId: `'${schema.githubOAuthClientId}'`,
           githubOAuthClientSecret: `'${schema.githubOAuthClientSecret}'`,
-          githubToken: `'${schema.githubToken || ''}'`,
         }),
         move(directory),
       ])

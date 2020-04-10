@@ -6,7 +6,7 @@ import { HttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
 
 import { getCookies } from '@sandbox-react-apollo/helpers';
-import { apiEndpoint } from '../environments/environment';
+import { environment } from '../environments/environment';
 
 import { resolvers } from './resolvers';
 import { initialState } from './state';
@@ -27,7 +27,7 @@ const authLink = setContext((_, { headers }) => {
 const cache = new InMemoryCache();
 
 const httpLink = new HttpLink({
-  uri: apiEndpoint,
+  uri: environment.apiEndpoint,
 });
 
 const link = ApolloLink.from([authLink, httpLink]);

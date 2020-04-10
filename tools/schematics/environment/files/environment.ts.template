@@ -1,25 +1,22 @@
 type Environment = {
   env: 'development' | 'staging' | 'production';
   apiEndpoint: string;
-  github: {
-    OAuthclientId: string;
-    OAuthclientSecret: string;
-    token: string;
-  }
+  githubOAuth: {
+    clientId: string;
+    clientSecret: string;
+  };
   sentry: {
     dsn: string;
   };
 };
 
-
 export const environment: Environment = {
   env: <%= env %>,
   apiEndpoint: <%= apiEndpoint %>,
-  github: {
-    OAuthclientId: <%= githubOAuthClientId%>;
-    OAuthclientSecret: <%= githubOAuthClientSecret%>;
-    token: <%= githubOAuthToken%>;
-  }
+  githubOAuth: {
+    clientId: <%= githubOAuthClientId%>,
+    clientSecret: <%= githubOAuthClientSecret%>,
+  },
   sentry: {
     dsn: <%= sentryDsn %>,
   },

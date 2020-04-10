@@ -31,17 +31,11 @@
       "description": "GitHub OAuth Client Secret",
       "x-prompt": "OAuth Apps登録したappのsecretは？"
     },
-    "githubToken": {
-      "type": "string",
-      "description": "GitHub token",
-      "default": "",
-      "x-prompt": "GitHub GraphQL向けのtokenは？"
-    },
     "sentryDsn": {
       "type": "string",
       "description": "sentry dsn",
       "x-prompt": "sentryのdsnは？"
     }
   },
-  "required": ["env", "sentryDsn", "githubOAuthClientId", "githubOAuthClientSecret", "githubOAuthToken"]
+  "required": ["env", "sentryDsn", "githubOAuthClientId", "githubOAuthClientSecret"]
 }

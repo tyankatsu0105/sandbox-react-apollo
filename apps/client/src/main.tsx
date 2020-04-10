@@ -13,12 +13,11 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 import { App } from './app/app';
 
-import { sentry, production } from './environments/environment';
+import { environment } from './environments/environment';
 
 Sentry.init({
-  dsn: sentry.dsn,
-  environment: production ? 'production' : 'development',
-  debug: production ? false : true,
+  dsn: environment.sentry.dsn,
+  environment: environment.env,
 });
 
 ReactDOM.render(

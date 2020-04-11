@@ -46,7 +46,9 @@ jobs:
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
 
       - name: Build Client
-        run: npm run build client -- --prod
+        run: npm run build client -- --configuration=${ENVIRONMENT}
+        env:
+          ENVIRONMENT: ${{ env.ENVIRONMENT }}
 
       - name: Sentry release
         run: bash scripts/sentry

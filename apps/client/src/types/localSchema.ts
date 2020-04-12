@@ -16,6 +16,16 @@ export type Scalars = {
   Float: number;
 };
 
+export type Mutation = {
+   __typename?: 'Mutation';
+  updatePage?: Maybe<Page>;
+};
+
+
+export type MutationUpdatePageArgs = {
+  input: PageInput;
+};
+
 /** ページに関する情報 */
 export type Page = {
    __typename?: 'Page';
@@ -29,16 +39,6 @@ export type PageInput = {
 export type Query = {
    __typename?: 'Query';
   page?: Maybe<Page>;
-};
-
-export type Mutation = {
-   __typename?: 'Mutation';
-  updatePage?: Maybe<Page>;
-};
-
-
-export type MutationUpdatePageArgs = {
-  input: PageInput;
 };
 
 
@@ -116,22 +116,26 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = ResolversObject<{
-  String: ResolverTypeWrapper<Scalars['String']>,
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
-  Page: ResolverTypeWrapper<Page>,
-  PageInput: PageInput,
   Query: ResolverTypeWrapper<{}>,
+  Page: ResolverTypeWrapper<Page>,
+  String: ResolverTypeWrapper<Scalars['String']>,
   Mutation: ResolverTypeWrapper<{}>,
+  PageInput: PageInput,
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
 }>;
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = ResolversObject<{
-  String: Scalars['String'],
-  Boolean: Scalars['Boolean'],
-  Page: Page,
-  PageInput: PageInput,
   Query: {},
+  Page: Page,
+  String: Scalars['String'],
   Mutation: {},
+  PageInput: PageInput,
+  Boolean: Scalars['Boolean'],
+}>;
+
+export type MutationResolvers<ContextType = { cache: InMemoryCache }, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
+  updatePage?: Resolver<Maybe<ResolversTypes['Page']>, ParentType, ContextType, RequireFields<MutationUpdatePageArgs, 'input'>>,
 }>;
 
 export type PageResolvers<ContextType = { cache: InMemoryCache }, ParentType extends ResolversParentTypes['Page'] = ResolversParentTypes['Page']> = ResolversObject<{
@@ -143,14 +147,10 @@ export type QueryResolvers<ContextType = { cache: InMemoryCache }, ParentType ex
   page?: Resolver<Maybe<ResolversTypes['Page']>, ParentType, ContextType>,
 }>;
 
-export type MutationResolvers<ContextType = { cache: InMemoryCache }, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
-  updatePage?: Resolver<Maybe<ResolversTypes['Page']>, ParentType, ContextType, RequireFields<MutationUpdatePageArgs, 'input'>>,
-}>;
-
 export type Resolvers<ContextType = { cache: InMemoryCache }> = ResolversObject<{
+  Mutation?: MutationResolvers<ContextType>,
   Page?: PageResolvers<ContextType>,
   Query?: QueryResolvers<ContextType>,
-  Mutation?: MutationResolvers<ContextType>,
 }>;
 
 

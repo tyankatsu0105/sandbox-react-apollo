@@ -2,14 +2,14 @@ import React, { FunctionComponent } from 'react';
 
 import { IconButton, MenuItem, Menu, Link, Avatar } from '@material-ui/core';
 
-import { HeaderUserQuery as HeaderUserQueryTypes } from './query/__generated__/HeaderUserQuery';
+import { HeaderUserQuery } from '~client/types/schema';
 
 type Props = {
   open: boolean;
   handleToggleAnchorEl: (anchorEl: HTMLElement) => void;
   anchorEl: HTMLElement;
   handleLogOut: () => void;
-  data: HeaderUserQueryTypes;
+  data: HeaderUserQuery;
 };
 
 export const HeaderUserPresentational: FunctionComponent<Props> = (props) => {

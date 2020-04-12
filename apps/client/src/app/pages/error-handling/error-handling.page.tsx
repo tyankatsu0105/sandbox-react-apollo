@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
-import { useMutation } from '@apollo/react-hooks';
-import { CreateErrorHandlingInfoMutation } from './mutation/create-error-handling-info.graphql';
-
 import { ErrorHandling } from './components';
 
+import { useCreateErrorHandlingInfoMutation } from '~client/types/schema';
+
 const ErrorHandlingPage = () => {
-  const [createHomeInfo] = useMutation(CreateErrorHandlingInfoMutation, {
+  const [createHomeInfo] = useCreateErrorHandlingInfoMutation({
     variables: { input: { heading: 'Error Handling' } },
   });
 

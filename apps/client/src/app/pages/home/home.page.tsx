@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
-import { useMutation } from '@apollo/react-hooks';
-import { CreateHomeInfoMutation } from './mutation/create-home-info.graphql';
-
 import { Home } from './components';
 
+import { useCreateHomeInfoMutation } from '~client/types/schema';
+
 const HomePage = () => {
-  const [createHomeInfo] = useMutation(CreateHomeInfoMutation, {
+  const [createHomeInfo] = useCreateHomeInfoMutation({
     variables: { input: { heading: 'このサイトについて' } },
   });
 

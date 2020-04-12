@@ -1,4 +1,4 @@
-mutation CreateErrorHandlingInfoMutation ($input: PageInput!) {
+mutation CreateErrorHandlingInfo ($input: PageInput!) {
   updatePage(input: $input) @client {
     heading
   }

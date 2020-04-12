@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { LayoutQuery } from './query/layout.graphql';
+
+import { useLayoutQuery } from '~client/types/schema';
 
 import { LayoutPresentational } from './layout.presentational';
 
 type Props = {};
 
 export const Layout: FunctionComponent<Props> = (props) => {
-  const { data } = useQuery(LayoutQuery);
+  const { data } = useLayoutQuery();
 
   const layoutPresentationalProps = {
     data,

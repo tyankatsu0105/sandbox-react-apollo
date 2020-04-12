@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import { Box, Typography } from '@material-ui/core';
 
-import { LayoutQuery as LayoutQueryTypes } from './query/__generated__/LayoutQuery';
+import { LayoutQuery } from '~client/types/schema';
 
 type Props = {
-  data: LayoutQueryTypes;
+  data: LayoutQuery;
 };
 
 export const LayoutPresentational: FunctionComponent<Props> = (props) => {

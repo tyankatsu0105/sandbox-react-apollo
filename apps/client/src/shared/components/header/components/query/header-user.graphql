@@ -1,4 +1,4 @@
-query HeaderUserQuery {
+query HeaderUser {
   viewer {
     name
     url

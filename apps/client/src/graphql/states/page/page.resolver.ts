@@ -1,4 +1,4 @@
-import { MutationResolvers, Page } from '~client/types/localStateGraphql';
+import { MutationResolvers, Page } from '~client/types/localSchema';
 
 export const updatePage: MutationResolvers['updatePage'] = (
   _,

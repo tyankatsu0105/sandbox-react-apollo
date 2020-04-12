@@ -21,7 +21,7 @@ generates:
       - "apps/client/src/graphql/**/*.graphql"
       - https://api.github.com/graphql:
           headers:
-            Authorization: Bearer ${GITHUB_OAUTH_TOKEN}
+            Authorization: Bearer ${GITHUB_TOKEN}
     plugins:
       - add: "/* tslint:disable */"
       - add: "/* eslint-disable */"

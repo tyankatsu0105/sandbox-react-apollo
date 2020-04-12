@@ -1,36 +1,12 @@
 import { ApolloClient, DefaultOptions } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-import { ApolloLink } from 'apollo-link';
-import { HttpLink } from 'apollo-link-http';
-import { setContext } from 'apollo-link-context';
-
-import { getCookies } from '@sandbox-react-apollo/helpers';
-import { environment } from '../environments/environment';
-
 import { resolvers } from './resolvers';
 import { initialState } from './state';
 import { typeDefs } from './typeDefs.graphql';
-
-import { Cookies } from '~client/shared/types';
-
-const { githubAccessToken } = getCookies<Cookies>();
-const authLink = setContext((_, { headers }) => {
-  return {
-    headers: {
-      ...headers,
-      authorization: `Bearer ${githubAccessToken}`,
-    },
-  };
-});
+import { link } from './link';
 
 const cache = new InMemoryCache();
-
-const httpLink = new HttpLink({
-  uri: environment.apiEndpoint,
-});
-
-const link = ApolloLink.from([authLink, httpLink]);
 
 const defaultOptions: DefaultOptions = {
   watchQuery: {

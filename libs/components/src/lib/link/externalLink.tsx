@@ -22,7 +22,7 @@ export const ExternalLink: FunctionComponent<Props> = (props) => {
   const classes = useStyles({});
   return (
     <Link {...props} target="_blank">
-      {props.children}
+      {props.children || props.href}
       <span className={classes.ExternalLinkIconWrap}>
         <Launch className={classes.ExternalLinkIcon} />
       </span>

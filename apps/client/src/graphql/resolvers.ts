@@ -1,4 +1,4 @@
-import { Resolvers } from '~client/types/localSchema';
+import { Resolvers } from '~client/graphql/__generated__/localSchema';
 import { updatePage } from './states/page';
 
 export const resolvers: Resolvers = {

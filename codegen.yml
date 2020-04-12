@@ -1,7 +1,5 @@
-# Local schema用
-
 generates:
-  apps/client/src/types/localSchema.ts:
+  apps/client/src/graphql/__generated__/localSchema.ts:
     schema: "apps/client/src/graphql/**/*.graphql"
     plugins:
       - add: "/* tslint:disable */"
@@ -15,7 +13,7 @@ generates:
       useIndexSignature: true
       contextType: "{ cache: InMemoryCache }"
 
-  apps/client/src/types/schema.tsx:
+  apps/client/src/graphql/__generated__/schema.tsx:
     documents: "apps/client/src/**/*.graphql"
     schema:
       - "apps/client/src/graphql/**/*.graphql"
@@ -31,29 +29,7 @@ generates:
     config:
       useIndexSignature: true
       skipTypename: true
-      reactApolloVersion: 3
       constEnums: true
       withHooks: true
       withHOC: false
       withComponent: false
-
-  apps/client/src/types/graphql.d.ts:
-    documents: "apps/client/src/**/*.graphql"
-    schema:
-      - "apps/client/src/graphql/**/*.graphql"
-      - https://api.github.com/graphql:
-          headers:
-            Authorization: Bearer ${GITHUB_TOKEN}
-    plugins:
-      - add: "/* tslint:disable */"
-      - add: "/* eslint-disable */"
-      - add:
-          content:
-            - "declare module '*/typeDefs.graphql' {"
-            - "  import { DocumentNode } from 'graphql';"
-            - "  const defaultDocument: DocumentNode;"
-            - "  export const typeDefs: DocumentNode;"
-            - ""
-            - "  export default defaultDocument;"
-            - "}"
-      - "typescript-graphql-files-modules"

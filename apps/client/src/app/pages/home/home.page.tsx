@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 
 import { Home } from './components';
 
-import { useCreateHomeInfoMutation } from '~client/types/schema';
+import { useCreateHomeInfoMutation } from '~client/graphql/__generated__/schema';
 
 const HomePage = () => {
   const [createHomeInfo] = useCreateHomeInfoMutation({

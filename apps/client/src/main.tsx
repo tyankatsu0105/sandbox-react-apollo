@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import * as Sentry from '@sentry/browser';
 
 import { client } from './graphql';
-import { ApolloProvider } from '@apollo/client';
+import { ApolloProvider } from '@apollo/react-hooks';
 
 import { customTheme } from './styles/material-ui/customTheme';
 import { ThemeProvider } from '@material-ui/styles';

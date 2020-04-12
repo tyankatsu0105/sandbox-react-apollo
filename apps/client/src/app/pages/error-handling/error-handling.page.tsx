@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 
 import { ErrorHandling } from './components';
 
-import { useCreateErrorHandlingInfoMutation } from '~client/types/schema';
+import { useCreateErrorHandlingInfoMutation } from '~client/graphql/__generated__/schema';
 
 const ErrorHandlingPage = () => {
   const [createHomeInfo] = useCreateErrorHandlingInfoMutation({

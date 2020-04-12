@@ -1,4 +1,7 @@
-import { MutationResolvers, Page } from '~client/types/localSchema';
+import {
+  MutationResolvers,
+  Page,
+} from '~client/graphql/__generated__/localSchema';
 
 export const updatePage: MutationResolvers['updatePage'] = (
   _,

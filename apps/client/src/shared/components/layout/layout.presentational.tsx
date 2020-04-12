@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Box, Typography } from '@material-ui/core';
 
-import { LayoutQuery } from '~client/types/schema';
+import { LayoutQuery } from '~client/graphql/__generated__/schema';
 
 type Props = {
   data: LayoutQuery;

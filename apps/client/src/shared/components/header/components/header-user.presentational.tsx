@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 
 import { IconButton, MenuItem, Menu, Link, Avatar } from '@material-ui/core';
 
-import { HeaderUserQuery } from '~client/types/schema';
+import { HeaderUserQuery } from '~client/graphql/__generated__/schema';
 
 type Props = {
   open: boolean;

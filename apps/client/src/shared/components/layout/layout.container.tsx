@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import { useLayoutQuery } from '~client/types/schema';
+import { useLayoutQuery } from '~client/graphql/__generated__/schema';
 
 import { LayoutPresentational } from './layout.presentational';
 

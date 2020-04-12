@@ -8,7 +8,7 @@ import { HeaderUserPresentational } from './header-user.presentational';
 
 import { Cookies } from '~client/shared/types';
 
-import { useHeaderUserQuery } from '~client/types/schema';
+import { useHeaderUserQuery } from '~client/graphql/__generated__/schema';
 
 type Props = {};
 

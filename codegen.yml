@@ -4,7 +4,7 @@ generates:
     plugins:
       - add: "/* tslint:disable */"
       - add: "/* eslint-disable */"
-      - add: "import { InMemoryCache } from 'apollo-cache-inmemory';"
+      - add: "import { InMemoryCache } from '@apollo/client';"
       - "typescript"
       - "typescript-operations"
       - "typescript-resolvers":
@@ -28,6 +28,7 @@ generates:
       - "typescript-react-apollo"
     config:
       useIndexSignature: true
+      reactApolloVersion: 3
       skipTypename: true
       constEnums: true
       withHooks: true

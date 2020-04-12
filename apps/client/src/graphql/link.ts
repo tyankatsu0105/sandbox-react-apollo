@@ -1,31 +1,32 @@
-import { ApolloLink } from 'apollo-link';
-import { HttpLink } from 'apollo-link-http';
-import { setContext } from 'apollo-link-context';
-import { onError } from 'apollo-link-error';
+import { ApolloLink, HttpLink } from '@apollo/client';
+import { onError } from '@apollo/link-error';
 
 import { getCookies } from '@sandbox-react-apollo/helpers';
-import { environment } from '../environments/environment';
 
 import { Cookies } from '~client/shared/types';
 
 import * as Sentry from '@sentry/browser';
 import { Severity } from '@sentry/browser';
 
+import { environment } from '../environments/environment';
+
 const { githubAccessToken } = getCookies<Cookies>();
-const authLink = setContext((_, { headers }) => {
-  return {
+
+const httpLink = new HttpLink({ uri: environment.apiEndpoint });
+
+const authMiddleware = new ApolloLink((operation, forward) => {
+  operation.setContext(({ headers = {} }) => ({
     headers: {
       ...headers,
       authorization: `Bearer ${githubAccessToken}`,
     },
-  };
+  }));
+
+  return forward(operation);
 });
 
 // @see https://www.apollographql.com/docs/link/links/error/#callback
 const errorLink = onError(({ operation, graphQLErrors, networkError }) => {
-  console.log(graphQLErrors);
-  console.log(networkError);
-
   if (graphQLErrors) {
     graphQLErrors.forEach(({ message, locations }) => {
       Sentry.withScope((scope) => {
@@ -56,8 +57,5 @@ const errorLink = onError(({ operation, graphQLErrors, networkError }) => {
   }
 });
 
-const httpLink = new HttpLink({
-  uri: environment.apiEndpoint,
-});
-
-export const link = ApolloLink.from([authLink, httpLink, errorLink]);
+export const link = ApolloLink.from([authMiddleware, errorLink, httpLink]);
+// concat(authMiddleware, httpLink),

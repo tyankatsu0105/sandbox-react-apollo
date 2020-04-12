@@ -3,6 +3,8 @@ import {
   Page,
 } from '~client/graphql/__generated__/localSchema';
 
+import { gql } from '@apollo/client';
+
 export const updatePage: MutationResolvers['updatePage'] = (
   _,
   { input },
@@ -10,14 +12,20 @@ export const updatePage: MutationResolvers['updatePage'] = (
 ) => {
   const page: Page = {
     ...input,
-    __typename: 'Page',
   };
 
   const data = {
     page,
   };
 
-  cache.writeData({ data });
+  cache.writeQuery({
+    query: gql`
+      {
+        page
+      }
+    `,
+    data,
+  });
 
   return page;
 };

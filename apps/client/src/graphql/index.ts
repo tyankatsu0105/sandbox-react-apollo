@@ -1,8 +1,6 @@
-import { ApolloClient, DefaultOptions } from 'apollo-client';
-import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloClient, InMemoryCache, DefaultOptions } from '@apollo/client';
 
 import { resolvers } from './resolvers';
-import { initialState } from './state';
 import typeDefs from './typeDefs.graphql';
 import { link } from './link';
 
@@ -24,14 +22,8 @@ const defaultOptions: DefaultOptions = {
 
 export const client = new ApolloClient({
   cache,
-  resolvers,
   link,
   defaultOptions,
   typeDefs,
-});
-
-cache.writeData({
-  data: {
-    ...initialState,
-  },
+  resolvers,
 });

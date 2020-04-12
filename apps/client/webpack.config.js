@@ -35,7 +35,7 @@ module.exports = (config) => {
     '@babel/plugin-proposal-nullish-coalescing-operator'
   );
 
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === 'development') {
     config.devServer.proxy = {
       '/login/auth': {
         target: 'http://localhost:3333/.netlify/functions',

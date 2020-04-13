@@ -14,6 +14,7 @@ export const SidebarPresentational: FunctionComponent<Props> = (props) => (
         <Divider />
         <MenuList>
           <SidebarMenuItem to="/error-handling">Error handling</SidebarMenuItem>
+          <SidebarMenuItem to="/dx">Developer Experience</SidebarMenuItem>
         </MenuList>
       </Box>
     </Drawer>

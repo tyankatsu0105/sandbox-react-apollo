@@ -3,8 +3,11 @@ import { Route, Switch } from 'react-router';
 
 import { Box } from '@material-ui/core';
 
+import { PageLoader } from '@sandbox-react-apollo/components';
+
 import { HomePage } from '../../pages/home';
 import { ErrorHandlingPage } from '../../pages/error-handling';
+import { DxPage } from '../../pages/dx';
 import { Sidebar, Header, Layout } from '~client/shared/components';
 
 const Authenticated = () => (
@@ -14,9 +17,10 @@ const Authenticated = () => (
       <Box flexGrow="1" paddingLeft={3} paddingRight={3}>
         <Header />
         <Box component="main">
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<PageLoader />}>
             <Layout>
               <Switch>
+                <Route exact path="/dx" component={DxPage} />
                 <Route
                   exact
                   path="/error-handling"

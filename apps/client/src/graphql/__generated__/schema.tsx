@@ -11026,6 +11026,13 @@ export type CreateHomeInfoMutationVariables = {
 
 export type CreateHomeInfoMutation = { updatePage?: Maybe<Pick<Page, 'heading'>> };
 
+export type CreateLocalStateInfoMutationVariables = {
+  input: PageInput;
+};
+
+
+export type CreateLocalStateInfoMutation = { updatePage?: Maybe<Pick<Page, 'heading'>> };
+
 export type HeaderUserQueryVariables = {};
 
 
@@ -11133,6 +11140,38 @@ export function useCreateHomeInfoMutation(baseOptions?: ApolloReactHooks.Mutatio
 export type CreateHomeInfoMutationHookResult = ReturnType<typeof useCreateHomeInfoMutation>;
 export type CreateHomeInfoMutationResult = ApolloReactCommon.MutationResult<CreateHomeInfoMutation>;
 export type CreateHomeInfoMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateHomeInfoMutation, CreateHomeInfoMutationVariables>;
+export const CreateLocalStateInfoDocument = gql`
+    mutation CreateLocalStateInfo($input: PageInput!) {
+  updatePage(input: $input) @client {
+    heading
+  }
+}
+    `;
+export type CreateLocalStateInfoMutationFn = ApolloReactCommon.MutationFunction<CreateLocalStateInfoMutation, CreateLocalStateInfoMutationVariables>;
+
+/**
+ * __useCreateLocalStateInfoMutation__
+ *
+ * To run a mutation, you first call `useCreateLocalStateInfoMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateLocalStateInfoMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createLocalStateInfoMutation, { data, loading, error }] = useCreateLocalStateInfoMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateLocalStateInfoMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateLocalStateInfoMutation, CreateLocalStateInfoMutationVariables>) {
+        return ApolloReactHooks.useMutation<CreateLocalStateInfoMutation, CreateLocalStateInfoMutationVariables>(CreateLocalStateInfoDocument, baseOptions);
+      }
+export type CreateLocalStateInfoMutationHookResult = ReturnType<typeof useCreateLocalStateInfoMutation>;
+export type CreateLocalStateInfoMutationResult = ApolloReactCommon.MutationResult<CreateLocalStateInfoMutation>;
+export type CreateLocalStateInfoMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateLocalStateInfoMutation, CreateLocalStateInfoMutationVariables>;
 export const HeaderUserDocument = gql`
     query HeaderUser {
   viewer {

@@ -7,7 +7,7 @@ generates:
       - add: "import { InMemoryCache } from '@apollo/client';"
       - "typescript"
       - "typescript-operations"
-      - "typescript-resolvers":
+      - "typescript-resolvers"
       - "fragment-matcher"
     config:
       useIndexSignature: true

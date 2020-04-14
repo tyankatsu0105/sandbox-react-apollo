@@ -8,6 +8,7 @@ import { PageLoader } from '@sandbox-react-apollo/components';
 import { HomePage } from '../../pages/home';
 import { ErrorHandlingPage } from '../../pages/error-handling';
 import { DxPage } from '../../pages/dx';
+import { LocalStatePage } from '../../pages/local-state';
 import { Sidebar, Header, Layout } from '~client/shared/components';
 
 const Authenticated = () => (
@@ -21,6 +22,7 @@ const Authenticated = () => (
             <Layout>
               <Switch>
                 <Route exact path="/dx" component={DxPage} />
+                <Route exact path="/local-state" component={LocalStatePage} />
                 <Route
                   exact
                   path="/error-handling"

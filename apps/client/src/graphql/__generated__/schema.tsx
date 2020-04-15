@@ -331,6 +331,13 @@ export type Blob = Node & GitObject & {
   text?: Maybe<Scalars['String']>;
 };
 
+export const enum BloodType {
+  A = 'A',
+  B = 'B',
+  O = 'O',
+  Ab = 'AB'
+};
+
 export type Bot = Node & Actor & UniformResourceLocatable & {
   avatarUrl: Scalars['URI'];
   createdAt: Scalars['DateTime'];
@@ -1044,6 +1051,15 @@ export type ConvertProjectCardNoteToIssueInput = {
 export type ConvertProjectCardNoteToIssuePayload = {
   clientMutationId?: Maybe<Scalars['String']>;
   projectCard?: Maybe<ProjectCard>;
+};
+
+export type ConvertToDraftEvent = Node & UniformResourceLocatable & {
+  actor?: Maybe<Actor>;
+  createdAt: Scalars['DateTime'];
+  id: Scalars['ID'];
+  pullRequest: PullRequest;
+  resourcePath: Scalars['URI'];
+  url: Scalars['URI'];
 };
 
 export type CreateBranchProtectionRuleInput = {
@@ -3848,6 +3864,7 @@ export type Mutation = {
   updateTeamDiscussion?: Maybe<UpdateTeamDiscussionPayload>;
   updateTeamDiscussionComment?: Maybe<UpdateTeamDiscussionCommentPayload>;
   updateTopics?: Maybe<UpdateTopicsPayload>;
+  updateYou?: Maybe<You>;
 };
 
 
@@ -4418,6 +4435,11 @@ export type MutationUpdateTeamDiscussionCommentArgs = {
 
 export type MutationUpdateTopicsArgs = {
   input: UpdateTopicsInput;
+};
+
+
+export type MutationUpdateYouArgs = {
+  input: YouInput;
 };
 
 export type Node = {
@@ -6473,7 +6495,7 @@ export type PullRequestTimelineItemEdge = {
   node?: Maybe<PullRequestTimelineItem>;
 };
 
-export type PullRequestTimelineItems = AddedToProjectEvent | AssignedEvent | BaseRefChangedEvent | BaseRefForcePushedEvent | ClosedEvent | CommentDeletedEvent | ConnectedEvent | ConvertedNoteToIssueEvent | CrossReferencedEvent | DemilestonedEvent | DeployedEvent | DeploymentEnvironmentChangedEvent | DisconnectedEvent | HeadRefDeletedEvent | HeadRefForcePushedEvent | HeadRefRestoredEvent | IssueComment | LabeledEvent | LockedEvent | MarkedAsDuplicateEvent | MentionedEvent | MergedEvent | MilestonedEvent | MovedColumnsInProjectEvent | PinnedEvent | PullRequestCommit | PullRequestCommitCommentThread | PullRequestReview | PullRequestReviewThread | PullRequestRevisionMarker | ReadyForReviewEvent | ReferencedEvent | RemovedFromProjectEvent | RenamedTitleEvent | ReopenedEvent | ReviewDismissedEvent | ReviewRequestRemovedEvent | ReviewRequestedEvent | SubscribedEvent | TransferredEvent | UnassignedEvent | UnlabeledEvent | UnlockedEvent | UnmarkedAsDuplicateEvent | UnpinnedEvent | UnsubscribedEvent | UserBlockedEvent;
+export type PullRequestTimelineItems = AddedToProjectEvent | AssignedEvent | BaseRefChangedEvent | BaseRefForcePushedEvent | ClosedEvent | CommentDeletedEvent | ConnectedEvent | ConvertToDraftEvent | ConvertedNoteToIssueEvent | CrossReferencedEvent | DemilestonedEvent | DeployedEvent | DeploymentEnvironmentChangedEvent | DisconnectedEvent | HeadRefDeletedEvent | HeadRefForcePushedEvent | HeadRefRestoredEvent | IssueComment | LabeledEvent | LockedEvent | MarkedAsDuplicateEvent | MentionedEvent | MergedEvent | MilestonedEvent | MovedColumnsInProjectEvent | PinnedEvent | PullRequestCommit | PullRequestCommitCommentThread | PullRequestReview | PullRequestReviewThread | PullRequestRevisionMarker | ReadyForReviewEvent | ReferencedEvent | RemovedFromProjectEvent | RenamedTitleEvent | ReopenedEvent | ReviewDismissedEvent | ReviewRequestRemovedEvent | ReviewRequestedEvent | SubscribedEvent | TransferredEvent | UnassignedEvent | UnlabeledEvent | UnlockedEvent | UnmarkedAsDuplicateEvent | UnpinnedEvent | UnsubscribedEvent | UserBlockedEvent;
 
 export type PullRequestTimelineItemsConnection = {
   edges?: Maybe<Array<Maybe<PullRequestTimelineItemsEdge>>>;
@@ -6508,6 +6530,7 @@ export const enum PullRequestTimelineItemsItemType {
   ReviewRequestedEvent = 'REVIEW_REQUESTED_EVENT',
   ReviewRequestRemovedEvent = 'REVIEW_REQUEST_REMOVED_EVENT',
   ReadyForReviewEvent = 'READY_FOR_REVIEW_EVENT',
+  ConvertToDraftEvent = 'CONVERT_TO_DRAFT_EVENT',
   IssueComment = 'ISSUE_COMMENT',
   CrossReferencedEvent = 'CROSS_REFERENCED_EVENT',
   AddedToProjectEvent = 'ADDED_TO_PROJECT_EVENT',
@@ -6596,6 +6619,7 @@ export type Query = {
   topic?: Maybe<Topic>;
   user?: Maybe<User>;
   viewer: User;
+  you?: Maybe<You>;
 };
 
 
@@ -11005,6 +11029,19 @@ export type ViewerHovercardContext = HovercardContext & {
 };
 
 
+/** LocalDemoで使用する */
+export type You = {
+  name?: Maybe<Scalars['String']>;
+  age?: Maybe<Scalars['Int']>;
+  blood?: Maybe<BloodType>;
+};
+
+export type YouInput = {
+  name?: Maybe<Scalars['String']>;
+  age?: Maybe<Scalars['Int']>;
+  blood?: Maybe<BloodType>;
+};
+
 export type CreateDxInfoMutationVariables = {
   input: PageInput;
 };
@@ -11025,6 +11062,18 @@ export type CreateHomeInfoMutationVariables = {
 
 
 export type CreateHomeInfoMutation = { updatePage?: Maybe<Pick<Page, 'heading'>> };
+
+export type UpdateLocalStateDemoEditMutationVariables = {
+  input: YouInput;
+};
+
+
+export type UpdateLocalStateDemoEditMutation = { updateYou?: Maybe<Pick<You, 'name' | 'age' | 'blood'>> };
+
+export type LocalStateDemoQueryVariables = {};
+
+
+export type LocalStateDemoQuery = { you?: Maybe<Pick<You, 'name' | 'age' | 'blood'>> };
 
 export type CreateLocalStateInfoMutationVariables = {
   input: PageInput;
@@ -11140,6 +11189,74 @@ export function useCreateHomeInfoMutation(baseOptions?: ApolloReactHooks.Mutatio
 export type CreateHomeInfoMutationHookResult = ReturnType<typeof useCreateHomeInfoMutation>;
 export type CreateHomeInfoMutationResult = ApolloReactCommon.MutationResult<CreateHomeInfoMutation>;
 export type CreateHomeInfoMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateHomeInfoMutation, CreateHomeInfoMutationVariables>;
+export const UpdateLocalStateDemoEditDocument = gql`
+    mutation UpdateLocalStateDemoEdit($input: YouInput!) {
+  updateYou(input: $input) @client {
+    name
+    age
+    blood
+  }
+}
+    `;
+export type UpdateLocalStateDemoEditMutationFn = ApolloReactCommon.MutationFunction<UpdateLocalStateDemoEditMutation, UpdateLocalStateDemoEditMutationVariables>;
+
+/**
+ * __useUpdateLocalStateDemoEditMutation__
+ *
+ * To run a mutation, you first call `useUpdateLocalStateDemoEditMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateLocalStateDemoEditMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateLocalStateDemoEditMutation, { data, loading, error }] = useUpdateLocalStateDemoEditMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateLocalStateDemoEditMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<UpdateLocalStateDemoEditMutation, UpdateLocalStateDemoEditMutationVariables>) {
+        return ApolloReactHooks.useMutation<UpdateLocalStateDemoEditMutation, UpdateLocalStateDemoEditMutationVariables>(UpdateLocalStateDemoEditDocument, baseOptions);
+      }
+export type UpdateLocalStateDemoEditMutationHookResult = ReturnType<typeof useUpdateLocalStateDemoEditMutation>;
+export type UpdateLocalStateDemoEditMutationResult = ApolloReactCommon.MutationResult<UpdateLocalStateDemoEditMutation>;
+export type UpdateLocalStateDemoEditMutationOptions = ApolloReactCommon.BaseMutationOptions<UpdateLocalStateDemoEditMutation, UpdateLocalStateDemoEditMutationVariables>;
+export const LocalStateDemoDocument = gql`
+    query LocalStateDemo {
+  you @client {
+    name
+    age
+    blood
+  }
+}
+    `;
+
+/**
+ * __useLocalStateDemoQuery__
+ *
+ * To run a query within a React component, call `useLocalStateDemoQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLocalStateDemoQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLocalStateDemoQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useLocalStateDemoQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<LocalStateDemoQuery, LocalStateDemoQueryVariables>) {
+        return ApolloReactHooks.useQuery<LocalStateDemoQuery, LocalStateDemoQueryVariables>(LocalStateDemoDocument, baseOptions);
+      }
+export function useLocalStateDemoLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<LocalStateDemoQuery, LocalStateDemoQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<LocalStateDemoQuery, LocalStateDemoQueryVariables>(LocalStateDemoDocument, baseOptions);
+        }
+export type LocalStateDemoQueryHookResult = ReturnType<typeof useLocalStateDemoQuery>;
+export type LocalStateDemoLazyQueryHookResult = ReturnType<typeof useLocalStateDemoLazyQuery>;
+export type LocalStateDemoQueryResult = ApolloReactCommon.QueryResult<LocalStateDemoQuery, LocalStateDemoQueryVariables>;
 export const CreateLocalStateInfoDocument = gql`
     mutation CreateLocalStateInfo($input: PageInput!) {
   updatePage(input: $input) @client {

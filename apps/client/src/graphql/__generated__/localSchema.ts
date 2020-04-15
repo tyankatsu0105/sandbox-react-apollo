@@ -16,14 +16,27 @@ export type Scalars = {
   Float: number;
 };
 
+export const enum BloodType {
+  A = 'A',
+  B = 'B',
+  O = 'O',
+  Ab = 'AB'
+};
+
 export type Mutation = {
    __typename?: 'Mutation';
   updatePage?: Maybe<Page>;
+  updateYou?: Maybe<You>;
 };
 
 
 export type MutationUpdatePageArgs = {
   input: PageInput;
+};
+
+
+export type MutationUpdateYouArgs = {
+  input: YouInput;
 };
 
 /** ページに関する情報 */
@@ -39,6 +52,21 @@ export type PageInput = {
 export type Query = {
    __typename?: 'Query';
   page?: Maybe<Page>;
+  you?: Maybe<You>;
+};
+
+/** LocalDemoで使用する */
+export type You = {
+   __typename?: 'You';
+  name?: Maybe<Scalars['String']>;
+  age?: Maybe<Scalars['Int']>;
+  blood?: Maybe<BloodType>;
+};
+
+export type YouInput = {
+  name?: Maybe<Scalars['String']>;
+  age?: Maybe<Scalars['Int']>;
+  blood?: Maybe<BloodType>;
 };
 
 
@@ -119,8 +147,12 @@ export type ResolversTypes = ResolversObject<{
   Query: ResolverTypeWrapper<{}>,
   Page: ResolverTypeWrapper<Page>,
   String: ResolverTypeWrapper<Scalars['String']>,
+  You: ResolverTypeWrapper<You>,
+  Int: ResolverTypeWrapper<Scalars['Int']>,
+  BloodType: BloodType,
   Mutation: ResolverTypeWrapper<{}>,
   PageInput: PageInput,
+  YouInput: YouInput,
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
 }>;
 
@@ -129,13 +161,18 @@ export type ResolversParentTypes = ResolversObject<{
   Query: {},
   Page: Page,
   String: Scalars['String'],
+  You: You,
+  Int: Scalars['Int'],
+  BloodType: BloodType,
   Mutation: {},
   PageInput: PageInput,
+  YouInput: YouInput,
   Boolean: Scalars['Boolean'],
 }>;
 
 export type MutationResolvers<ContextType = { cache: InMemoryCache }, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
   updatePage?: Resolver<Maybe<ResolversTypes['Page']>, ParentType, ContextType, RequireFields<MutationUpdatePageArgs, 'input'>>,
+  updateYou?: Resolver<Maybe<ResolversTypes['You']>, ParentType, ContextType, RequireFields<MutationUpdateYouArgs, 'input'>>,
 }>;
 
 export type PageResolvers<ContextType = { cache: InMemoryCache }, ParentType extends ResolversParentTypes['Page'] = ResolversParentTypes['Page']> = ResolversObject<{
@@ -145,12 +182,21 @@ export type PageResolvers<ContextType = { cache: InMemoryCache }, ParentType ext
 
 export type QueryResolvers<ContextType = { cache: InMemoryCache }, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
   page?: Resolver<Maybe<ResolversTypes['Page']>, ParentType, ContextType>,
+  you?: Resolver<Maybe<ResolversTypes['You']>, ParentType, ContextType>,
+}>;
+
+export type YouResolvers<ContextType = { cache: InMemoryCache }, ParentType extends ResolversParentTypes['You'] = ResolversParentTypes['You']> = ResolversObject<{
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  age?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  blood?: Resolver<Maybe<ResolversTypes['BloodType']>, ParentType, ContextType>,
+  __isTypeOf?: isTypeOfResolverFn<ParentType>,
 }>;
 
 export type Resolvers<ContextType = { cache: InMemoryCache }> = ResolversObject<{
   Mutation?: MutationResolvers<ContextType>,
   Page?: PageResolvers<ContextType>,
   Query?: QueryResolvers<ContextType>,
+  You?: YouResolvers<ContextType>,
 }>;
 
 

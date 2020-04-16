@@ -6,6 +6,7 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  Box,
 } from '@material-ui/core';
 
 import { LocalStateDemoQuery } from '~client/graphql/__generated__/Schema';
@@ -38,7 +39,9 @@ export const LocaStateDemoPresentational: FunctionComponent<Props> = (
         </TableBody>
       </Table>
 
-      <LocaStateDemoEdit />
+      <Box marginTop={3}>
+        <LocaStateDemoEdit {...props} />
+      </Box>
     </>
   );
 };

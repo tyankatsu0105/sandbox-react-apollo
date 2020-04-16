@@ -16,7 +16,7 @@ export type Scalars = {
   Float: number;
 };
 
-export const enum BloodType {
+export const enum BloodTypes {
   A = 'A',
   B = 'B',
   O = 'O',
@@ -60,13 +60,13 @@ export type You = {
    __typename?: 'You';
   name?: Maybe<Scalars['String']>;
   age?: Maybe<Scalars['Int']>;
-  blood?: Maybe<BloodType>;
+  blood?: Maybe<BloodTypes>;
 };
 
 export type YouInput = {
   name?: Maybe<Scalars['String']>;
   age?: Maybe<Scalars['Int']>;
-  blood?: Maybe<BloodType>;
+  blood?: Maybe<BloodTypes>;
 };
 
 
@@ -149,7 +149,7 @@ export type ResolversTypes = ResolversObject<{
   String: ResolverTypeWrapper<Scalars['String']>,
   You: ResolverTypeWrapper<You>,
   Int: ResolverTypeWrapper<Scalars['Int']>,
-  BloodType: BloodType,
+  BloodTypes: BloodTypes,
   Mutation: ResolverTypeWrapper<{}>,
   PageInput: PageInput,
   YouInput: YouInput,
@@ -163,7 +163,7 @@ export type ResolversParentTypes = ResolversObject<{
   String: Scalars['String'],
   You: You,
   Int: Scalars['Int'],
-  BloodType: BloodType,
+  BloodTypes: BloodTypes,
   Mutation: {},
   PageInput: PageInput,
   YouInput: YouInput,
@@ -188,7 +188,7 @@ export type QueryResolvers<ContextType = { cache: InMemoryCache }, ParentType ex
 export type YouResolvers<ContextType = { cache: InMemoryCache }, ParentType extends ResolversParentTypes['You'] = ResolversParentTypes['You']> = ResolversObject<{
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   age?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
-  blood?: Resolver<Maybe<ResolversTypes['BloodType']>, ParentType, ContextType>,
+  blood?: Resolver<Maybe<ResolversTypes['BloodTypes']>, ParentType, ContextType>,
   __isTypeOf?: isTypeOfResolverFn<ParentType>,
 }>;
 

@@ -1,4 +1,4 @@
-enum BloodType {
+enum BloodTypes {
   A
   B
   O
@@ -9,11 +9,11 @@ enum BloodType {
 type You {
   name: String
   age: Int
-  blood: BloodType
+  blood: BloodTypes
 }
 
 input YouInput {
   name: String
   age: Int
-  blood: BloodType
+  blood: BloodTypes
 }

@@ -40,6 +40,7 @@
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "document-register-element": "^1.14.3",
     "express": "4.17.1",
+    "formik": "^2.1.4",
     "graphql": "^14.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -48,7 +49,8 @@
     "react-router-dom": "^5.1.2",
     "serverless-http": "^2.3.2",
     "styled-components": "^5.1.0",
-    "superagent": "^5.2.2"
+    "superagent": "^5.2.2",
+    "yup": "^0.28.3"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.9.0",
@@ -83,6 +85,7 @@
     "@types/superagent": "^4.1.7",
     "@types/webpack": "^4.41.8",
     "@types/webpack-dev-server": "^3.10.1",
+    "@types/yup": "^0.26.36",
     "@typescript-eslint/parser": "^2.24.0",
     "cross-env": "^7.0.2",
     "cypress": "^4.3.0",
@@ -97,6 +100,7 @@
     "graphql-tools": "^4.0.7",
     "hygen": "^5.0.3",
     "jest": "^25.3.0",
+    "jest-transform-graphql": "^2.1.0",
     "netlify-cli": "^2.40.0",
     "netlify-lambda": "^1.6.3",
     "prettier": "^2.0.1",

@@ -331,7 +331,7 @@ export type Blob = Node & GitObject & {
   text?: Maybe<Scalars['String']>;
 };
 
-export const enum BloodType {
+export const enum BloodTypes {
   A = 'A',
   B = 'B',
   O = 'O',
@@ -11033,13 +11033,13 @@ export type ViewerHovercardContext = HovercardContext & {
 export type You = {
   name?: Maybe<Scalars['String']>;
   age?: Maybe<Scalars['Int']>;
-  blood?: Maybe<BloodType>;
+  blood?: Maybe<BloodTypes>;
 };
 
 export type YouInput = {
   name?: Maybe<Scalars['String']>;
   age?: Maybe<Scalars['Int']>;
-  blood?: Maybe<BloodType>;
+  blood?: Maybe<BloodTypes>;
 };
 
 export type CreateDxInfoMutationVariables = {

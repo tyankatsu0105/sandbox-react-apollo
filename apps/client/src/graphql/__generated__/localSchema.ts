@@ -16,13 +16,14 @@ export type Scalars = {
   Float: number;
 };
 
-export const enum BloodTypes {
-  A = 'A',
-  B = 'B',
-  O = 'O',
-  Ab = 'AB'
-};
+export const BloodTypes = {
+  A: 'A',
+  B: 'B',
+  O: 'O',
+  Ab: 'AB'
+} as const;
 
+export type BloodTypes = typeof BloodTypes[keyof typeof BloodTypes];
 export type Mutation = {
    __typename?: 'Mutation';
   updatePage?: Maybe<Page>;

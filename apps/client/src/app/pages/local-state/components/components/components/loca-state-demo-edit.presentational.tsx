@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useMemo } from 'react';
 
 import { TextField, Grid, MenuItem, Button, Box } from '@material-ui/core';
 
@@ -11,8 +11,6 @@ import {
   LocalStateDemoQuery,
   BloodTypes,
 } from '~client/graphql/__generated__/schema';
-
-import { enumToArray } from '@sandbox-react-apollo/helpers';
 
 const validationSchema = Yup.object<
   UpdateLocalStateDemoEditMutationVariables['input']
@@ -52,6 +50,8 @@ export const LocaStateDemoEditPresentational: FunctionComponent<Props> = (
       props.updateYou({ variables: { input } });
     },
   });
+
+  const bloodTypes = useMemo(() => Object.values(BloodTypes), []);
   return (
     <form noValidate onSubmit={handleSubmit}>
       <Grid container spacing={5}>
@@ -94,13 +94,11 @@ export const LocaStateDemoEditPresentational: FunctionComponent<Props> = (
             error={!!errors.blood}
             helperText={errors.blood}
           >
-            {enumToArray(BloodTypes)
-              .getValues()
-              .map((bloodType) => (
-                <MenuItem key={bloodType} value={bloodType}>
-                  {bloodType}
-                </MenuItem>
-              ))}
+            {bloodTypes.map((bloodType) => (
+              <MenuItem key={bloodType} value={bloodType}>
+                {bloodType}
+              </MenuItem>
+            ))}
           </TextField>
         </Grid>
       </Grid>

@@ -46,13 +46,14 @@ export type AcceptTopicSuggestionPayload = {
   topic?: Maybe<Topic>;
 };
 
-export const enum ActionExecutionCapabilitySetting {
-  Disabled = 'DISABLED',
-  AllActions = 'ALL_ACTIONS',
-  LocalActionsOnly = 'LOCAL_ACTIONS_ONLY',
-  NoPolicy = 'NO_POLICY'
-};
+export const ActionExecutionCapabilitySetting = {
+  Disabled: 'DISABLED',
+  AllActions: 'ALL_ACTIONS',
+  LocalActionsOnly: 'LOCAL_ACTIONS_ONLY',
+  NoPolicy: 'NO_POLICY'
+} as const;
 
+export type ActionExecutionCapabilitySetting = typeof ActionExecutionCapabilitySetting[keyof typeof ActionExecutionCapabilitySetting];
 export type Actor = {
   avatarUrl: Scalars['URI'];
   login: Scalars['String'];
@@ -286,10 +287,11 @@ export type AuditLogOrder = {
   direction?: Maybe<OrderDirection>;
 };
 
-export const enum AuditLogOrderField {
-  CreatedAt = 'CREATED_AT'
-};
+export const AuditLogOrderField = {
+  CreatedAt: 'CREATED_AT'
+} as const;
 
+export type AuditLogOrderField = typeof AuditLogOrderField[keyof typeof AuditLogOrderField];
 export type BaseRefChangedEvent = Node & {
   actor?: Maybe<Actor>;
   createdAt: Scalars['DateTime'];
@@ -331,13 +333,14 @@ export type Blob = Node & GitObject & {
   text?: Maybe<Scalars['String']>;
 };
 
-export const enum BloodTypes {
-  A = 'A',
-  B = 'B',
-  O = 'O',
-  Ab = 'AB'
-};
+export const BloodTypes = {
+  A: 'A',
+  B: 'B',
+  O: 'O',
+  Ab: 'AB'
+} as const;
 
+export type BloodTypes = typeof BloodTypes[keyof typeof BloodTypes];
 export type Bot = Node & Actor & UniformResourceLocatable & {
   avatarUrl: Scalars['URI'];
   createdAt: Scalars['DateTime'];
@@ -551,12 +554,13 @@ export type CodeOfConduct = Node & {
   url?: Maybe<Scalars['URI']>;
 };
 
-export const enum CollaboratorAffiliation {
-  Outside = 'OUTSIDE',
-  Direct = 'DIRECT',
-  All = 'ALL'
-};
+export const CollaboratorAffiliation = {
+  Outside: 'OUTSIDE',
+  Direct: 'DIRECT',
+  All: 'ALL'
+} as const;
 
+export type CollaboratorAffiliation = typeof CollaboratorAffiliation[keyof typeof CollaboratorAffiliation];
 export type Comment = {
   author?: Maybe<Actor>;
   authorAssociation: CommentAuthorAssociation;
@@ -583,26 +587,28 @@ export type CommentUserContentEditsArgs = {
   last?: Maybe<Scalars['Int']>;
 };
 
-export const enum CommentAuthorAssociation {
-  Member = 'MEMBER',
-  Owner = 'OWNER',
-  Collaborator = 'COLLABORATOR',
-  Contributor = 'CONTRIBUTOR',
-  FirstTimeContributor = 'FIRST_TIME_CONTRIBUTOR',
-  FirstTimer = 'FIRST_TIMER',
-  None = 'NONE'
-};
+export const CommentAuthorAssociation = {
+  Member: 'MEMBER',
+  Owner: 'OWNER',
+  Collaborator: 'COLLABORATOR',
+  Contributor: 'CONTRIBUTOR',
+  FirstTimeContributor: 'FIRST_TIME_CONTRIBUTOR',
+  FirstTimer: 'FIRST_TIMER',
+  None: 'NONE'
+} as const;
 
-export const enum CommentCannotUpdateReason {
-  Archived = 'ARCHIVED',
-  InsufficientAccess = 'INSUFFICIENT_ACCESS',
-  Locked = 'LOCKED',
-  LoginRequired = 'LOGIN_REQUIRED',
-  Maintenance = 'MAINTENANCE',
-  VerifiedEmailRequired = 'VERIFIED_EMAIL_REQUIRED',
-  Denied = 'DENIED'
-};
+export type CommentAuthorAssociation = typeof CommentAuthorAssociation[keyof typeof CommentAuthorAssociation];
+export const CommentCannotUpdateReason = {
+  Archived: 'ARCHIVED',
+  InsufficientAccess: 'INSUFFICIENT_ACCESS',
+  Locked: 'LOCKED',
+  LoginRequired: 'LOGIN_REQUIRED',
+  Maintenance: 'MAINTENANCE',
+  VerifiedEmailRequired: 'VERIFIED_EMAIL_REQUIRED',
+  Denied: 'DENIED'
+} as const;
 
+export type CommentCannotUpdateReason = typeof CommentCannotUpdateReason[keyof typeof CommentCannotUpdateReason];
 export type CommentDeletedEvent = Node & {
   actor?: Maybe<Actor>;
   createdAt: Scalars['DateTime'];
@@ -812,11 +818,12 @@ export type CommitContributionOrder = {
   direction: OrderDirection;
 };
 
-export const enum CommitContributionOrderField {
-  OccurredAt = 'OCCURRED_AT',
-  CommitCount = 'COMMIT_COUNT'
-};
+export const CommitContributionOrderField = {
+  OccurredAt: 'OCCURRED_AT',
+  CommitCount: 'COMMIT_COUNT'
+} as const;
 
+export type CommitContributionOrderField = typeof CommitContributionOrderField[keyof typeof CommitContributionOrderField];
 export type CommitContributionsByRepository = {
   contributions: CreatedCommitContributionConnection;
   repository: Repository;
@@ -894,10 +901,11 @@ export type ContributionOrder = {
   direction: OrderDirection;
 };
 
-export const enum ContributionOrderField {
-  OccurredAt = 'OCCURRED_AT'
-};
+export const ContributionOrderField = {
+  OccurredAt: 'OCCURRED_AT'
+} as const;
 
+export type ContributionOrderField = typeof ContributionOrderField[keyof typeof ContributionOrderField];
 export type ContributionsCollection = {
   commitContributionsByRepository: Array<CommitContributionsByRepository>;
   contributionCalendar: ContributionCalendar;
@@ -1355,13 +1363,14 @@ export type DeclineTopicSuggestionPayload = {
   topic?: Maybe<Topic>;
 };
 
-export const enum DefaultRepositoryPermissionField {
-  None = 'NONE',
-  Read = 'READ',
-  Write = 'WRITE',
-  Admin = 'ADMIN'
-};
+export const DefaultRepositoryPermissionField = {
+  None: 'NONE',
+  Read: 'READ',
+  Write: 'WRITE',
+  Admin: 'ADMIN'
+} as const;
 
+export type DefaultRepositoryPermissionField = typeof DefaultRepositoryPermissionField[keyof typeof DefaultRepositoryPermissionField];
 export type Deletable = {
   viewerCanDelete: Scalars['Boolean'];
 };
@@ -1585,22 +1594,24 @@ export type DeploymentOrder = {
   direction: OrderDirection;
 };
 
-export const enum DeploymentOrderField {
-  CreatedAt = 'CREATED_AT'
-};
+export const DeploymentOrderField = {
+  CreatedAt: 'CREATED_AT'
+} as const;
 
-export const enum DeploymentState {
-  Abandoned = 'ABANDONED',
-  Active = 'ACTIVE',
-  Destroyed = 'DESTROYED',
-  Error = 'ERROR',
-  Failure = 'FAILURE',
-  Inactive = 'INACTIVE',
-  Pending = 'PENDING',
-  Queued = 'QUEUED',
-  InProgress = 'IN_PROGRESS'
-};
+export type DeploymentOrderField = typeof DeploymentOrderField[keyof typeof DeploymentOrderField];
+export const DeploymentState = {
+  Abandoned: 'ABANDONED',
+  Active: 'ACTIVE',
+  Destroyed: 'DESTROYED',
+  Error: 'ERROR',
+  Failure: 'FAILURE',
+  Inactive: 'INACTIVE',
+  Pending: 'PENDING',
+  Queued: 'QUEUED',
+  InProgress: 'IN_PROGRESS'
+} as const;
 
+export type DeploymentState = typeof DeploymentState[keyof typeof DeploymentState];
 export type DeploymentStatus = Node & {
   createdAt: Scalars['DateTime'];
   creator: Actor;
@@ -1625,21 +1636,23 @@ export type DeploymentStatusEdge = {
   node?: Maybe<DeploymentStatus>;
 };
 
-export const enum DeploymentStatusState {
-  Pending = 'PENDING',
-  Success = 'SUCCESS',
-  Failure = 'FAILURE',
-  Inactive = 'INACTIVE',
-  Error = 'ERROR',
-  Queued = 'QUEUED',
-  InProgress = 'IN_PROGRESS'
-};
+export const DeploymentStatusState = {
+  Pending: 'PENDING',
+  Success: 'SUCCESS',
+  Failure: 'FAILURE',
+  Inactive: 'INACTIVE',
+  Error: 'ERROR',
+  Queued: 'QUEUED',
+  InProgress: 'IN_PROGRESS'
+} as const;
 
-export const enum DiffSide {
-  Left = 'LEFT',
-  Right = 'RIGHT'
-};
+export type DeploymentStatusState = typeof DeploymentStatusState[keyof typeof DeploymentStatusState];
+export const DiffSide = {
+  Left: 'LEFT',
+  Right: 'RIGHT'
+} as const;
 
+export type DiffSide = typeof DiffSide[keyof typeof DiffSide];
 export type DisconnectedEvent = Node & {
   actor?: Maybe<Actor>;
   createdAt: Scalars['DateTime'];
@@ -1772,15 +1785,17 @@ export type EnterpriseAdministratorInvitationOrder = {
   direction: OrderDirection;
 };
 
-export const enum EnterpriseAdministratorInvitationOrderField {
-  CreatedAt = 'CREATED_AT'
-};
+export const EnterpriseAdministratorInvitationOrderField = {
+  CreatedAt: 'CREATED_AT'
+} as const;
 
-export const enum EnterpriseAdministratorRole {
-  Owner = 'OWNER',
-  BillingManager = 'BILLING_MANAGER'
-};
+export type EnterpriseAdministratorInvitationOrderField = typeof EnterpriseAdministratorInvitationOrderField[keyof typeof EnterpriseAdministratorInvitationOrderField];
+export const EnterpriseAdministratorRole = {
+  Owner: 'OWNER',
+  BillingManager: 'BILLING_MANAGER'
+} as const;
 
+export type EnterpriseAdministratorRole = typeof EnterpriseAdministratorRole[keyof typeof EnterpriseAdministratorRole];
 export type EnterpriseAuditEntryData = {
   enterpriseResourcePath?: Maybe<Scalars['URI']>;
   enterpriseSlug?: Maybe<Scalars['String']>;
@@ -1804,25 +1819,28 @@ export type EnterpriseBillingInfo = {
   totalLicenses: Scalars['Int'];
 };
 
-export const enum EnterpriseDefaultRepositoryPermissionSettingValue {
-  NoPolicy = 'NO_POLICY',
-  Admin = 'ADMIN',
-  Write = 'WRITE',
-  Read = 'READ',
-  None = 'NONE'
-};
+export const EnterpriseDefaultRepositoryPermissionSettingValue = {
+  NoPolicy: 'NO_POLICY',
+  Admin: 'ADMIN',
+  Write: 'WRITE',
+  Read: 'READ',
+  None: 'NONE'
+} as const;
 
-export const enum EnterpriseEnabledDisabledSettingValue {
-  Enabled = 'ENABLED',
-  Disabled = 'DISABLED',
-  NoPolicy = 'NO_POLICY'
-};
+export type EnterpriseDefaultRepositoryPermissionSettingValue = typeof EnterpriseDefaultRepositoryPermissionSettingValue[keyof typeof EnterpriseDefaultRepositoryPermissionSettingValue];
+export const EnterpriseEnabledDisabledSettingValue = {
+  Enabled: 'ENABLED',
+  Disabled: 'DISABLED',
+  NoPolicy: 'NO_POLICY'
+} as const;
 
-export const enum EnterpriseEnabledSettingValue {
-  Enabled = 'ENABLED',
-  NoPolicy = 'NO_POLICY'
-};
+export type EnterpriseEnabledDisabledSettingValue = typeof EnterpriseEnabledDisabledSettingValue[keyof typeof EnterpriseEnabledDisabledSettingValue];
+export const EnterpriseEnabledSettingValue = {
+  Enabled: 'ENABLED',
+  NoPolicy: 'NO_POLICY'
+} as const;
 
+export type EnterpriseEnabledSettingValue = typeof EnterpriseEnabledSettingValue[keyof typeof EnterpriseEnabledSettingValue];
 export type EnterpriseIdentityProvider = Node & {
   digestMethod?: Maybe<SamlDigestAlgorithm>;
   enterprise?: Maybe<Enterprise>;
@@ -1863,24 +1881,27 @@ export type EnterpriseMemberOrder = {
   direction: OrderDirection;
 };
 
-export const enum EnterpriseMemberOrderField {
-  Login = 'LOGIN',
-  CreatedAt = 'CREATED_AT'
-};
+export const EnterpriseMemberOrderField = {
+  Login: 'LOGIN',
+  CreatedAt: 'CREATED_AT'
+} as const;
 
-export const enum EnterpriseMembersCanCreateRepositoriesSettingValue {
-  NoPolicy = 'NO_POLICY',
-  All = 'ALL',
-  Public = 'PUBLIC',
-  Private = 'PRIVATE',
-  Disabled = 'DISABLED'
-};
+export type EnterpriseMemberOrderField = typeof EnterpriseMemberOrderField[keyof typeof EnterpriseMemberOrderField];
+export const EnterpriseMembersCanCreateRepositoriesSettingValue = {
+  NoPolicy: 'NO_POLICY',
+  All: 'ALL',
+  Public: 'PUBLIC',
+  Private: 'PRIVATE',
+  Disabled: 'DISABLED'
+} as const;
 
-export const enum EnterpriseMembersCanMakePurchasesSettingValue {
-  Enabled = 'ENABLED',
-  Disabled = 'DISABLED'
-};
+export type EnterpriseMembersCanCreateRepositoriesSettingValue = typeof EnterpriseMembersCanCreateRepositoriesSettingValue[keyof typeof EnterpriseMembersCanCreateRepositoriesSettingValue];
+export const EnterpriseMembersCanMakePurchasesSettingValue = {
+  Enabled: 'ENABLED',
+  Disabled: 'DISABLED'
+} as const;
 
+export type EnterpriseMembersCanMakePurchasesSettingValue = typeof EnterpriseMembersCanMakePurchasesSettingValue[keyof typeof EnterpriseMembersCanMakePurchasesSettingValue];
 export type EnterpriseOrganizationMembershipConnection = {
   edges?: Maybe<Array<Maybe<EnterpriseOrganizationMembershipEdge>>>;
   nodes?: Maybe<Array<Maybe<Organization>>>;
@@ -2296,12 +2317,13 @@ export type EnterpriseServerInstallationOrder = {
   direction: OrderDirection;
 };
 
-export const enum EnterpriseServerInstallationOrderField {
-  HostName = 'HOST_NAME',
-  CustomerName = 'CUSTOMER_NAME',
-  CreatedAt = 'CREATED_AT'
-};
+export const EnterpriseServerInstallationOrderField = {
+  HostName: 'HOST_NAME',
+  CustomerName: 'CUSTOMER_NAME',
+  CreatedAt: 'CREATED_AT'
+} as const;
 
+export type EnterpriseServerInstallationOrderField = typeof EnterpriseServerInstallationOrderField[keyof typeof EnterpriseServerInstallationOrderField];
 export type EnterpriseServerUserAccount = Node & {
   createdAt: Scalars['DateTime'];
   emails: EnterpriseServerUserAccountEmailConnection;
@@ -2362,20 +2384,22 @@ export type EnterpriseServerUserAccountEmailOrder = {
   direction: OrderDirection;
 };
 
-export const enum EnterpriseServerUserAccountEmailOrderField {
-  Email = 'EMAIL'
-};
+export const EnterpriseServerUserAccountEmailOrderField = {
+  Email: 'EMAIL'
+} as const;
 
+export type EnterpriseServerUserAccountEmailOrderField = typeof EnterpriseServerUserAccountEmailOrderField[keyof typeof EnterpriseServerUserAccountEmailOrderField];
 export type EnterpriseServerUserAccountOrder = {
   field: EnterpriseServerUserAccountOrderField;
   direction: OrderDirection;
 };
 
-export const enum EnterpriseServerUserAccountOrderField {
-  Login = 'LOGIN',
-  RemoteCreatedAt = 'REMOTE_CREATED_AT'
-};
+export const EnterpriseServerUserAccountOrderField = {
+  Login: 'LOGIN',
+  RemoteCreatedAt: 'REMOTE_CREATED_AT'
+} as const;
 
+export type EnterpriseServerUserAccountOrderField = typeof EnterpriseServerUserAccountOrderField[keyof typeof EnterpriseServerUserAccountOrderField];
 export type EnterpriseServerUserAccountsUpload = Node & {
   createdAt: Scalars['DateTime'];
   enterprise: Enterprise;
@@ -2403,16 +2427,18 @@ export type EnterpriseServerUserAccountsUploadOrder = {
   direction: OrderDirection;
 };
 
-export const enum EnterpriseServerUserAccountsUploadOrderField {
-  CreatedAt = 'CREATED_AT'
-};
+export const EnterpriseServerUserAccountsUploadOrderField = {
+  CreatedAt: 'CREATED_AT'
+} as const;
 
-export const enum EnterpriseServerUserAccountsUploadSyncState {
-  Pending = 'PENDING',
-  Success = 'SUCCESS',
-  Failure = 'FAILURE'
-};
+export type EnterpriseServerUserAccountsUploadOrderField = typeof EnterpriseServerUserAccountsUploadOrderField[keyof typeof EnterpriseServerUserAccountsUploadOrderField];
+export const EnterpriseServerUserAccountsUploadSyncState = {
+  Pending: 'PENDING',
+  Success: 'SUCCESS',
+  Failure: 'FAILURE'
+} as const;
 
+export type EnterpriseServerUserAccountsUploadSyncState = typeof EnterpriseServerUserAccountsUploadSyncState[keyof typeof EnterpriseServerUserAccountsUploadSyncState];
 export type EnterpriseUserAccount = Node & Actor & {
   avatarUrl: Scalars['URI'];
   createdAt: Scalars['DateTime'];
@@ -2455,16 +2481,18 @@ export type EnterpriseUserAccountEdge = {
   node?: Maybe<EnterpriseUserAccount>;
 };
 
-export const enum EnterpriseUserAccountMembershipRole {
-  Member = 'MEMBER',
-  Owner = 'OWNER'
-};
+export const EnterpriseUserAccountMembershipRole = {
+  Member: 'MEMBER',
+  Owner: 'OWNER'
+} as const;
 
-export const enum EnterpriseUserDeployment {
-  Cloud = 'CLOUD',
-  Server = 'SERVER'
-};
+export type EnterpriseUserAccountMembershipRole = typeof EnterpriseUserAccountMembershipRole[keyof typeof EnterpriseUserAccountMembershipRole];
+export const EnterpriseUserDeployment = {
+  Cloud: 'CLOUD',
+  Server: 'SERVER'
+} as const;
 
+export type EnterpriseUserDeployment = typeof EnterpriseUserDeployment[keyof typeof EnterpriseUserDeployment];
 export type ExternalIdentity = Node & {
   guid: Scalars['String'];
   id: Scalars['ID'];
@@ -2523,19 +2551,20 @@ export type FundingLink = {
   url: Scalars['URI'];
 };
 
-export const enum FundingPlatform {
-  Github = 'GITHUB',
-  Patreon = 'PATREON',
-  OpenCollective = 'OPEN_COLLECTIVE',
-  KoFi = 'KO_FI',
-  Tidelift = 'TIDELIFT',
-  CommunityBridge = 'COMMUNITY_BRIDGE',
-  Liberapay = 'LIBERAPAY',
-  Issuehunt = 'ISSUEHUNT',
-  Otechie = 'OTECHIE',
-  Custom = 'CUSTOM'
-};
+export const FundingPlatform = {
+  Github: 'GITHUB',
+  Patreon: 'PATREON',
+  OpenCollective: 'OPEN_COLLECTIVE',
+  KoFi: 'KO_FI',
+  Tidelift: 'TIDELIFT',
+  CommunityBridge: 'COMMUNITY_BRIDGE',
+  Liberapay: 'LIBERAPAY',
+  Issuehunt: 'ISSUEHUNT',
+  Otechie: 'OTECHIE',
+  Custom: 'CUSTOM'
+} as const;
 
+export type FundingPlatform = typeof FundingPlatform[keyof typeof FundingPlatform];
 export type GenericHovercardContext = HovercardContext & {
   message: Scalars['String'];
   octicon: Scalars['String'];
@@ -2672,18 +2701,20 @@ export type GistOrder = {
   direction: OrderDirection;
 };
 
-export const enum GistOrderField {
-  CreatedAt = 'CREATED_AT',
-  UpdatedAt = 'UPDATED_AT',
-  PushedAt = 'PUSHED_AT'
-};
+export const GistOrderField = {
+  CreatedAt: 'CREATED_AT',
+  UpdatedAt: 'UPDATED_AT',
+  PushedAt: 'PUSHED_AT'
+} as const;
 
-export const enum GistPrivacy {
-  Public = 'PUBLIC',
-  Secret = 'SECRET',
-  All = 'ALL'
-};
+export type GistOrderField = typeof GistOrderField[keyof typeof GistOrderField];
+export const GistPrivacy = {
+  Public: 'PUBLIC',
+  Secret: 'SECRET',
+  All: 'ALL'
+} as const;
 
+export type GistPrivacy = typeof GistPrivacy[keyof typeof GistPrivacy];
 export type GitActor = {
   avatarUrl: Scalars['URI'];
   date?: Maybe<Scalars['GitTimestamp']>;
@@ -2726,26 +2757,27 @@ export type GitSignature = {
   wasSignedByGitHub: Scalars['Boolean'];
 };
 
-export const enum GitSignatureState {
-  Valid = 'VALID',
-  Invalid = 'INVALID',
-  MalformedSig = 'MALFORMED_SIG',
-  UnknownKey = 'UNKNOWN_KEY',
-  BadEmail = 'BAD_EMAIL',
-  UnverifiedEmail = 'UNVERIFIED_EMAIL',
-  NoUser = 'NO_USER',
-  UnknownSigType = 'UNKNOWN_SIG_TYPE',
-  Unsigned = 'UNSIGNED',
-  GpgverifyUnavailable = 'GPGVERIFY_UNAVAILABLE',
-  GpgverifyError = 'GPGVERIFY_ERROR',
-  NotSigningKey = 'NOT_SIGNING_KEY',
-  ExpiredKey = 'EXPIRED_KEY',
-  OcspPending = 'OCSP_PENDING',
-  OcspError = 'OCSP_ERROR',
-  BadCert = 'BAD_CERT',
-  OcspRevoked = 'OCSP_REVOKED'
-};
+export const GitSignatureState = {
+  Valid: 'VALID',
+  Invalid: 'INVALID',
+  MalformedSig: 'MALFORMED_SIG',
+  UnknownKey: 'UNKNOWN_KEY',
+  BadEmail: 'BAD_EMAIL',
+  UnverifiedEmail: 'UNVERIFIED_EMAIL',
+  NoUser: 'NO_USER',
+  UnknownSigType: 'UNKNOWN_SIG_TYPE',
+  Unsigned: 'UNSIGNED',
+  GpgverifyUnavailable: 'GPGVERIFY_UNAVAILABLE',
+  GpgverifyError: 'GPGVERIFY_ERROR',
+  NotSigningKey: 'NOT_SIGNING_KEY',
+  ExpiredKey: 'EXPIRED_KEY',
+  OcspPending: 'OCSP_PENDING',
+  OcspError: 'OCSP_ERROR',
+  BadCert: 'BAD_CERT',
+  OcspRevoked: 'OCSP_REVOKED'
+} as const;
 
+export type GitSignatureState = typeof GitSignatureState[keyof typeof GitSignatureState];
 
 
 export type GpgSignature = GitSignature & {
@@ -2795,12 +2827,13 @@ export type HovercardContext = {
 };
 
 
-export const enum IdentityProviderConfigurationState {
-  Enforced = 'ENFORCED',
-  Configured = 'CONFIGURED',
-  Unconfigured = 'UNCONFIGURED'
-};
+export const IdentityProviderConfigurationState = {
+  Enforced: 'ENFORCED',
+  Configured: 'CONFIGURED',
+  Unconfigured: 'UNCONFIGURED'
+} as const;
 
+export type IdentityProviderConfigurationState = typeof IdentityProviderConfigurationState[keyof typeof IdentityProviderConfigurationState];
 export type InviteEnterpriseAdminInput = {
   enterpriseId: Scalars['ID'];
   invitee?: Maybe<Scalars['String']>;
@@ -2814,11 +2847,12 @@ export type InviteEnterpriseAdminPayload = {
   invitation?: Maybe<EnterpriseAdministratorInvitation>;
 };
 
-export const enum IpAllowListEnabledSettingValue {
-  Enabled = 'ENABLED',
-  Disabled = 'DISABLED'
-};
+export const IpAllowListEnabledSettingValue = {
+  Enabled: 'ENABLED',
+  Disabled: 'DISABLED'
+} as const;
 
+export type IpAllowListEnabledSettingValue = typeof IpAllowListEnabledSettingValue[keyof typeof IpAllowListEnabledSettingValue];
 export type IpAllowListEntry = Node & {
   allowListValue: Scalars['String'];
   createdAt: Scalars['DateTime'];
@@ -2846,11 +2880,12 @@ export type IpAllowListEntryOrder = {
   direction: OrderDirection;
 };
 
-export const enum IpAllowListEntryOrderField {
-  CreatedAt = 'CREATED_AT',
-  AllowListValue = 'ALLOW_LIST_VALUE'
-};
+export const IpAllowListEntryOrderField = {
+  CreatedAt: 'CREATED_AT',
+  AllowListValue: 'ALLOW_LIST_VALUE'
+} as const;
 
+export type IpAllowListEntryOrderField = typeof IpAllowListEntryOrderField[keyof typeof IpAllowListEntryOrderField];
 export type IpAllowListOwner = Enterprise | Organization;
 
 export type Issue = Node & Assignable & Closable & Comment & Updatable & UpdatableComment & Labelable & Lockable & Reactable & RepositoryNode & Subscribable & UniformResourceLocatable & {
@@ -3089,19 +3124,21 @@ export type IssueOrder = {
   direction: OrderDirection;
 };
 
-export const enum IssueOrderField {
-  CreatedAt = 'CREATED_AT',
-  UpdatedAt = 'UPDATED_AT',
-  Comments = 'COMMENTS'
-};
+export const IssueOrderField = {
+  CreatedAt: 'CREATED_AT',
+  UpdatedAt: 'UPDATED_AT',
+  Comments: 'COMMENTS'
+} as const;
 
+export type IssueOrderField = typeof IssueOrderField[keyof typeof IssueOrderField];
 export type IssueOrPullRequest = Issue | PullRequest;
 
-export const enum IssueState {
-  Open = 'OPEN',
-  Closed = 'CLOSED'
-};
+export const IssueState = {
+  Open: 'OPEN',
+  Closed: 'CLOSED'
+} as const;
 
+export type IssueState = typeof IssueState[keyof typeof IssueState];
 export type IssueTimelineConnection = {
   edges?: Maybe<Array<Maybe<IssueTimelineItemEdge>>>;
   nodes?: Maybe<Array<Maybe<IssueTimelineItem>>>;
@@ -3133,39 +3170,40 @@ export type IssueTimelineItemsEdge = {
   node?: Maybe<IssueTimelineItems>;
 };
 
-export const enum IssueTimelineItemsItemType {
-  IssueComment = 'ISSUE_COMMENT',
-  CrossReferencedEvent = 'CROSS_REFERENCED_EVENT',
-  AddedToProjectEvent = 'ADDED_TO_PROJECT_EVENT',
-  AssignedEvent = 'ASSIGNED_EVENT',
-  ClosedEvent = 'CLOSED_EVENT',
-  CommentDeletedEvent = 'COMMENT_DELETED_EVENT',
-  ConnectedEvent = 'CONNECTED_EVENT',
-  ConvertedNoteToIssueEvent = 'CONVERTED_NOTE_TO_ISSUE_EVENT',
-  DemilestonedEvent = 'DEMILESTONED_EVENT',
-  DisconnectedEvent = 'DISCONNECTED_EVENT',
-  LabeledEvent = 'LABELED_EVENT',
-  LockedEvent = 'LOCKED_EVENT',
-  MarkedAsDuplicateEvent = 'MARKED_AS_DUPLICATE_EVENT',
-  MentionedEvent = 'MENTIONED_EVENT',
-  MilestonedEvent = 'MILESTONED_EVENT',
-  MovedColumnsInProjectEvent = 'MOVED_COLUMNS_IN_PROJECT_EVENT',
-  PinnedEvent = 'PINNED_EVENT',
-  ReferencedEvent = 'REFERENCED_EVENT',
-  RemovedFromProjectEvent = 'REMOVED_FROM_PROJECT_EVENT',
-  RenamedTitleEvent = 'RENAMED_TITLE_EVENT',
-  ReopenedEvent = 'REOPENED_EVENT',
-  SubscribedEvent = 'SUBSCRIBED_EVENT',
-  TransferredEvent = 'TRANSFERRED_EVENT',
-  UnassignedEvent = 'UNASSIGNED_EVENT',
-  UnlabeledEvent = 'UNLABELED_EVENT',
-  UnlockedEvent = 'UNLOCKED_EVENT',
-  UserBlockedEvent = 'USER_BLOCKED_EVENT',
-  UnmarkedAsDuplicateEvent = 'UNMARKED_AS_DUPLICATE_EVENT',
-  UnpinnedEvent = 'UNPINNED_EVENT',
-  UnsubscribedEvent = 'UNSUBSCRIBED_EVENT'
-};
+export const IssueTimelineItemsItemType = {
+  IssueComment: 'ISSUE_COMMENT',
+  CrossReferencedEvent: 'CROSS_REFERENCED_EVENT',
+  AddedToProjectEvent: 'ADDED_TO_PROJECT_EVENT',
+  AssignedEvent: 'ASSIGNED_EVENT',
+  ClosedEvent: 'CLOSED_EVENT',
+  CommentDeletedEvent: 'COMMENT_DELETED_EVENT',
+  ConnectedEvent: 'CONNECTED_EVENT',
+  ConvertedNoteToIssueEvent: 'CONVERTED_NOTE_TO_ISSUE_EVENT',
+  DemilestonedEvent: 'DEMILESTONED_EVENT',
+  DisconnectedEvent: 'DISCONNECTED_EVENT',
+  LabeledEvent: 'LABELED_EVENT',
+  LockedEvent: 'LOCKED_EVENT',
+  MarkedAsDuplicateEvent: 'MARKED_AS_DUPLICATE_EVENT',
+  MentionedEvent: 'MENTIONED_EVENT',
+  MilestonedEvent: 'MILESTONED_EVENT',
+  MovedColumnsInProjectEvent: 'MOVED_COLUMNS_IN_PROJECT_EVENT',
+  PinnedEvent: 'PINNED_EVENT',
+  ReferencedEvent: 'REFERENCED_EVENT',
+  RemovedFromProjectEvent: 'REMOVED_FROM_PROJECT_EVENT',
+  RenamedTitleEvent: 'RENAMED_TITLE_EVENT',
+  ReopenedEvent: 'REOPENED_EVENT',
+  SubscribedEvent: 'SUBSCRIBED_EVENT',
+  TransferredEvent: 'TRANSFERRED_EVENT',
+  UnassignedEvent: 'UNASSIGNED_EVENT',
+  UnlabeledEvent: 'UNLABELED_EVENT',
+  UnlockedEvent: 'UNLOCKED_EVENT',
+  UserBlockedEvent: 'USER_BLOCKED_EVENT',
+  UnmarkedAsDuplicateEvent: 'UNMARKED_AS_DUPLICATE_EVENT',
+  UnpinnedEvent: 'UNPINNED_EVENT',
+  UnsubscribedEvent: 'UNSUBSCRIBED_EVENT'
+} as const;
 
+export type IssueTimelineItemsItemType = typeof IssueTimelineItemsItemType[keyof typeof IssueTimelineItemsItemType];
 export type JoinedGitHubContribution = Contribution & {
   isRestricted: Scalars['Boolean'];
   occurredAt: Scalars['DateTime'];
@@ -3252,11 +3290,12 @@ export type LabelOrder = {
   direction: OrderDirection;
 };
 
-export const enum LabelOrderField {
-  Name = 'NAME',
-  CreatedAt = 'CREATED_AT'
-};
+export const LabelOrderField = {
+  Name: 'NAME',
+  CreatedAt: 'CREATED_AT'
+} as const;
 
+export type LabelOrderField = typeof LabelOrderField[keyof typeof LabelOrderField];
 export type Language = Node & {
   color?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -3282,10 +3321,11 @@ export type LanguageOrder = {
   direction: OrderDirection;
 };
 
-export const enum LanguageOrderField {
-  Size = 'SIZE'
-};
+export const LanguageOrderField = {
+  Size: 'SIZE'
+} as const;
 
+export type LanguageOrderField = typeof LanguageOrderField[keyof typeof LanguageOrderField];
 export type License = Node & {
   body: Scalars['String'];
   conditions: Array<Maybe<LicenseRule>>;
@@ -3347,13 +3387,14 @@ export type LockLockablePayload = {
   lockedRecord?: Maybe<Lockable>;
 };
 
-export const enum LockReason {
-  OffTopic = 'OFF_TOPIC',
-  TooHeated = 'TOO_HEATED',
-  Resolved = 'RESOLVED',
-  Spam = 'SPAM'
-};
+export const LockReason = {
+  OffTopic: 'OFF_TOPIC',
+  TooHeated: 'TOO_HEATED',
+  Resolved: 'RESOLVED',
+  Spam: 'SPAM'
+} as const;
 
+export type LockReason = typeof LockReason[keyof typeof LockReason];
 export type Mannequin = Node & Actor & UniformResourceLocatable & {
   avatarUrl: Scalars['URI'];
   createdAt: Scalars['DateTime'];
@@ -3572,12 +3613,13 @@ export type MentionedEvent = Node & {
   id: Scalars['ID'];
 };
 
-export const enum MergeableState {
-  Mergeable = 'MERGEABLE',
-  Conflicting = 'CONFLICTING',
-  Unknown = 'UNKNOWN'
-};
+export const MergeableState = {
+  Mergeable: 'MERGEABLE',
+  Conflicting: 'CONFLICTING',
+  Unknown: 'UNKNOWN'
+} as const;
 
+export type MergeableState = typeof MergeableState[keyof typeof MergeableState];
 export type MergeBranchInput = {
   repositoryId: Scalars['ID'];
   base: Scalars['String'];
@@ -3690,18 +3732,20 @@ export type MilestoneOrder = {
   direction: OrderDirection;
 };
 
-export const enum MilestoneOrderField {
-  DueDate = 'DUE_DATE',
-  CreatedAt = 'CREATED_AT',
-  UpdatedAt = 'UPDATED_AT',
-  Number = 'NUMBER'
-};
+export const MilestoneOrderField = {
+  DueDate: 'DUE_DATE',
+  CreatedAt: 'CREATED_AT',
+  UpdatedAt: 'UPDATED_AT',
+  Number: 'NUMBER'
+} as const;
 
-export const enum MilestoneState {
-  Open = 'OPEN',
-  Closed = 'CLOSED'
-};
+export type MilestoneOrderField = typeof MilestoneOrderField[keyof typeof MilestoneOrderField];
+export const MilestoneState = {
+  Open: 'OPEN',
+  Closed: 'CLOSED'
+} as const;
 
+export type MilestoneState = typeof MilestoneState[keyof typeof MilestoneState];
 export type Minimizable = {
   isMinimized: Scalars['Boolean'];
   minimizedReason?: Maybe<Scalars['String']>;
@@ -4480,27 +4524,30 @@ export type OauthApplicationCreateAuditEntry = Node & AuditEntry & OauthApplicat
   userUrl?: Maybe<Scalars['URI']>;
 };
 
-export const enum OauthApplicationCreateAuditEntryState {
-  Active = 'ACTIVE',
-  Suspended = 'SUSPENDED',
-  PendingDeletion = 'PENDING_DELETION'
-};
+export const OauthApplicationCreateAuditEntryState = {
+  Active: 'ACTIVE',
+  Suspended: 'SUSPENDED',
+  PendingDeletion: 'PENDING_DELETION'
+} as const;
 
-export const enum OperationType {
-  Access = 'ACCESS',
-  Authentication = 'AUTHENTICATION',
-  Create = 'CREATE',
-  Modify = 'MODIFY',
-  Remove = 'REMOVE',
-  Restore = 'RESTORE',
-  Transfer = 'TRANSFER'
-};
+export type OauthApplicationCreateAuditEntryState = typeof OauthApplicationCreateAuditEntryState[keyof typeof OauthApplicationCreateAuditEntryState];
+export const OperationType = {
+  Access: 'ACCESS',
+  Authentication: 'AUTHENTICATION',
+  Create: 'CREATE',
+  Modify: 'MODIFY',
+  Remove: 'REMOVE',
+  Restore: 'RESTORE',
+  Transfer: 'TRANSFER'
+} as const;
 
-export const enum OrderDirection {
-  Asc = 'ASC',
-  Desc = 'DESC'
-};
+export type OperationType = typeof OperationType[keyof typeof OperationType];
+export const OrderDirection = {
+  Asc: 'ASC',
+  Desc: 'DESC'
+} as const;
 
+export type OrderDirection = typeof OrderDirection[keyof typeof OrderDirection];
 export type OrgAddBillingManagerAuditEntry = Node & AuditEntry & OrganizationAuditEntryData & {
   action: Scalars['String'];
   actor?: Maybe<AuditEntryActor>;
@@ -4545,11 +4592,12 @@ export type OrgAddMemberAuditEntry = Node & AuditEntry & OrganizationAuditEntryD
   userUrl?: Maybe<Scalars['URI']>;
 };
 
-export const enum OrgAddMemberAuditEntryPermission {
-  Read = 'READ',
-  Admin = 'ADMIN'
-};
+export const OrgAddMemberAuditEntryPermission = {
+  Read: 'READ',
+  Admin: 'ADMIN'
+} as const;
 
+export type OrgAddMemberAuditEntryPermission = typeof OrgAddMemberAuditEntryPermission[keyof typeof OrgAddMemberAuditEntryPermission];
 export type Organization = Node & Actor & RegistryPackageOwner & RegistryPackageSearch & ProjectOwner & RepositoryOwner & UniformResourceLocatable & MemberStatusable & ProfileOwner & Sponsorable & {
   anyPinnableItems: Scalars['Boolean'];
   auditLog: OrganizationAuditEntryConnection;
@@ -4856,18 +4904,20 @@ export type OrganizationInvitationEdge = {
   node?: Maybe<OrganizationInvitation>;
 };
 
-export const enum OrganizationInvitationRole {
-  DirectMember = 'DIRECT_MEMBER',
-  Admin = 'ADMIN',
-  BillingManager = 'BILLING_MANAGER',
-  Reinstate = 'REINSTATE'
-};
+export const OrganizationInvitationRole = {
+  DirectMember: 'DIRECT_MEMBER',
+  Admin: 'ADMIN',
+  BillingManager: 'BILLING_MANAGER',
+  Reinstate: 'REINSTATE'
+} as const;
 
-export const enum OrganizationInvitationType {
-  User = 'USER',
-  Email = 'EMAIL'
-};
+export type OrganizationInvitationRole = typeof OrganizationInvitationRole[keyof typeof OrganizationInvitationRole];
+export const OrganizationInvitationType = {
+  User: 'USER',
+  Email: 'EMAIL'
+} as const;
 
+export type OrganizationInvitationType = typeof OrganizationInvitationType[keyof typeof OrganizationInvitationType];
 export type OrganizationMemberConnection = {
   edges?: Maybe<Array<Maybe<OrganizationMemberEdge>>>;
   nodes?: Maybe<Array<Maybe<User>>>;
@@ -4882,27 +4932,30 @@ export type OrganizationMemberEdge = {
   role?: Maybe<OrganizationMemberRole>;
 };
 
-export const enum OrganizationMemberRole {
-  Member = 'MEMBER',
-  Admin = 'ADMIN'
-};
+export const OrganizationMemberRole = {
+  Member: 'MEMBER',
+  Admin: 'ADMIN'
+} as const;
 
-export const enum OrganizationMembersCanCreateRepositoriesSettingValue {
-  All = 'ALL',
-  Private = 'PRIVATE',
-  Disabled = 'DISABLED'
-};
+export type OrganizationMemberRole = typeof OrganizationMemberRole[keyof typeof OrganizationMemberRole];
+export const OrganizationMembersCanCreateRepositoriesSettingValue = {
+  All: 'ALL',
+  Private: 'PRIVATE',
+  Disabled: 'DISABLED'
+} as const;
 
+export type OrganizationMembersCanCreateRepositoriesSettingValue = typeof OrganizationMembersCanCreateRepositoriesSettingValue[keyof typeof OrganizationMembersCanCreateRepositoriesSettingValue];
 export type OrganizationOrder = {
   field: OrganizationOrderField;
   direction: OrderDirection;
 };
 
-export const enum OrganizationOrderField {
-  CreatedAt = 'CREATED_AT',
-  Login = 'LOGIN'
-};
+export const OrganizationOrderField = {
+  CreatedAt: 'CREATED_AT',
+  Login: 'LOGIN'
+} as const;
 
+export type OrganizationOrderField = typeof OrganizationOrderField[keyof typeof OrganizationOrderField];
 export type OrganizationsHovercardContext = HovercardContext & {
   message: Scalars['String'];
   octicon: Scalars['String'];
@@ -5024,14 +5077,15 @@ export type OrgCreateAuditEntry = Node & AuditEntry & OrganizationAuditEntryData
   userUrl?: Maybe<Scalars['URI']>;
 };
 
-export const enum OrgCreateAuditEntryBillingPlan {
-  Free = 'FREE',
-  Business = 'BUSINESS',
-  BusinessPlus = 'BUSINESS_PLUS',
-  Unlimited = 'UNLIMITED',
-  TieredPerSeat = 'TIERED_PER_SEAT'
-};
+export const OrgCreateAuditEntryBillingPlan = {
+  Free: 'FREE',
+  Business: 'BUSINESS',
+  BusinessPlus: 'BUSINESS_PLUS',
+  Unlimited: 'UNLIMITED',
+  TieredPerSeat: 'TIERED_PER_SEAT'
+} as const;
 
+export type OrgCreateAuditEntryBillingPlan = typeof OrgCreateAuditEntryBillingPlan[keyof typeof OrgCreateAuditEntryBillingPlan];
 export type OrgDisableOauthAppRestrictionsAuditEntry = Node & AuditEntry & OrganizationAuditEntryData & {
   action: Scalars['String'];
   actor?: Maybe<AuditEntryActor>;
@@ -5307,12 +5361,13 @@ export type OrgRemoveBillingManagerAuditEntry = Node & AuditEntry & Organization
   userUrl?: Maybe<Scalars['URI']>;
 };
 
-export const enum OrgRemoveBillingManagerAuditEntryReason {
-  TwoFactorRequirementNonCompliance = 'TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE',
-  SamlExternalIdentityMissing = 'SAML_EXTERNAL_IDENTITY_MISSING',
-  SamlSsoEnforcementRequiresExternalIdentity = 'SAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY'
-};
+export const OrgRemoveBillingManagerAuditEntryReason = {
+  TwoFactorRequirementNonCompliance: 'TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE',
+  SamlExternalIdentityMissing: 'SAML_EXTERNAL_IDENTITY_MISSING',
+  SamlSsoEnforcementRequiresExternalIdentity: 'SAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY'
+} as const;
 
+export type OrgRemoveBillingManagerAuditEntryReason = typeof OrgRemoveBillingManagerAuditEntryReason[keyof typeof OrgRemoveBillingManagerAuditEntryReason];
 export type OrgRemoveMemberAuditEntry = Node & AuditEntry & OrganizationAuditEntryData & {
   action: Scalars['String'];
   actor?: Maybe<AuditEntryActor>;
@@ -5336,20 +5391,22 @@ export type OrgRemoveMemberAuditEntry = Node & AuditEntry & OrganizationAuditEnt
   userUrl?: Maybe<Scalars['URI']>;
 };
 
-export const enum OrgRemoveMemberAuditEntryMembershipType {
-  DirectMember = 'DIRECT_MEMBER',
-  Admin = 'ADMIN',
-  BillingManager = 'BILLING_MANAGER',
-  Unaffiliated = 'UNAFFILIATED',
-  OutsideCollaborator = 'OUTSIDE_COLLABORATOR'
-};
+export const OrgRemoveMemberAuditEntryMembershipType = {
+  DirectMember: 'DIRECT_MEMBER',
+  Admin: 'ADMIN',
+  BillingManager: 'BILLING_MANAGER',
+  Unaffiliated: 'UNAFFILIATED',
+  OutsideCollaborator: 'OUTSIDE_COLLABORATOR'
+} as const;
 
-export const enum OrgRemoveMemberAuditEntryReason {
-  TwoFactorRequirementNonCompliance = 'TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE',
-  SamlExternalIdentityMissing = 'SAML_EXTERNAL_IDENTITY_MISSING',
-  SamlSsoEnforcementRequiresExternalIdentity = 'SAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY'
-};
+export type OrgRemoveMemberAuditEntryMembershipType = typeof OrgRemoveMemberAuditEntryMembershipType[keyof typeof OrgRemoveMemberAuditEntryMembershipType];
+export const OrgRemoveMemberAuditEntryReason = {
+  TwoFactorRequirementNonCompliance: 'TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE',
+  SamlExternalIdentityMissing: 'SAML_EXTERNAL_IDENTITY_MISSING',
+  SamlSsoEnforcementRequiresExternalIdentity: 'SAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY'
+} as const;
 
+export type OrgRemoveMemberAuditEntryReason = typeof OrgRemoveMemberAuditEntryReason[keyof typeof OrgRemoveMemberAuditEntryReason];
 export type OrgRemoveOutsideCollaboratorAuditEntry = Node & AuditEntry & OrganizationAuditEntryData & {
   action: Scalars['String'];
   actor?: Maybe<AuditEntryActor>;
@@ -5373,17 +5430,19 @@ export type OrgRemoveOutsideCollaboratorAuditEntry = Node & AuditEntry & Organiz
   userUrl?: Maybe<Scalars['URI']>;
 };
 
-export const enum OrgRemoveOutsideCollaboratorAuditEntryMembershipType {
-  OutsideCollaborator = 'OUTSIDE_COLLABORATOR',
-  Unaffiliated = 'UNAFFILIATED',
-  BillingManager = 'BILLING_MANAGER'
-};
+export const OrgRemoveOutsideCollaboratorAuditEntryMembershipType = {
+  OutsideCollaborator: 'OUTSIDE_COLLABORATOR',
+  Unaffiliated: 'UNAFFILIATED',
+  BillingManager: 'BILLING_MANAGER'
+} as const;
 
-export const enum OrgRemoveOutsideCollaboratorAuditEntryReason {
-  TwoFactorRequirementNonCompliance = 'TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE',
-  SamlExternalIdentityMissing = 'SAML_EXTERNAL_IDENTITY_MISSING'
-};
+export type OrgRemoveOutsideCollaboratorAuditEntryMembershipType = typeof OrgRemoveOutsideCollaboratorAuditEntryMembershipType[keyof typeof OrgRemoveOutsideCollaboratorAuditEntryMembershipType];
+export const OrgRemoveOutsideCollaboratorAuditEntryReason = {
+  TwoFactorRequirementNonCompliance: 'TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE',
+  SamlExternalIdentityMissing: 'SAML_EXTERNAL_IDENTITY_MISSING'
+} as const;
 
+export type OrgRemoveOutsideCollaboratorAuditEntryReason = typeof OrgRemoveOutsideCollaboratorAuditEntryReason[keyof typeof OrgRemoveOutsideCollaboratorAuditEntryReason];
 export type OrgRestoreMemberAuditEntry = Node & AuditEntry & OrganizationAuditEntryData & {
   action: Scalars['String'];
   actor?: Maybe<AuditEntryActor>;
@@ -5483,13 +5542,14 @@ export type OrgUpdateDefaultRepositoryPermissionAuditEntry = Node & AuditEntry &
   userUrl?: Maybe<Scalars['URI']>;
 };
 
-export const enum OrgUpdateDefaultRepositoryPermissionAuditEntryPermission {
-  Read = 'READ',
-  Write = 'WRITE',
-  Admin = 'ADMIN',
-  None = 'NONE'
-};
+export const OrgUpdateDefaultRepositoryPermissionAuditEntryPermission = {
+  Read: 'READ',
+  Write: 'WRITE',
+  Admin: 'ADMIN',
+  None: 'NONE'
+} as const;
 
+export type OrgUpdateDefaultRepositoryPermissionAuditEntryPermission = typeof OrgUpdateDefaultRepositoryPermissionAuditEntryPermission[keyof typeof OrgUpdateDefaultRepositoryPermissionAuditEntryPermission];
 export type OrgUpdateMemberAuditEntry = Node & AuditEntry & OrganizationAuditEntryData & {
   action: Scalars['String'];
   actor?: Maybe<AuditEntryActor>;
@@ -5513,11 +5573,12 @@ export type OrgUpdateMemberAuditEntry = Node & AuditEntry & OrganizationAuditEnt
   userUrl?: Maybe<Scalars['URI']>;
 };
 
-export const enum OrgUpdateMemberAuditEntryPermission {
-  Read = 'READ',
-  Admin = 'ADMIN'
-};
+export const OrgUpdateMemberAuditEntryPermission = {
+  Read: 'READ',
+  Admin: 'ADMIN'
+} as const;
 
+export type OrgUpdateMemberAuditEntryPermission = typeof OrgUpdateMemberAuditEntryPermission[keyof typeof OrgUpdateMemberAuditEntryPermission];
 export type OrgUpdateMemberRepositoryCreationPermissionAuditEntry = Node & AuditEntry & OrganizationAuditEntryData & {
   action: Scalars['String'];
   actor?: Maybe<AuditEntryActor>;
@@ -5541,11 +5602,12 @@ export type OrgUpdateMemberRepositoryCreationPermissionAuditEntry = Node & Audit
   visibility?: Maybe<OrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility>;
 };
 
-export const enum OrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility {
-  All = 'ALL',
-  Public = 'PUBLIC'
-};
+export const OrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility = {
+  All: 'ALL',
+  Public: 'PUBLIC'
+} as const;
 
+export type OrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility = typeof OrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility[keyof typeof OrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility];
 export type OrgUpdateMemberRepositoryInvitationPermissionAuditEntry = Node & AuditEntry & OrganizationAuditEntryData & {
   action: Scalars['String'];
   actor?: Maybe<AuditEntryActor>;
@@ -5606,17 +5668,18 @@ export type PinnableItemEdge = {
   node?: Maybe<PinnableItem>;
 };
 
-export const enum PinnableItemType {
-  Repository = 'REPOSITORY',
-  Gist = 'GIST',
-  Issue = 'ISSUE',
-  Project = 'PROJECT',
-  PullRequest = 'PULL_REQUEST',
-  User = 'USER',
-  Organization = 'ORGANIZATION',
-  Team = 'TEAM'
-};
+export const PinnableItemType = {
+  Repository: 'REPOSITORY',
+  Gist: 'GIST',
+  Issue: 'ISSUE',
+  Project: 'PROJECT',
+  PullRequest: 'PULL_REQUEST',
+  User: 'USER',
+  Organization: 'ORGANIZATION',
+  Team: 'TEAM'
+} as const;
 
+export type PinnableItemType = typeof PinnableItemType[keyof typeof PinnableItemType];
 export type PinnedEvent = Node & {
   actor?: Maybe<Actor>;
   createdAt: Scalars['DateTime'];
@@ -5786,11 +5849,12 @@ export type ProjectCard = Node & {
   url: Scalars['URI'];
 };
 
-export const enum ProjectCardArchivedState {
-  Archived = 'ARCHIVED',
-  NotArchived = 'NOT_ARCHIVED'
-};
+export const ProjectCardArchivedState = {
+  Archived: 'ARCHIVED',
+  NotArchived: 'NOT_ARCHIVED'
+} as const;
 
+export type ProjectCardArchivedState = typeof ProjectCardArchivedState[keyof typeof ProjectCardArchivedState];
 export type ProjectCardConnection = {
   edges?: Maybe<Array<Maybe<ProjectCardEdge>>>;
   nodes?: Maybe<Array<Maybe<ProjectCard>>>;
@@ -5805,12 +5869,13 @@ export type ProjectCardEdge = {
 
 export type ProjectCardItem = Issue | PullRequest;
 
-export const enum ProjectCardState {
-  ContentOnly = 'CONTENT_ONLY',
-  NoteOnly = 'NOTE_ONLY',
-  Redacted = 'REDACTED'
-};
+export const ProjectCardState = {
+  ContentOnly: 'CONTENT_ONLY',
+  NoteOnly: 'NOTE_ONLY',
+  Redacted: 'REDACTED'
+} as const;
 
+export type ProjectCardState = typeof ProjectCardState[keyof typeof ProjectCardState];
 export type ProjectColumn = Node & {
   cards: ProjectCardConnection;
   createdAt: Scalars['DateTime'];
@@ -5845,12 +5910,13 @@ export type ProjectColumnEdge = {
   node?: Maybe<ProjectColumn>;
 };
 
-export const enum ProjectColumnPurpose {
-  Todo = 'TODO',
-  InProgress = 'IN_PROGRESS',
-  Done = 'DONE'
-};
+export const ProjectColumnPurpose = {
+  Todo: 'TODO',
+  InProgress: 'IN_PROGRESS',
+  Done: 'DONE'
+} as const;
 
+export type ProjectColumnPurpose = typeof ProjectColumnPurpose[keyof typeof ProjectColumnPurpose];
 export type ProjectConnection = {
   edges?: Maybe<Array<Maybe<ProjectEdge>>>;
   nodes?: Maybe<Array<Maybe<Project>>>;
@@ -5868,12 +5934,13 @@ export type ProjectOrder = {
   direction: OrderDirection;
 };
 
-export const enum ProjectOrderField {
-  CreatedAt = 'CREATED_AT',
-  UpdatedAt = 'UPDATED_AT',
-  Name = 'NAME'
-};
+export const ProjectOrderField = {
+  CreatedAt: 'CREATED_AT',
+  UpdatedAt: 'UPDATED_AT',
+  Name: 'NAME'
+} as const;
 
+export type ProjectOrderField = typeof ProjectOrderField[keyof typeof ProjectOrderField];
 export type ProjectOwner = {
   id: Scalars['ID'];
   project?: Maybe<Project>;
@@ -5899,18 +5966,20 @@ export type ProjectOwnerProjectsArgs = {
   last?: Maybe<Scalars['Int']>;
 };
 
-export const enum ProjectState {
-  Open = 'OPEN',
-  Closed = 'CLOSED'
-};
+export const ProjectState = {
+  Open: 'OPEN',
+  Closed: 'CLOSED'
+} as const;
 
-export const enum ProjectTemplate {
-  BasicKanban = 'BASIC_KANBAN',
-  AutomatedKanbanV2 = 'AUTOMATED_KANBAN_V2',
-  AutomatedReviewsKanban = 'AUTOMATED_REVIEWS_KANBAN',
-  BugTriage = 'BUG_TRIAGE'
-};
+export type ProjectState = typeof ProjectState[keyof typeof ProjectState];
+export const ProjectTemplate = {
+  BasicKanban: 'BASIC_KANBAN',
+  AutomatedKanbanV2: 'AUTOMATED_KANBAN_V2',
+  AutomatedReviewsKanban: 'AUTOMATED_REVIEWS_KANBAN',
+  BugTriage: 'BUG_TRIAGE'
+} as const;
 
+export type ProjectTemplate = typeof ProjectTemplate[keyof typeof ProjectTemplate];
 export type PublicKey = Node & {
   accessedAt?: Maybe<Scalars['DateTime']>;
   createdAt?: Maybe<Scalars['DateTime']>;
@@ -6222,22 +6291,24 @@ export type PullRequestEdge = {
   node?: Maybe<PullRequest>;
 };
 
-export const enum PullRequestMergeMethod {
-  Merge = 'MERGE',
-  Squash = 'SQUASH',
-  Rebase = 'REBASE'
-};
+export const PullRequestMergeMethod = {
+  Merge: 'MERGE',
+  Squash: 'SQUASH',
+  Rebase: 'REBASE'
+} as const;
 
+export type PullRequestMergeMethod = typeof PullRequestMergeMethod[keyof typeof PullRequestMergeMethod];
 export type PullRequestOrder = {
   field: PullRequestOrderField;
   direction: OrderDirection;
 };
 
-export const enum PullRequestOrderField {
-  CreatedAt = 'CREATED_AT',
-  UpdatedAt = 'UPDATED_AT'
-};
+export const PullRequestOrderField = {
+  CreatedAt: 'CREATED_AT',
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type PullRequestOrderField = typeof PullRequestOrderField[keyof typeof PullRequestOrderField];
 export type PullRequestReview = Node & Comment & Deletable & Updatable & UpdatableComment & Reactable & RepositoryNode & {
   author?: Maybe<Actor>;
   authorAssociation: CommentAuthorAssociation;
@@ -6379,11 +6450,12 @@ export type PullRequestReviewCommentEdge = {
   node?: Maybe<PullRequestReviewComment>;
 };
 
-export const enum PullRequestReviewCommentState {
-  Pending = 'PENDING',
-  Submitted = 'SUBMITTED'
-};
+export const PullRequestReviewCommentState = {
+  Pending: 'PENDING',
+  Submitted: 'SUBMITTED'
+} as const;
 
+export type PullRequestReviewCommentState = typeof PullRequestReviewCommentState[keyof typeof PullRequestReviewCommentState];
 export type PullRequestReviewConnection = {
   edges?: Maybe<Array<Maybe<PullRequestReviewEdge>>>;
   nodes?: Maybe<Array<Maybe<PullRequestReview>>>;
@@ -6405,32 +6477,35 @@ export type PullRequestReviewContributionsByRepositoryContributionsArgs = {
   orderBy?: Maybe<ContributionOrder>;
 };
 
-export const enum PullRequestReviewDecision {
-  ChangesRequested = 'CHANGES_REQUESTED',
-  Approved = 'APPROVED',
-  ReviewRequired = 'REVIEW_REQUIRED'
-};
+export const PullRequestReviewDecision = {
+  ChangesRequested: 'CHANGES_REQUESTED',
+  Approved: 'APPROVED',
+  ReviewRequired: 'REVIEW_REQUIRED'
+} as const;
 
+export type PullRequestReviewDecision = typeof PullRequestReviewDecision[keyof typeof PullRequestReviewDecision];
 export type PullRequestReviewEdge = {
   cursor: Scalars['String'];
   node?: Maybe<PullRequestReview>;
 };
 
-export const enum PullRequestReviewEvent {
-  Comment = 'COMMENT',
-  Approve = 'APPROVE',
-  RequestChanges = 'REQUEST_CHANGES',
-  Dismiss = 'DISMISS'
-};
+export const PullRequestReviewEvent = {
+  Comment: 'COMMENT',
+  Approve: 'APPROVE',
+  RequestChanges: 'REQUEST_CHANGES',
+  Dismiss: 'DISMISS'
+} as const;
 
-export const enum PullRequestReviewState {
-  Pending = 'PENDING',
-  Commented = 'COMMENTED',
-  Approved = 'APPROVED',
-  ChangesRequested = 'CHANGES_REQUESTED',
-  Dismissed = 'DISMISSED'
-};
+export type PullRequestReviewEvent = typeof PullRequestReviewEvent[keyof typeof PullRequestReviewEvent];
+export const PullRequestReviewState = {
+  Pending: 'PENDING',
+  Commented: 'COMMENTED',
+  Approved: 'APPROVED',
+  ChangesRequested: 'CHANGES_REQUESTED',
+  Dismissed: 'DISMISSED'
+} as const;
 
+export type PullRequestReviewState = typeof PullRequestReviewState[keyof typeof PullRequestReviewState];
 export type PullRequestReviewThread = Node & {
   comments: PullRequestReviewCommentConnection;
   diffSide: DiffSide;
@@ -6475,12 +6550,13 @@ export type PullRequestRevisionMarker = {
   pullRequest: PullRequest;
 };
 
-export const enum PullRequestState {
-  Open = 'OPEN',
-  Closed = 'CLOSED',
-  Merged = 'MERGED'
-};
+export const PullRequestState = {
+  Open: 'OPEN',
+  Closed: 'CLOSED',
+  Merged: 'MERGED'
+} as const;
 
+export type PullRequestState = typeof PullRequestState[keyof typeof PullRequestState];
 export type PullRequestTimelineConnection = {
   edges?: Maybe<Array<Maybe<PullRequestTimelineItemEdge>>>;
   nodes?: Maybe<Array<Maybe<PullRequestTimelineItem>>>;
@@ -6512,62 +6588,64 @@ export type PullRequestTimelineItemsEdge = {
   node?: Maybe<PullRequestTimelineItems>;
 };
 
-export const enum PullRequestTimelineItemsItemType {
-  PullRequestCommit = 'PULL_REQUEST_COMMIT',
-  PullRequestCommitCommentThread = 'PULL_REQUEST_COMMIT_COMMENT_THREAD',
-  PullRequestReview = 'PULL_REQUEST_REVIEW',
-  PullRequestReviewThread = 'PULL_REQUEST_REVIEW_THREAD',
-  PullRequestRevisionMarker = 'PULL_REQUEST_REVISION_MARKER',
-  BaseRefChangedEvent = 'BASE_REF_CHANGED_EVENT',
-  BaseRefForcePushedEvent = 'BASE_REF_FORCE_PUSHED_EVENT',
-  DeployedEvent = 'DEPLOYED_EVENT',
-  DeploymentEnvironmentChangedEvent = 'DEPLOYMENT_ENVIRONMENT_CHANGED_EVENT',
-  HeadRefDeletedEvent = 'HEAD_REF_DELETED_EVENT',
-  HeadRefForcePushedEvent = 'HEAD_REF_FORCE_PUSHED_EVENT',
-  HeadRefRestoredEvent = 'HEAD_REF_RESTORED_EVENT',
-  MergedEvent = 'MERGED_EVENT',
-  ReviewDismissedEvent = 'REVIEW_DISMISSED_EVENT',
-  ReviewRequestedEvent = 'REVIEW_REQUESTED_EVENT',
-  ReviewRequestRemovedEvent = 'REVIEW_REQUEST_REMOVED_EVENT',
-  ReadyForReviewEvent = 'READY_FOR_REVIEW_EVENT',
-  ConvertToDraftEvent = 'CONVERT_TO_DRAFT_EVENT',
-  IssueComment = 'ISSUE_COMMENT',
-  CrossReferencedEvent = 'CROSS_REFERENCED_EVENT',
-  AddedToProjectEvent = 'ADDED_TO_PROJECT_EVENT',
-  AssignedEvent = 'ASSIGNED_EVENT',
-  ClosedEvent = 'CLOSED_EVENT',
-  CommentDeletedEvent = 'COMMENT_DELETED_EVENT',
-  ConnectedEvent = 'CONNECTED_EVENT',
-  ConvertedNoteToIssueEvent = 'CONVERTED_NOTE_TO_ISSUE_EVENT',
-  DemilestonedEvent = 'DEMILESTONED_EVENT',
-  DisconnectedEvent = 'DISCONNECTED_EVENT',
-  LabeledEvent = 'LABELED_EVENT',
-  LockedEvent = 'LOCKED_EVENT',
-  MarkedAsDuplicateEvent = 'MARKED_AS_DUPLICATE_EVENT',
-  MentionedEvent = 'MENTIONED_EVENT',
-  MilestonedEvent = 'MILESTONED_EVENT',
-  MovedColumnsInProjectEvent = 'MOVED_COLUMNS_IN_PROJECT_EVENT',
-  PinnedEvent = 'PINNED_EVENT',
-  ReferencedEvent = 'REFERENCED_EVENT',
-  RemovedFromProjectEvent = 'REMOVED_FROM_PROJECT_EVENT',
-  RenamedTitleEvent = 'RENAMED_TITLE_EVENT',
-  ReopenedEvent = 'REOPENED_EVENT',
-  SubscribedEvent = 'SUBSCRIBED_EVENT',
-  TransferredEvent = 'TRANSFERRED_EVENT',
-  UnassignedEvent = 'UNASSIGNED_EVENT',
-  UnlabeledEvent = 'UNLABELED_EVENT',
-  UnlockedEvent = 'UNLOCKED_EVENT',
-  UserBlockedEvent = 'USER_BLOCKED_EVENT',
-  UnmarkedAsDuplicateEvent = 'UNMARKED_AS_DUPLICATE_EVENT',
-  UnpinnedEvent = 'UNPINNED_EVENT',
-  UnsubscribedEvent = 'UNSUBSCRIBED_EVENT'
-};
+export const PullRequestTimelineItemsItemType = {
+  PullRequestCommit: 'PULL_REQUEST_COMMIT',
+  PullRequestCommitCommentThread: 'PULL_REQUEST_COMMIT_COMMENT_THREAD',
+  PullRequestReview: 'PULL_REQUEST_REVIEW',
+  PullRequestReviewThread: 'PULL_REQUEST_REVIEW_THREAD',
+  PullRequestRevisionMarker: 'PULL_REQUEST_REVISION_MARKER',
+  BaseRefChangedEvent: 'BASE_REF_CHANGED_EVENT',
+  BaseRefForcePushedEvent: 'BASE_REF_FORCE_PUSHED_EVENT',
+  DeployedEvent: 'DEPLOYED_EVENT',
+  DeploymentEnvironmentChangedEvent: 'DEPLOYMENT_ENVIRONMENT_CHANGED_EVENT',
+  HeadRefDeletedEvent: 'HEAD_REF_DELETED_EVENT',
+  HeadRefForcePushedEvent: 'HEAD_REF_FORCE_PUSHED_EVENT',
+  HeadRefRestoredEvent: 'HEAD_REF_RESTORED_EVENT',
+  MergedEvent: 'MERGED_EVENT',
+  ReviewDismissedEvent: 'REVIEW_DISMISSED_EVENT',
+  ReviewRequestedEvent: 'REVIEW_REQUESTED_EVENT',
+  ReviewRequestRemovedEvent: 'REVIEW_REQUEST_REMOVED_EVENT',
+  ReadyForReviewEvent: 'READY_FOR_REVIEW_EVENT',
+  ConvertToDraftEvent: 'CONVERT_TO_DRAFT_EVENT',
+  IssueComment: 'ISSUE_COMMENT',
+  CrossReferencedEvent: 'CROSS_REFERENCED_EVENT',
+  AddedToProjectEvent: 'ADDED_TO_PROJECT_EVENT',
+  AssignedEvent: 'ASSIGNED_EVENT',
+  ClosedEvent: 'CLOSED_EVENT',
+  CommentDeletedEvent: 'COMMENT_DELETED_EVENT',
+  ConnectedEvent: 'CONNECTED_EVENT',
+  ConvertedNoteToIssueEvent: 'CONVERTED_NOTE_TO_ISSUE_EVENT',
+  DemilestonedEvent: 'DEMILESTONED_EVENT',
+  DisconnectedEvent: 'DISCONNECTED_EVENT',
+  LabeledEvent: 'LABELED_EVENT',
+  LockedEvent: 'LOCKED_EVENT',
+  MarkedAsDuplicateEvent: 'MARKED_AS_DUPLICATE_EVENT',
+  MentionedEvent: 'MENTIONED_EVENT',
+  MilestonedEvent: 'MILESTONED_EVENT',
+  MovedColumnsInProjectEvent: 'MOVED_COLUMNS_IN_PROJECT_EVENT',
+  PinnedEvent: 'PINNED_EVENT',
+  ReferencedEvent: 'REFERENCED_EVENT',
+  RemovedFromProjectEvent: 'REMOVED_FROM_PROJECT_EVENT',
+  RenamedTitleEvent: 'RENAMED_TITLE_EVENT',
+  ReopenedEvent: 'REOPENED_EVENT',
+  SubscribedEvent: 'SUBSCRIBED_EVENT',
+  TransferredEvent: 'TRANSFERRED_EVENT',
+  UnassignedEvent: 'UNASSIGNED_EVENT',
+  UnlabeledEvent: 'UNLABELED_EVENT',
+  UnlockedEvent: 'UNLOCKED_EVENT',
+  UserBlockedEvent: 'USER_BLOCKED_EVENT',
+  UnmarkedAsDuplicateEvent: 'UNMARKED_AS_DUPLICATE_EVENT',
+  UnpinnedEvent: 'UNPINNED_EVENT',
+  UnsubscribedEvent: 'UNSUBSCRIBED_EVENT'
+} as const;
 
-export const enum PullRequestUpdateState {
-  Open = 'OPEN',
-  Closed = 'CLOSED'
-};
+export type PullRequestTimelineItemsItemType = typeof PullRequestTimelineItemsItemType[keyof typeof PullRequestTimelineItemsItemType];
+export const PullRequestUpdateState = {
+  Open: 'OPEN',
+  Closed: 'CLOSED'
+} as const;
 
+export type PullRequestUpdateState = typeof PullRequestUpdateState[keyof typeof PullRequestUpdateState];
 export type PushAllowance = Node & {
   actor?: Maybe<PushAllowanceActor>;
   branchProtectionRule?: Maybe<BranchProtectionRule>;
@@ -6831,17 +6909,18 @@ export type ReactionConnection = {
   viewerHasReacted: Scalars['Boolean'];
 };
 
-export const enum ReactionContent {
-  ThumbsUp = 'THUMBS_UP',
-  ThumbsDown = 'THUMBS_DOWN',
-  Laugh = 'LAUGH',
-  Hooray = 'HOORAY',
-  Confused = 'CONFUSED',
-  Heart = 'HEART',
-  Rocket = 'ROCKET',
-  Eyes = 'EYES'
-};
+export const ReactionContent = {
+  ThumbsUp: 'THUMBS_UP',
+  ThumbsDown: 'THUMBS_DOWN',
+  Laugh: 'LAUGH',
+  Hooray: 'HOORAY',
+  Confused: 'CONFUSED',
+  Heart: 'HEART',
+  Rocket: 'ROCKET',
+  Eyes: 'EYES'
+} as const;
 
+export type ReactionContent = typeof ReactionContent[keyof typeof ReactionContent];
 export type ReactionEdge = {
   cursor: Scalars['String'];
   node?: Maybe<Reaction>;
@@ -6868,10 +6947,11 @@ export type ReactionOrder = {
   direction: OrderDirection;
 };
 
-export const enum ReactionOrderField {
-  CreatedAt = 'CREATED_AT'
-};
+export const ReactionOrderField = {
+  CreatedAt: 'CREATED_AT'
+} as const;
 
+export type ReactionOrderField = typeof ReactionOrderField[keyof typeof ReactionOrderField];
 export type ReadyForReviewEvent = Node & UniformResourceLocatable & {
   actor?: Maybe<Actor>;
   createdAt: Scalars['DateTime'];
@@ -6933,11 +7013,12 @@ export type RefOrder = {
   direction: OrderDirection;
 };
 
-export const enum RefOrderField {
-  TagCommitDate = 'TAG_COMMIT_DATE',
-  Alphabetical = 'ALPHABETICAL'
-};
+export const RefOrderField = {
+  TagCommitDate: 'TAG_COMMIT_DATE',
+  Alphabetical: 'ALPHABETICAL'
+} as const;
 
+export type RefOrderField = typeof RefOrderField[keyof typeof RefOrderField];
 export type RegenerateEnterpriseIdentityProviderRecoveryCodesInput = {
   enterpriseId: Scalars['ID'];
   clientMutationId?: Maybe<Scalars['String']>;
@@ -7084,15 +7165,16 @@ export type RegistryPackageDependencyEdge = {
   node?: Maybe<RegistryPackageDependency>;
 };
 
-export const enum RegistryPackageDependencyType {
-  Default = 'DEFAULT',
-  Dev = 'DEV',
-  Test = 'TEST',
-  Peer = 'PEER',
-  Optional = 'OPTIONAL',
-  Bundled = 'BUNDLED'
-};
+export const RegistryPackageDependencyType = {
+  Default: 'DEFAULT',
+  Dev: 'DEV',
+  Test: 'TEST',
+  Peer: 'PEER',
+  Optional: 'OPTIONAL',
+  Bundled: 'BUNDLED'
+} as const;
 
+export type RegistryPackageDependencyType = typeof RegistryPackageDependencyType[keyof typeof RegistryPackageDependencyType];
 export type RegistryPackageEdge = {
   cursor: Scalars['String'];
   node?: Maybe<RegistryPackage>;
@@ -7208,16 +7290,17 @@ export type RegistryPackageTagEdge = {
   node?: Maybe<RegistryPackageTag>;
 };
 
-export const enum RegistryPackageType {
-  Npm = 'NPM',
-  Rubygems = 'RUBYGEMS',
-  Maven = 'MAVEN',
-  Docker = 'DOCKER',
-  Debian = 'DEBIAN',
-  Nuget = 'NUGET',
-  Python = 'PYTHON'
-};
+export const RegistryPackageType = {
+  Npm: 'NPM',
+  Rubygems: 'RUBYGEMS',
+  Maven: 'MAVEN',
+  Docker: 'DOCKER',
+  Debian: 'DEBIAN',
+  Nuget: 'NUGET',
+  Python: 'PYTHON'
+} as const;
 
+export type RegistryPackageType = typeof RegistryPackageType[keyof typeof RegistryPackageType];
 export type RegistryPackageVersion = Node & {
   /** @deprecated Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC. */
   dependencies: RegistryPackageDependencyConnection;
@@ -7381,11 +7464,12 @@ export type ReleaseOrder = {
   direction: OrderDirection;
 };
 
-export const enum ReleaseOrderField {
-  CreatedAt = 'CREATED_AT',
-  Name = 'NAME'
-};
+export const ReleaseOrderField = {
+  CreatedAt: 'CREATED_AT',
+  Name: 'NAME'
+} as const;
 
+export type ReleaseOrderField = typeof ReleaseOrderField[keyof typeof ReleaseOrderField];
 export type RemoveAssigneesFromAssignableInput = {
   assignableId: Scalars['ID'];
   assigneeIds: Array<Scalars['ID']>;
@@ -7549,12 +7633,13 @@ export type RepoAccessAuditEntry = Node & AuditEntry & OrganizationAuditEntryDat
   visibility?: Maybe<RepoAccessAuditEntryVisibility>;
 };
 
-export const enum RepoAccessAuditEntryVisibility {
-  Internal = 'INTERNAL',
-  Private = 'PRIVATE',
-  Public = 'PUBLIC'
-};
+export const RepoAccessAuditEntryVisibility = {
+  Internal: 'INTERNAL',
+  Private: 'PRIVATE',
+  Public: 'PUBLIC'
+} as const;
 
+export type RepoAccessAuditEntryVisibility = typeof RepoAccessAuditEntryVisibility[keyof typeof RepoAccessAuditEntryVisibility];
 export type RepoAddMemberAuditEntry = Node & AuditEntry & OrganizationAuditEntryData & RepositoryAuditEntryData & {
   action: Scalars['String'];
   actor?: Maybe<AuditEntryActor>;
@@ -7581,12 +7666,13 @@ export type RepoAddMemberAuditEntry = Node & AuditEntry & OrganizationAuditEntry
   visibility?: Maybe<RepoAddMemberAuditEntryVisibility>;
 };
 
-export const enum RepoAddMemberAuditEntryVisibility {
-  Internal = 'INTERNAL',
-  Private = 'PRIVATE',
-  Public = 'PUBLIC'
-};
+export const RepoAddMemberAuditEntryVisibility = {
+  Internal: 'INTERNAL',
+  Private: 'PRIVATE',
+  Public: 'PUBLIC'
+} as const;
 
+export type RepoAddMemberAuditEntryVisibility = typeof RepoAddMemberAuditEntryVisibility[keyof typeof RepoAddMemberAuditEntryVisibility];
 export type RepoAddTopicAuditEntry = Node & AuditEntry & RepositoryAuditEntryData & OrganizationAuditEntryData & TopicAuditEntryData & {
   action: Scalars['String'];
   actor?: Maybe<AuditEntryActor>;
@@ -7640,12 +7726,13 @@ export type RepoArchivedAuditEntry = Node & AuditEntry & RepositoryAuditEntryDat
   visibility?: Maybe<RepoArchivedAuditEntryVisibility>;
 };
 
-export const enum RepoArchivedAuditEntryVisibility {
-  Internal = 'INTERNAL',
-  Private = 'PRIVATE',
-  Public = 'PUBLIC'
-};
+export const RepoArchivedAuditEntryVisibility = {
+  Internal: 'INTERNAL',
+  Private: 'PRIVATE',
+  Public: 'PUBLIC'
+} as const;
 
+export type RepoArchivedAuditEntryVisibility = typeof RepoArchivedAuditEntryVisibility[keyof typeof RepoArchivedAuditEntryVisibility];
 export type RepoChangeMergeSettingAuditEntry = Node & AuditEntry & RepositoryAuditEntryData & OrganizationAuditEntryData & {
   action: Scalars['String'];
   actor?: Maybe<AuditEntryActor>;
@@ -7673,12 +7760,13 @@ export type RepoChangeMergeSettingAuditEntry = Node & AuditEntry & RepositoryAud
   userUrl?: Maybe<Scalars['URI']>;
 };
 
-export const enum RepoChangeMergeSettingAuditEntryMergeType {
-  Merge = 'MERGE',
-  Rebase = 'REBASE',
-  Squash = 'SQUASH'
-};
+export const RepoChangeMergeSettingAuditEntryMergeType = {
+  Merge: 'MERGE',
+  Rebase: 'REBASE',
+  Squash: 'SQUASH'
+} as const;
 
+export type RepoChangeMergeSettingAuditEntryMergeType = typeof RepoChangeMergeSettingAuditEntryMergeType[keyof typeof RepoChangeMergeSettingAuditEntryMergeType];
 export type RepoConfigDisableAnonymousGitAccessAuditEntry = Node & AuditEntry & OrganizationAuditEntryData & RepositoryAuditEntryData & {
   action: Scalars['String'];
   actor?: Maybe<AuditEntryActor>;
@@ -7957,12 +8045,13 @@ export type RepoCreateAuditEntry = Node & AuditEntry & RepositoryAuditEntryData 
   visibility?: Maybe<RepoCreateAuditEntryVisibility>;
 };
 
-export const enum RepoCreateAuditEntryVisibility {
-  Internal = 'INTERNAL',
-  Private = 'PRIVATE',
-  Public = 'PUBLIC'
-};
+export const RepoCreateAuditEntryVisibility = {
+  Internal: 'INTERNAL',
+  Private: 'PRIVATE',
+  Public: 'PUBLIC'
+} as const;
 
+export type RepoCreateAuditEntryVisibility = typeof RepoCreateAuditEntryVisibility[keyof typeof RepoCreateAuditEntryVisibility];
 export type RepoDestroyAuditEntry = Node & AuditEntry & RepositoryAuditEntryData & OrganizationAuditEntryData & {
   action: Scalars['String'];
   actor?: Maybe<AuditEntryActor>;
@@ -7989,12 +8078,13 @@ export type RepoDestroyAuditEntry = Node & AuditEntry & RepositoryAuditEntryData
   visibility?: Maybe<RepoDestroyAuditEntryVisibility>;
 };
 
-export const enum RepoDestroyAuditEntryVisibility {
-  Internal = 'INTERNAL',
-  Private = 'PRIVATE',
-  Public = 'PUBLIC'
-};
+export const RepoDestroyAuditEntryVisibility = {
+  Internal: 'INTERNAL',
+  Private: 'PRIVATE',
+  Public: 'PUBLIC'
+} as const;
 
+export type RepoDestroyAuditEntryVisibility = typeof RepoDestroyAuditEntryVisibility[keyof typeof RepoDestroyAuditEntryVisibility];
 export type RepoRemoveMemberAuditEntry = Node & AuditEntry & OrganizationAuditEntryData & RepositoryAuditEntryData & {
   action: Scalars['String'];
   actor?: Maybe<AuditEntryActor>;
@@ -8021,12 +8111,13 @@ export type RepoRemoveMemberAuditEntry = Node & AuditEntry & OrganizationAuditEn
   visibility?: Maybe<RepoRemoveMemberAuditEntryVisibility>;
 };
 
-export const enum RepoRemoveMemberAuditEntryVisibility {
-  Internal = 'INTERNAL',
-  Private = 'PRIVATE',
-  Public = 'PUBLIC'
-};
+export const RepoRemoveMemberAuditEntryVisibility = {
+  Internal: 'INTERNAL',
+  Private: 'PRIVATE',
+  Public: 'PUBLIC'
+} as const;
 
+export type RepoRemoveMemberAuditEntryVisibility = typeof RepoRemoveMemberAuditEntryVisibility[keyof typeof RepoRemoveMemberAuditEntryVisibility];
 export type RepoRemoveTopicAuditEntry = Node & AuditEntry & RepositoryAuditEntryData & OrganizationAuditEntryData & TopicAuditEntryData & {
   action: Scalars['String'];
   actor?: Maybe<AuditEntryActor>;
@@ -8054,15 +8145,16 @@ export type RepoRemoveTopicAuditEntry = Node & AuditEntry & RepositoryAuditEntry
   userUrl?: Maybe<Scalars['URI']>;
 };
 
-export const enum ReportedContentClassifiers {
-  Spam = 'SPAM',
-  Abuse = 'ABUSE',
-  OffTopic = 'OFF_TOPIC',
-  Outdated = 'OUTDATED',
-  Duplicate = 'DUPLICATE',
-  Resolved = 'RESOLVED'
-};
+export const ReportedContentClassifiers = {
+  Spam: 'SPAM',
+  Abuse: 'ABUSE',
+  OffTopic: 'OFF_TOPIC',
+  Outdated: 'OUTDATED',
+  Duplicate: 'DUPLICATE',
+  Resolved: 'RESOLVED'
+} as const;
 
+export type ReportedContentClassifiers = typeof ReportedContentClassifiers[keyof typeof ReportedContentClassifiers];
 export type Repository = Node & ProjectOwner & RegistryPackageOwner & RegistryPackageSearch & Subscribable & Starrable & UniformResourceLocatable & RepositoryInfo & {
   assignableUsers: UserConnection;
   branchProtectionRules: BranchProtectionRuleConnection;
@@ -8429,12 +8521,13 @@ export type RepositoryWatchersArgs = {
   last?: Maybe<Scalars['Int']>;
 };
 
-export const enum RepositoryAffiliation {
-  Owner = 'OWNER',
-  Collaborator = 'COLLABORATOR',
-  OrganizationMember = 'ORGANIZATION_MEMBER'
-};
+export const RepositoryAffiliation = {
+  Owner: 'OWNER',
+  Collaborator: 'COLLABORATOR',
+  OrganizationMember: 'ORGANIZATION_MEMBER'
+} as const;
 
+export type RepositoryAffiliation = typeof RepositoryAffiliation[keyof typeof RepositoryAffiliation];
 export type RepositoryAuditEntryData = {
   repository?: Maybe<Repository>;
   repositoryName?: Maybe<Scalars['String']>;
@@ -8464,14 +8557,15 @@ export type RepositoryConnection = {
   totalDiskUsage: Scalars['Int'];
 };
 
-export const enum RepositoryContributionType {
-  Commit = 'COMMIT',
-  Issue = 'ISSUE',
-  PullRequest = 'PULL_REQUEST',
-  Repository = 'REPOSITORY',
-  PullRequestReview = 'PULL_REQUEST_REVIEW'
-};
+export const RepositoryContributionType = {
+  Commit: 'COMMIT',
+  Issue: 'ISSUE',
+  PullRequest: 'PULL_REQUEST',
+  Repository: 'REPOSITORY',
+  PullRequestReview: 'PULL_REQUEST_REVIEW'
+} as const;
 
+export type RepositoryContributionType = typeof RepositoryContributionType[keyof typeof RepositoryContributionType];
 export type RepositoryEdge = {
   cursor: Scalars['String'];
   node?: Maybe<Repository>;
@@ -8525,18 +8619,20 @@ export type RepositoryInvitationOrder = {
   direction: OrderDirection;
 };
 
-export const enum RepositoryInvitationOrderField {
-  CreatedAt = 'CREATED_AT',
-  InviteeLogin = 'INVITEE_LOGIN'
-};
+export const RepositoryInvitationOrderField = {
+  CreatedAt: 'CREATED_AT',
+  InviteeLogin: 'INVITEE_LOGIN'
+} as const;
 
-export const enum RepositoryLockReason {
-  Moving = 'MOVING',
-  Billing = 'BILLING',
-  Rename = 'RENAME',
-  Migrating = 'MIGRATING'
-};
+export type RepositoryInvitationOrderField = typeof RepositoryInvitationOrderField[keyof typeof RepositoryInvitationOrderField];
+export const RepositoryLockReason = {
+  Moving: 'MOVING',
+  Billing: 'BILLING',
+  Rename: 'RENAME',
+  Migrating: 'MIGRATING'
+} as const;
 
+export type RepositoryLockReason = typeof RepositoryLockReason[keyof typeof RepositoryLockReason];
 export type RepositoryNode = {
   repository: Repository;
 };
@@ -8546,14 +8642,15 @@ export type RepositoryOrder = {
   direction: OrderDirection;
 };
 
-export const enum RepositoryOrderField {
-  CreatedAt = 'CREATED_AT',
-  UpdatedAt = 'UPDATED_AT',
-  PushedAt = 'PUSHED_AT',
-  Name = 'NAME',
-  Stargazers = 'STARGAZERS'
-};
+export const RepositoryOrderField = {
+  CreatedAt: 'CREATED_AT',
+  UpdatedAt: 'UPDATED_AT',
+  PushedAt: 'PUSHED_AT',
+  Name: 'NAME',
+  Stargazers: 'STARGAZERS'
+} as const;
 
+export type RepositoryOrderField = typeof RepositoryOrderField[keyof typeof RepositoryOrderField];
 export type RepositoryOwner = {
   avatarUrl: Scalars['URI'];
   id: Scalars['ID'];
@@ -8603,19 +8700,21 @@ export type RepositoryOwnerRepositoryArgs = {
   name: Scalars['String'];
 };
 
-export const enum RepositoryPermission {
-  Admin = 'ADMIN',
-  Maintain = 'MAINTAIN',
-  Write = 'WRITE',
-  Triage = 'TRIAGE',
-  Read = 'READ'
-};
+export const RepositoryPermission = {
+  Admin: 'ADMIN',
+  Maintain: 'MAINTAIN',
+  Write: 'WRITE',
+  Triage: 'TRIAGE',
+  Read: 'READ'
+} as const;
 
-export const enum RepositoryPrivacy {
-  Public = 'PUBLIC',
-  Private = 'PRIVATE'
-};
+export type RepositoryPermission = typeof RepositoryPermission[keyof typeof RepositoryPermission];
+export const RepositoryPrivacy = {
+  Public: 'PUBLIC',
+  Private: 'PRIVATE'
+} as const;
 
+export type RepositoryPrivacy = typeof RepositoryPrivacy[keyof typeof RepositoryPrivacy];
 export type RepositoryTopic = Node & UniformResourceLocatable & {
   id: Scalars['ID'];
   resourcePath: Scalars['URI'];
@@ -8635,12 +8734,13 @@ export type RepositoryTopicEdge = {
   node?: Maybe<RepositoryTopic>;
 };
 
-export const enum RepositoryVisibility {
-  Private = 'PRIVATE',
-  Public = 'PUBLIC',
-  Internal = 'INTERNAL'
-};
+export const RepositoryVisibility = {
+  Private: 'PRIVATE',
+  Public: 'PUBLIC',
+  Internal: 'INTERNAL'
+} as const;
 
+export type RepositoryVisibility = typeof RepositoryVisibility[keyof typeof RepositoryVisibility];
 export type RepositoryVisibilityChangeDisableAuditEntry = Node & AuditEntry & EnterpriseAuditEntryData & OrganizationAuditEntryData & {
   action: Scalars['String'];
   actor?: Maybe<AuditEntryActor>;
@@ -8836,20 +8936,22 @@ export type ReviewStatusHovercardContext = HovercardContext & {
   reviewDecision?: Maybe<PullRequestReviewDecision>;
 };
 
-export const enum SamlDigestAlgorithm {
-  Sha1 = 'SHA1',
-  Sha256 = 'SHA256',
-  Sha384 = 'SHA384',
-  Sha512 = 'SHA512'
-};
+export const SamlDigestAlgorithm = {
+  Sha1: 'SHA1',
+  Sha256: 'SHA256',
+  Sha384: 'SHA384',
+  Sha512: 'SHA512'
+} as const;
 
-export const enum SamlSignatureAlgorithm {
-  RsaSha1 = 'RSA_SHA1',
-  RsaSha256 = 'RSA_SHA256',
-  RsaSha384 = 'RSA_SHA384',
-  RsaSha512 = 'RSA_SHA512'
-};
+export type SamlDigestAlgorithm = typeof SamlDigestAlgorithm[keyof typeof SamlDigestAlgorithm];
+export const SamlSignatureAlgorithm = {
+  RsaSha1: 'RSA_SHA1',
+  RsaSha256: 'RSA_SHA256',
+  RsaSha384: 'RSA_SHA384',
+  RsaSha512: 'RSA_SHA512'
+} as const;
 
+export type SamlSignatureAlgorithm = typeof SamlSignatureAlgorithm[keyof typeof SamlSignatureAlgorithm];
 export type SavedReply = Node & {
   body: Scalars['String'];
   bodyHTML: Scalars['HTML'];
@@ -8876,10 +8978,11 @@ export type SavedReplyOrder = {
   direction: OrderDirection;
 };
 
-export const enum SavedReplyOrderField {
-  UpdatedAt = 'UPDATED_AT'
-};
+export const SavedReplyOrderField = {
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type SavedReplyOrderField = typeof SavedReplyOrderField[keyof typeof SavedReplyOrderField];
 export type SearchResultItem = App | Issue | MarketplaceListing | Organization | PullRequest | Repository | User;
 
 export type SearchResultItemConnection = {
@@ -8899,12 +9002,13 @@ export type SearchResultItemEdge = {
   textMatches?: Maybe<Array<Maybe<TextMatch>>>;
 };
 
-export const enum SearchType {
-  Issue = 'ISSUE',
-  Repository = 'REPOSITORY',
-  User = 'USER'
-};
+export const SearchType = {
+  Issue: 'ISSUE',
+  Repository: 'REPOSITORY',
+  User: 'USER'
+} as const;
 
+export type SearchType = typeof SearchType[keyof typeof SearchType];
 export type SecurityAdvisory = Node & {
   databaseId?: Maybe<Scalars['Int']>;
   description: Scalars['String'];
@@ -8941,15 +9045,16 @@ export type SecurityAdvisoryConnection = {
   totalCount: Scalars['Int'];
 };
 
-export const enum SecurityAdvisoryEcosystem {
-  Rubygems = 'RUBYGEMS',
-  Npm = 'NPM',
-  Pip = 'PIP',
-  Maven = 'MAVEN',
-  Nuget = 'NUGET',
-  Composer = 'COMPOSER'
-};
+export const SecurityAdvisoryEcosystem = {
+  Rubygems: 'RUBYGEMS',
+  Npm: 'NPM',
+  Pip: 'PIP',
+  Maven: 'MAVEN',
+  Nuget: 'NUGET',
+  Composer: 'COMPOSER'
+} as const;
 
+export type SecurityAdvisoryEcosystem = typeof SecurityAdvisoryEcosystem[keyof typeof SecurityAdvisoryEcosystem];
 export type SecurityAdvisoryEdge = {
   cursor: Scalars['String'];
   node?: Maybe<SecurityAdvisory>;
@@ -8965,21 +9070,23 @@ export type SecurityAdvisoryIdentifierFilter = {
   value: Scalars['String'];
 };
 
-export const enum SecurityAdvisoryIdentifierType {
-  Cve = 'CVE',
-  Ghsa = 'GHSA'
-};
+export const SecurityAdvisoryIdentifierType = {
+  Cve: 'CVE',
+  Ghsa: 'GHSA'
+} as const;
 
+export type SecurityAdvisoryIdentifierType = typeof SecurityAdvisoryIdentifierType[keyof typeof SecurityAdvisoryIdentifierType];
 export type SecurityAdvisoryOrder = {
   field: SecurityAdvisoryOrderField;
   direction: OrderDirection;
 };
 
-export const enum SecurityAdvisoryOrderField {
-  PublishedAt = 'PUBLISHED_AT',
-  UpdatedAt = 'UPDATED_AT'
-};
+export const SecurityAdvisoryOrderField = {
+  PublishedAt: 'PUBLISHED_AT',
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type SecurityAdvisoryOrderField = typeof SecurityAdvisoryOrderField[keyof typeof SecurityAdvisoryOrderField];
 export type SecurityAdvisoryPackage = {
   ecosystem: SecurityAdvisoryEcosystem;
   name: Scalars['String'];
@@ -8993,13 +9100,14 @@ export type SecurityAdvisoryReference = {
   url: Scalars['URI'];
 };
 
-export const enum SecurityAdvisorySeverity {
-  Low = 'LOW',
-  Moderate = 'MODERATE',
-  High = 'HIGH',
-  Critical = 'CRITICAL'
-};
+export const SecurityAdvisorySeverity = {
+  Low: 'LOW',
+  Moderate: 'MODERATE',
+  High: 'HIGH',
+  Critical: 'CRITICAL'
+} as const;
 
+export type SecurityAdvisorySeverity = typeof SecurityAdvisorySeverity[keyof typeof SecurityAdvisorySeverity];
 export type SecurityVulnerability = {
   advisory: SecurityAdvisory;
   firstPatchedVersion?: Maybe<SecurityAdvisoryPackageVersion>;
@@ -9026,10 +9134,11 @@ export type SecurityVulnerabilityOrder = {
   direction: OrderDirection;
 };
 
-export const enum SecurityVulnerabilityOrderField {
-  UpdatedAt = 'UPDATED_AT'
-};
+export const SecurityVulnerabilityOrderField = {
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type SecurityVulnerabilityOrderField = typeof SecurityVulnerabilityOrderField[keyof typeof SecurityVulnerabilityOrderField];
 export type SetEnterpriseIdentityProviderInput = {
   enterpriseId: Scalars['ID'];
   ssoUrl: Scalars['URI'];
@@ -9108,15 +9217,17 @@ export type SponsorshipOrder = {
   direction: OrderDirection;
 };
 
-export const enum SponsorshipOrderField {
-  CreatedAt = 'CREATED_AT'
-};
+export const SponsorshipOrderField = {
+  CreatedAt: 'CREATED_AT'
+} as const;
 
-export const enum SponsorshipPrivacy {
-  Public = 'PUBLIC',
-  Private = 'PRIVATE'
-};
+export type SponsorshipOrderField = typeof SponsorshipOrderField[keyof typeof SponsorshipOrderField];
+export const SponsorshipPrivacy = {
+  Public: 'PUBLIC',
+  Private: 'PRIVATE'
+} as const;
 
+export type SponsorshipPrivacy = typeof SponsorshipPrivacy[keyof typeof SponsorshipPrivacy];
 export type SponsorsListing = Node & {
   createdAt: Scalars['DateTime'];
   fullDescription: Scalars['String'];
@@ -9181,11 +9292,12 @@ export type SponsorsTierOrder = {
   direction: OrderDirection;
 };
 
-export const enum SponsorsTierOrderField {
-  CreatedAt = 'CREATED_AT',
-  MonthlyPriceInCents = 'MONTHLY_PRICE_IN_CENTS'
-};
+export const SponsorsTierOrderField = {
+  CreatedAt: 'CREATED_AT',
+  MonthlyPriceInCents: 'MONTHLY_PRICE_IN_CENTS'
+} as const;
 
+export type SponsorsTierOrderField = typeof SponsorsTierOrderField[keyof typeof SponsorsTierOrderField];
 export type StargazerConnection = {
   edges?: Maybe<Array<Maybe<StargazerEdge>>>;
   nodes?: Maybe<Array<Maybe<User>>>;
@@ -9204,10 +9316,11 @@ export type StarOrder = {
   direction: OrderDirection;
 };
 
-export const enum StarOrderField {
-  StarredAt = 'STARRED_AT'
-};
+export const StarOrderField = {
+  StarredAt: 'STARRED_AT'
+} as const;
 
+export type StarOrderField = typeof StarOrderField[keyof typeof StarOrderField];
 export type Starrable = {
   id: Scalars['ID'];
   stargazers: StargazerConnection;
@@ -9296,14 +9409,15 @@ export type StatusContextAvatarUrlArgs = {
   size?: Maybe<Scalars['Int']>;
 };
 
-export const enum StatusState {
-  Expected = 'EXPECTED',
-  Error = 'ERROR',
-  Failure = 'FAILURE',
-  Pending = 'PENDING',
-  Success = 'SUCCESS'
-};
+export const StatusState = {
+  Expected: 'EXPECTED',
+  Error: 'ERROR',
+  Failure: 'FAILURE',
+  Pending: 'PENDING',
+  Success: 'SUCCESS'
+} as const;
 
+export type StatusState = typeof StatusState[keyof typeof StatusState];
 export type SubmitPullRequestReviewInput = {
   pullRequestId?: Maybe<Scalars['ID']>;
   pullRequestReviewId?: Maybe<Scalars['ID']>;
@@ -9350,12 +9464,13 @@ export type SubscribedEvent = Node & {
   subscribable: Subscribable;
 };
 
-export const enum SubscriptionState {
-  Unsubscribed = 'UNSUBSCRIBED',
-  Subscribed = 'SUBSCRIBED',
-  Ignored = 'IGNORED'
-};
+export const SubscriptionState = {
+  Unsubscribed: 'UNSUBSCRIBED',
+  Subscribed: 'SUBSCRIBED',
+  Ignored: 'IGNORED'
+} as const;
 
+export type SubscriptionState = typeof SubscriptionState[keyof typeof SubscriptionState];
 export type SuggestedReviewer = {
   isAuthor: Scalars['Boolean'];
   isCommenter: Scalars['Boolean'];
@@ -9728,10 +9843,11 @@ export type TeamDiscussionCommentOrder = {
   direction: OrderDirection;
 };
 
-export const enum TeamDiscussionCommentOrderField {
-  Number = 'NUMBER'
-};
+export const TeamDiscussionCommentOrderField = {
+  Number: 'NUMBER'
+} as const;
 
+export type TeamDiscussionCommentOrderField = typeof TeamDiscussionCommentOrderField[keyof typeof TeamDiscussionCommentOrderField];
 export type TeamDiscussionConnection = {
   edges?: Maybe<Array<Maybe<TeamDiscussionEdge>>>;
   nodes?: Maybe<Array<Maybe<TeamDiscussion>>>;
@@ -9749,10 +9865,11 @@ export type TeamDiscussionOrder = {
   direction: OrderDirection;
 };
 
-export const enum TeamDiscussionOrderField {
-  CreatedAt = 'CREATED_AT'
-};
+export const TeamDiscussionOrderField = {
+  CreatedAt: 'CREATED_AT'
+} as const;
 
+export type TeamDiscussionOrderField = typeof TeamDiscussionOrderField[keyof typeof TeamDiscussionOrderField];
 export type TeamEdge = {
   cursor: Scalars['String'];
   node?: Maybe<Team>;
@@ -9778,36 +9895,41 @@ export type TeamMemberOrder = {
   direction: OrderDirection;
 };
 
-export const enum TeamMemberOrderField {
-  Login = 'LOGIN',
-  CreatedAt = 'CREATED_AT'
-};
+export const TeamMemberOrderField = {
+  Login: 'LOGIN',
+  CreatedAt: 'CREATED_AT'
+} as const;
 
-export const enum TeamMemberRole {
-  Maintainer = 'MAINTAINER',
-  Member = 'MEMBER'
-};
+export type TeamMemberOrderField = typeof TeamMemberOrderField[keyof typeof TeamMemberOrderField];
+export const TeamMemberRole = {
+  Maintainer: 'MAINTAINER',
+  Member: 'MEMBER'
+} as const;
 
-export const enum TeamMembershipType {
-  Immediate = 'IMMEDIATE',
-  ChildTeam = 'CHILD_TEAM',
-  All = 'ALL'
-};
+export type TeamMemberRole = typeof TeamMemberRole[keyof typeof TeamMemberRole];
+export const TeamMembershipType = {
+  Immediate: 'IMMEDIATE',
+  ChildTeam: 'CHILD_TEAM',
+  All: 'ALL'
+} as const;
 
+export type TeamMembershipType = typeof TeamMembershipType[keyof typeof TeamMembershipType];
 export type TeamOrder = {
   field: TeamOrderField;
   direction: OrderDirection;
 };
 
-export const enum TeamOrderField {
-  Name = 'NAME'
-};
+export const TeamOrderField = {
+  Name: 'NAME'
+} as const;
 
-export const enum TeamPrivacy {
-  Secret = 'SECRET',
-  Visible = 'VISIBLE'
-};
+export type TeamOrderField = typeof TeamOrderField[keyof typeof TeamOrderField];
+export const TeamPrivacy = {
+  Secret: 'SECRET',
+  Visible: 'VISIBLE'
+} as const;
 
+export type TeamPrivacy = typeof TeamPrivacy[keyof typeof TeamPrivacy];
 export type TeamRemoveMemberAuditEntry = Node & AuditEntry & OrganizationAuditEntryData & TeamAuditEntryData & {
   action: Scalars['String'];
   actor?: Maybe<AuditEntryActor>;
@@ -9882,20 +10004,22 @@ export type TeamRepositoryOrder = {
   direction: OrderDirection;
 };
 
-export const enum TeamRepositoryOrderField {
-  CreatedAt = 'CREATED_AT',
-  UpdatedAt = 'UPDATED_AT',
-  PushedAt = 'PUSHED_AT',
-  Name = 'NAME',
-  Permission = 'PERMISSION',
-  Stargazers = 'STARGAZERS'
-};
+export const TeamRepositoryOrderField = {
+  CreatedAt: 'CREATED_AT',
+  UpdatedAt: 'UPDATED_AT',
+  PushedAt: 'PUSHED_AT',
+  Name: 'NAME',
+  Permission: 'PERMISSION',
+  Stargazers: 'STARGAZERS'
+} as const;
 
-export const enum TeamRole {
-  Admin = 'ADMIN',
-  Member = 'MEMBER'
-};
+export type TeamRepositoryOrderField = typeof TeamRepositoryOrderField[keyof typeof TeamRepositoryOrderField];
+export const TeamRole = {
+  Admin: 'ADMIN',
+  Member: 'MEMBER'
+} as const;
 
+export type TeamRole = typeof TeamRole[keyof typeof TeamRole];
 export type TextMatch = {
   fragment: Scalars['String'];
   highlights: Array<TextMatchHighlight>;
@@ -9947,13 +10071,14 @@ export type TopicEdge = {
   node?: Maybe<Topic>;
 };
 
-export const enum TopicSuggestionDeclineReason {
-  NotRelevant = 'NOT_RELEVANT',
-  TooSpecific = 'TOO_SPECIFIC',
-  PersonalPreference = 'PERSONAL_PREFERENCE',
-  TooGeneral = 'TOO_GENERAL'
-};
+export const TopicSuggestionDeclineReason = {
+  NotRelevant: 'NOT_RELEVANT',
+  TooSpecific: 'TOO_SPECIFIC',
+  PersonalPreference: 'PERSONAL_PREFERENCE',
+  TooGeneral: 'TOO_GENERAL'
+} as const;
 
+export type TopicSuggestionDeclineReason = typeof TopicSuggestionDeclineReason[keyof typeof TopicSuggestionDeclineReason];
 export type TransferIssueInput = {
   issueId: Scalars['ID'];
   repositoryId: Scalars['ID'];
@@ -10937,14 +11062,15 @@ export type UserWatchingArgs = {
   last?: Maybe<Scalars['Int']>;
 };
 
-export const enum UserBlockDuration {
-  OneDay = 'ONE_DAY',
-  ThreeDays = 'THREE_DAYS',
-  OneWeek = 'ONE_WEEK',
-  OneMonth = 'ONE_MONTH',
-  Permanent = 'PERMANENT'
-};
+export const UserBlockDuration = {
+  OneDay: 'ONE_DAY',
+  ThreeDays: 'THREE_DAYS',
+  OneWeek: 'ONE_WEEK',
+  OneMonth: 'ONE_MONTH',
+  Permanent: 'PERMANENT'
+} as const;
 
+export type UserBlockDuration = typeof UserBlockDuration[keyof typeof UserBlockDuration];
 export type UserBlockedEvent = Node & {
   actor?: Maybe<Actor>;
   blockDuration: UserBlockDuration;
@@ -11018,10 +11144,11 @@ export type UserStatusOrder = {
   direction: OrderDirection;
 };
 
-export const enum UserStatusOrderField {
-  UpdatedAt = 'UPDATED_AT'
-};
+export const UserStatusOrderField = {
+  UpdatedAt: 'UPDATED_AT'
+} as const;
 
+export type UserStatusOrderField = typeof UserStatusOrderField[keyof typeof UserStatusOrderField];
 export type ViewerHovercardContext = HovercardContext & {
   message: Scalars['String'];
   octicon: Scalars['String'];

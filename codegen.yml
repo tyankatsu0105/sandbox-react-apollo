@@ -11,7 +11,7 @@ generates:
       - "fragment-matcher"
     config:
       useIndexSignature: true
-      constEnums: true
+      enumsAsConst: true
       contextType: "{ cache: InMemoryCache }"
 
   apps/client/src/graphql/__generated__/schema.tsx:
@@ -31,7 +31,7 @@ generates:
       useIndexSignature: true
       reactApolloVersion: 3
       skipTypename: true
-      constEnums: true
+      enumsAsConst: true
       withHooks: true
       withHOC: false
       withComponent: false

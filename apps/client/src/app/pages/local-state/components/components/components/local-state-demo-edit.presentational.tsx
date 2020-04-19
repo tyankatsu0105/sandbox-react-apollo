@@ -5,6 +5,8 @@ import { TextField, Grid, MenuItem, Button, Box } from '@material-ui/core';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
+import { useSnackbar } from '@sandbox-react-apollo/hooks';
+
 import {
   UpdateLocalStateDemoEditMutationFn,
   UpdateLocalStateDemoEditMutationVariables,
@@ -27,9 +29,10 @@ type Props = {
 
 type FormValue = Yup.InferType<typeof validationSchema>;
 
-export const LocaStateDemoEditPresentational: FunctionComponent<Props> = (
+export const LocalStateDemoEditPresentational: FunctionComponent<Props> = (
   props
 ) => {
+  const { showSnackBar } = useSnackbar();
   const {
     values,
     errors,
@@ -48,6 +51,10 @@ export const LocaStateDemoEditPresentational: FunctionComponent<Props> = (
     onSubmit: (values) => {
       const input = values;
       props.updateYou({ variables: { input } });
+      showSnackBar({
+        message: '更新完了しました',
+        details: 'local stateの値を更新しました',
+      });
     },
   });
 

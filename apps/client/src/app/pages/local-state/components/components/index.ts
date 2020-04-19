@@ -1,1 +1,1 @@
-export * from './loca-state-demo.container';
+export * from './local-state-demo.container';

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import { LocaStateDemoEditPresentational } from './loca-state-demo-edit.presentational';
+import { LocalStateDemoEditPresentational } from './local-state-demo-edit.presentational';
 
 import {
   useUpdateLocalStateDemoEditMutation,
@@ -11,7 +11,7 @@ type Props = {
   data: LocalStateDemoQuery;
 };
 
-export const LocaStateDemoEdit: FunctionComponent<Props> = (props) => {
+export const LocalStateDemoEdit: FunctionComponent<Props> = (props) => {
   const [updateYou] = useUpdateLocalStateDemoEditMutation();
 
   const locaStateDemoEditPresentationalProps = {
@@ -19,7 +19,7 @@ export const LocaStateDemoEdit: FunctionComponent<Props> = (props) => {
     updateYou,
   };
   return (
-    <LocaStateDemoEditPresentational
+    <LocalStateDemoEditPresentational
       {...locaStateDemoEditPresentationalProps}
     />
   );

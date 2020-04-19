@@ -3,7 +3,7 @@ import { Box } from '@material-ui/core';
 
 import { Paper } from '@sandbox-react-apollo/components';
 
-import { LocaStateDemo } from './components';
+import { LocalStateDemo } from './components';
 
 type Props = {};
 
@@ -22,7 +22,7 @@ export const LocalStatePresentational: FunctionComponent<Props> = (props) => {
       </Box>
 
       <Paper>
-        <LocaStateDemo />
+        <LocalStateDemo />
       </Paper>
     </>
   );

@@ -2,16 +2,16 @@ import React, { FunctionComponent } from 'react';
 
 import { useLocalStateDemoQuery } from '~client/graphql/__generated__/Schema';
 
-import { LocaStateDemoPresentational } from './loca-state-demo.presentational';
+import { LocalStateDemoPresentational } from './local-state-demo.presentational';
 
 type Props = {};
 
-export const LocaStateDemo: FunctionComponent<Props> = (props) => {
+export const LocalStateDemo: FunctionComponent<Props> = (props) => {
   const { data } = useLocalStateDemoQuery();
 
   const locaStateDemoPresentationalProps = {
     data,
   };
 
-  return <LocaStateDemoPresentational {...locaStateDemoPresentationalProps} />;
+  return <LocalStateDemoPresentational {...locaStateDemoPresentationalProps} />;
 };

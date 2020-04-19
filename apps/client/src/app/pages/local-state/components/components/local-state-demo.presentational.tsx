@@ -11,13 +11,13 @@ import {
 
 import { LocalStateDemoQuery } from '~client/graphql/__generated__/Schema';
 
-import { LocaStateDemoEdit } from './components';
+import { LocalStateDemoEdit } from './components';
 
 type Props = {
   data: LocalStateDemoQuery;
 };
 
-export const LocaStateDemoPresentational: FunctionComponent<Props> = (
+export const LocalStateDemoPresentational: FunctionComponent<Props> = (
   props
 ) => {
   return (
@@ -40,7 +40,7 @@ export const LocaStateDemoPresentational: FunctionComponent<Props> = (
       </Table>
 
       <Box marginTop={3}>
-        <LocaStateDemoEdit {...props} />
+        <LocalStateDemoEdit {...props} />
       </Box>
     </>
   );

@@ -11,6 +11,8 @@ import { customTheme } from './styles/material-ui/customTheme';
 import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
+import { SnackbarProvider } from 'notistack';
+
 import { App } from './app/app';
 
 import { environment } from './environments/environment';
@@ -25,7 +27,9 @@ ReactDOM.render(
     <BrowserRouter>
       <ThemeProvider theme={customTheme}>
         <CssBaseline />
-        <App />
+        <SnackbarProvider maxSnack={5} preventDuplicate>
+          <App />
+        </SnackbarProvider>
       </ThemeProvider>
     </BrowserRouter>
   </ApolloProvider>,

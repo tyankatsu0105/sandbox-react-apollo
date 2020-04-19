@@ -3,49 +3,35 @@ import * as React from 'react';
 import { useState, useRef, useCallback, useEffect, Component } from 'react';
 import {
   useSnackbar as useOriginSnackbar,
-  VariantType,
-  OptionsObject,
   SnackbarContent,
+  VariantType,
 } from 'notistack';
 
-import {
-  Card,
-  CardActions,
-  IconButton,
-  Typography,
-  Box,
-  Collapse,
-} from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Details } from './components';
 
-import { Primary } from './components';
-
-type Props = {
-  snackbarType: 'primary';
-};
-type ShowSnackBarProps = {
+type ShowDetailsSnackBarProps = {
   message: string;
-  details?: string;
+  details: string;
+  variant: VariantType;
 };
 
-export const useSnackbar = (props: Props = { snackbarType: 'primary' }) => {
+export const useSnackbar = () => {
   const { enqueueSnackbar } = useOriginSnackbar();
 
-  const snackbars = {
-    primary: Primary,
-  };
-  const Snackbar = snackbars[props.snackbarType];
-
-  const showSnackBar = (showSnackBarProps: ShowSnackBarProps) => {
+  const showDetailsSnackbar = (
+    showDetailsSnackBarProps: ShowDetailsSnackBarProps
+  ) => {
     const content: SnackbarContent = (key) => (
-      <Snackbar key={key} {...showSnackBarProps} />
+      <Details key={key} {...showDetailsSnackBarProps} />
     );
 
-    return enqueueSnackbar(null, { content, persist: true });
+    return enqueueSnackbar(null, {
+      content,
+      persist: true,
+    });
   };
 
   return {
-    showSnackBar,
+    showDetailsSnackbar,
   };
 };

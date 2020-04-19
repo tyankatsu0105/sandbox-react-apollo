@@ -32,7 +32,7 @@ type FormValue = Yup.InferType<typeof validationSchema>;
 export const LocalStateDemoEditPresentational: FunctionComponent<Props> = (
   props
 ) => {
-  const { showSnackBar } = useSnackbar();
+  const { showDetailsSnackbar } = useSnackbar();
   const {
     values,
     errors,
@@ -51,9 +51,10 @@ export const LocalStateDemoEditPresentational: FunctionComponent<Props> = (
     onSubmit: (values) => {
       const input = values;
       props.updateYou({ variables: { input } });
-      showSnackBar({
+      showDetailsSnackbar({
         message: '更新完了しました',
-        details: 'local stateの値を更新しました',
+        details: `local stateの値を更新しました`,
+        variant: 'success',
       });
     },
   });

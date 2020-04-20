@@ -9,7 +9,7 @@ import {
   Box,
 } from '@material-ui/core';
 
-import { LocalStateDemoQuery } from '~client/graphql/__generated__/Schema';
+import { LocalStateDemoQuery } from '~client/graphql/__generated__/schema';
 
 import { LocalStateDemoEdit } from './components';
 

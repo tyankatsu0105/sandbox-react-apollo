@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import { useLocalStateDemoQuery } from '~client/graphql/__generated__/Schema';
+import { useLocalStateDemoQuery } from '~client/graphql/__generated__/schema';
 
 import { LocalStateDemoPresentational } from './local-state-demo.presentational';
 

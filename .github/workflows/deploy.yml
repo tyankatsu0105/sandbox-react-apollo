@@ -9,6 +9,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
+      PROJECT_NAME: client
       ENVIRONMENT: production
 
     steps:
@@ -49,6 +50,7 @@ jobs:
         run: bash scripts/build
         env:
           ENVIRONMENT: ${{ env.ENVIRONMENT }}
+          PROJECT_NAME: ${{ env.PROJECT_NAME }}
 
       - name: Sentry release
         run: bash scripts/sentry

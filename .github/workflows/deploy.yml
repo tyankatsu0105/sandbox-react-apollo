@@ -46,7 +46,7 @@ jobs:
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
 
       - name: Build Client
-        run: npm run build client -- --configuration=${ENVIRONMENT}
+        run: bash scripts/build
         env:
           ENVIRONMENT: ${{ env.ENVIRONMENT }}
 

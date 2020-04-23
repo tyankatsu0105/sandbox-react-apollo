@@ -24,6 +24,13 @@ export const LocalStatePresentational: FunctionComponent<Props> = (props) => {
       <Paper>
         <LocalStateDemo />
       </Paper>
+
+      <Box>
+        <p>
+          local
+          stateは値をcacheできるので、reloadや閉じたりしない限りは、route変わっても値を保持し続ける
+        </p>
+      </Box>
     </>
   );
 };

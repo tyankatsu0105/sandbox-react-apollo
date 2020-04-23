@@ -21,6 +21,8 @@ import {
   BloodTypes,
 } from '~client/graphql/__generated__/schema';
 
+import { ContentsLoader } from '@sandbox-react-apollo/components';
+
 const validationSchema = Yup.object<
   UpdateLocalStateDemoEditMutationVariables['input']
 >({
@@ -137,7 +139,7 @@ export const LocalStateDemoEditPresentational: FunctionComponent<Props> = (
         >
           更新
         </Button>
-        {loading ? <CircularProgress size="small" /> : ''}
+        <ContentsLoader loading={loading} />
       </Box>
     </form>
   );

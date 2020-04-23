@@ -12,11 +12,12 @@ type Props = {
 };
 
 export const LocalStateDemoEdit: FunctionComponent<Props> = (props) => {
-  const [updateYou] = useUpdateLocalStateDemoEditMutation();
+  const [updateYou, { loading }] = useUpdateLocalStateDemoEditMutation();
 
   const locaStateDemoEditPresentationalProps = {
     ...props,
     updateYou,
+    loading,
   };
   return (
     <LocalStateDemoEditPresentational

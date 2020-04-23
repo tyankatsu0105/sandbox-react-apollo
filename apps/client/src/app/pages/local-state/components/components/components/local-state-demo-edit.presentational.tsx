@@ -1,11 +1,18 @@
 import React, { FunctionComponent, useMemo } from 'react';
 
-import { TextField, Grid, MenuItem, Button, Box } from '@material-ui/core';
+import {
+  TextField,
+  Grid,
+  MenuItem,
+  Button,
+  Box,
+  CircularProgress,
+} from '@material-ui/core';
 
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { useSnackbar } from '@sandbox-react-apollo/hooks';
+import { useSnackbar, useLoading } from '@sandbox-react-apollo/hooks';
 
 import {
   UpdateLocalStateDemoEditMutationFn,
@@ -25,6 +32,7 @@ const validationSchema = Yup.object<
 type Props = {
   data: LocalStateDemoQuery;
   updateYou: UpdateLocalStateDemoEditMutationFn;
+  loading: boolean;
 };
 
 type FormValue = Yup.InferType<typeof validationSchema>;
@@ -32,7 +40,13 @@ type FormValue = Yup.InferType<typeof validationSchema>;
 export const LocalStateDemoEditPresentational: FunctionComponent<Props> = (
   props
 ) => {
-  const { showDetailsSnackbar } = useSnackbar();
+  const { showSnackbar } = useSnackbar<'withDetails'>({
+    type: 'withDetails',
+  });
+  const { loading, startLoading, finishLoading } = useLoading({
+    loading: props.loading,
+  });
+
   const {
     values,
     errors,
@@ -48,17 +62,19 @@ export const LocalStateDemoEditPresentational: FunctionComponent<Props> = (
       age: props.data.you.age,
       blood: props.data.you.blood,
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
+      await finishLoading();
+
       const input = values;
       props.updateYou({ variables: { input } });
-      showDetailsSnackbar({
+
+      showSnackbar({
         message: '更新完了しました',
         details: `local stateの値を更新しました`,
         variant: 'success',
       });
     },
   });
-
   const bloodTypes = useMemo(() => Object.values(BloodTypes), []);
   return (
     <form noValidate onSubmit={handleSubmit}>
@@ -117,9 +133,11 @@ export const LocalStateDemoEditPresentational: FunctionComponent<Props> = (
           variant="contained"
           color="primary"
           disabled={!isValid}
+          onClick={startLoading}
         >
           更新
         </Button>
+        {loading ? <CircularProgress size="small" /> : ''}
       </Box>
     </form>
   );

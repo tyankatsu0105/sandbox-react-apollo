@@ -27,7 +27,7 @@ ReactDOM.render(
     <BrowserRouter>
       <ThemeProvider theme={customTheme}>
         <CssBaseline />
-        <SnackbarProvider maxSnack={5} preventDuplicate>
+        <SnackbarProvider maxSnack={5}>
           <App />
         </SnackbarProvider>
       </ThemeProvider>
